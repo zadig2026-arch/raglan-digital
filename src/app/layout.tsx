@@ -75,7 +75,10 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  document.documentElement.classList.add('dark');
+                  var mode = localStorage.getItem('theme');
+                  if (mode === 'dark' || (!mode && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                  }
                 } catch (e) {}
               })();
             `,

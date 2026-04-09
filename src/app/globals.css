@@ -1,24 +1,32 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-brand-950: #0c0a09;
+  --color-accent-600: #0f766e;
+  --color-accent-500: #14b8a6;
+  --color-accent-400: #2dd4bf;
+  --color-accent-300: #5eead4;
+  --color-accent-200: #99f6e4;
+  --color-accent-100: #ccfbf1;
+
+  --color-warm-950: #1c1917;
+  --color-warm-900: #292524;
+  --color-warm-800: #44403c;
+  --color-warm-700: #57534e;
+  --color-warm-600: #78716c;
+  --color-warm-500: #a8a29e;
+  --color-warm-400: #d6d3d1;
+  --color-warm-300: #e7e5e4;
+  --color-warm-200: #f5f5f4;
+  --color-warm-100: #fafaf9;
+  --color-warm-50: #fdfcfb;
+
   --color-brand-900: #1c1917;
   --color-brand-800: #292524;
   --color-brand-700: #44403c;
-  --color-brand-600: #57534e;
-  --color-brand-500: #78716c;
   --color-brand-400: #a8a29e;
   --color-brand-300: #d6d3d1;
   --color-brand-200: #e7e5e4;
   --color-brand-100: #f5f5f4;
-  --color-brand-50: #fafaf9;
-
-  --color-accent-600: #ea580c;
-  --color-accent-500: #f97316;
-  --color-accent-400: #fb923c;
-  --color-accent-300: #fdba74;
-  --color-accent-200: #fed7aa;
-  --color-accent-100: #ffedd5;
 
   --color-success-600: #16a34a;
   --color-success-500: #22c55e;
@@ -29,26 +37,26 @@
 }
 
 :root {
-  --background: #fafaf9;
+  --background: #fdfcfb;
   --foreground: #1c1917;
   --surface: #ffffff;
-  --surface-hover: #f5f5f4;
+  --surface-hover: #fafaf9;
   --border: #e7e5e4;
   --muted: #78716c;
-  --accent: #f97316;
-  --accent-hover: #ea580c;
+  --accent: #14b8a6;
+  --accent-hover: #0f766e;
   color-scheme: light;
 }
 
 .dark {
-  --background: #0c0a09;
+  --background: #1c1917;
   --foreground: #fafaf9;
-  --surface: #1c1917;
-  --surface-hover: #292524;
-  --border: #292524;
+  --surface: #292524;
+  --surface-hover: #44403c;
+  --border: #44403c;
   --muted: #a8a29e;
-  --accent: #fb923c;
-  --accent-hover: #fdba74;
+  --accent: #2dd4bf;
+  --accent-hover: #5eead4;
   color-scheme: dark;
 }
 
@@ -82,8 +90,4 @@ html {
 ::-webkit-scrollbar-thumb {
   background: var(--border);
   border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--muted);
 }

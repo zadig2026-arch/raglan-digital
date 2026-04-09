@@ -18,7 +18,7 @@ export function Section({ children, className = "", id }: SectionProps) {
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
       className={`px-6 ${className}`}
     >
-      <div className="max-w-6xl mx-auto">{children}</div>
+      <div className="max-w-5xl mx-auto">{children}</div>
     </motion.section>
   );
 }
