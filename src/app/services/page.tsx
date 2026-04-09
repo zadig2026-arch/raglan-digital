@@ -2,189 +2,244 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Section } from "@/components/section";
 
-const services = [
+const packages = [
   {
-    id: "web-design",
-    title: "Web Design & Development",
-    description: "Your website is your digital shopfront. We build beautiful, fast, mobile-first websites that make the right impression and turn visitors into customers.",
+    id: "starter",
+    name: "Starter Site",
+    price: "$599",
+    period: "one-off",
+    description: "Perfect for new businesses that need to get online fast.",
     features: [
-      "Custom design tailored to your brand",
-      "Mobile-responsive — looks great on any device",
-      "Fast loading speeds for better Google rankings",
-      "Easy-to-use content management",
-      "SSL security included",
-      "Ongoing support & maintenance available",
+      "One-page responsive website",
+      "Mobile-first design",
+      "Contact form",
+      "Basic SEO setup",
+      "Google Analytics installed",
+      "1 round of revisions",
+      "Fast turnaround",
     ],
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-    ),
+    popular: false,
   },
   {
-    id: "seo",
-    title: "SEO & Google Business",
-    description: "When someone in Raglan searches for what you offer, will they find you? We make sure the answer is yes. Local SEO that puts you on the map — literally.",
+    id: "business",
+    name: "Business Site",
+    price: "$1,299",
+    period: "one-off",
+    description: "For established businesses that need a proper online presence.",
     features: [
-      "Google Business Profile setup & optimisation",
-      "Local keyword research & strategy",
-      "On-page SEO for your website",
-      "Google Maps visibility",
-      "Monthly performance reports",
-      "Competitor analysis",
+      "Up to 5 pages",
+      "Custom design tailored to your brand",
+      "Mobile responsive",
+      "SEO optimized (meta tags, headings, images)",
+      "Contact form + Google Maps",
+      "Google Business Profile setup",
+      "Speed optimized",
+      "2 rounds of revisions",
+      "Fast turnaround",
     ],
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    ),
+    popular: true,
+  },
+  {
+    id: "growth",
+    name: "Growth Site",
+    price: "$2,499",
+    period: "one-off",
+    description: "Full digital setup for businesses ready to grow seriously.",
+    features: [
+      "Up to 10 pages",
+      "Premium custom design",
+      "Blog / news section",
+      "E-commerce ready (up to 20 products)",
+      "Full SEO setup + sitemap",
+      "Google Business Profile optimization",
+      "Social media integration",
+      "Speed + performance optimization",
+      "3 rounds of revisions",
+      "Fast turnaround",
+    ],
+    popular: false,
+  },
+];
+
+const ongoingServices = [
+  {
+    id: "seo",
+    name: "SEO & Google Business",
+    price: "$199",
+    period: "/month",
+    features: [
+      "Monthly SEO audit & fixes",
+      "Google Business Profile management",
+      "Local keyword optimization",
+      "Monthly performance report",
+      "Competitor monitoring",
+    ],
   },
   {
     id: "social-media",
-    title: "Social Media Management",
-    description: "Social media shouldn't feel like a chore. We create content strategies that build genuine connections with your community and bring people through your door.",
+    name: "Social Media Management",
+    price: "$349",
+    period: "/month",
     features: [
-      "Content strategy & calendar",
-      "Post creation & scheduling",
-      "Community management & engagement",
-      "Instagram, Facebook & TikTok",
-      "Monthly analytics & insights",
-      "Photo & video content ideas",
+      "12 posts per month (3/week)",
+      "Content creation (graphics + copy)",
+      "Community management",
+      "Monthly analytics report",
+      "Platform: Facebook + Instagram",
     ],
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-    ),
-  },
-  {
-    id: "branding",
-    title: "Branding & Identity",
-    description: "Your brand is more than a logo — it's the feeling people get when they interact with your business. We create cohesive brand identities that stand out.",
-    features: [
-      "Logo design & variations",
-      "Colour palette & typography",
-      "Brand guidelines document",
-      "Business card & stationery design",
-      "Social media templates",
-      "Signage & print design",
-    ],
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-    ),
-  },
-  {
-    id: "advertising",
-    title: "Paid Advertising",
-    description: "Reach the right people at the right time. We run targeted ad campaigns on Google and social media that bring real customers to your business.",
-    features: [
-      "Google Ads management",
-      "Facebook & Instagram ads",
-      "Target audience research",
-      "Ad creative & copywriting",
-      "Budget optimisation",
-      "ROI tracking & reporting",
-    ],
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-    ),
   },
   {
     id: "content",
-    title: "Content & Copywriting",
-    description: "Words matter. Whether it's your website, emails, or social posts — we write content that sounds like you, connects with your audience, and drives action.",
+    name: "Content & Copywriting",
+    price: "$149",
+    period: "/page",
     features: [
-      "Website copywriting",
-      "Blog posts & articles",
-      "Email marketing campaigns",
-      "Product descriptions",
-      "Brand voice development",
-      "Content strategy planning",
+      "SEO-optimized page copy",
+      "Blog posts ($99 per post)",
+      "Email campaigns ($79 per email)",
+      "Social media captions package ($199/mo)",
+      "Brand voice guide included",
     ],
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-    ),
   },
 ];
 
 export default function ServicesPage() {
   return (
-    <>
-      {/* Header */}
-      <section className="px-6 pt-20 pb-16 md:pt-28 md:pb-20">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-2xl"
-          >
-            <span className="text-sm font-medium text-ocean-500 uppercase tracking-wider">Our Services</span>
-            <h1 className="mt-3 text-4xl md:text-5xl font-bold tracking-tight">
-              Everything your business needs to thrive online
-            </h1>
-            <p className="mt-5 text-lg text-[var(--muted)] leading-relaxed">
-              No lock-in contracts. No confusing packages. Just straightforward digital services
-              tailored to what your business actually needs.
-            </p>
-          </motion.div>
+    <div className="px-6 py-20">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <p className="font-hand text-2xl text-accent-500 mb-2">Services & pricing</p>
+          <h1 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight">
+            Clear pricing. No surprises.
+          </h1>
+          <p className="mt-4 text-lg text-[var(--muted)] max-w-2xl mx-auto">
+            Pick a package or mix and match. Everything is customizable.
+            Not sure what you need? Get in touch and I&apos;ll recommend the right option.
+          </p>
         </div>
-      </section>
 
-      {/* Services */}
-      <div className="px-6 pb-24">
-        <div className="max-w-7xl mx-auto space-y-8">
-          {services.map((service, i) => (
-            <motion.div
-              key={service.id}
-              id={service.id}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="grid md:grid-cols-2 gap-8 p-8 md:p-10 rounded-2xl border border-[var(--border)] bg-[var(--surface)] hover:border-ocean-500/20 transition-colors"
-            >
-              <div>
-                <div className="w-14 h-14 rounded-xl bg-ocean-500/10 text-ocean-500 flex items-center justify-center mb-5">
-                  {service.icon}
+        {/* Website packages */}
+        <div id="web-design">
+          <h2 className="text-2xl font-bold mb-8">Website Packages</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {packages.map((pkg, i) => (
+              <motion.div
+                key={pkg.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+                className={`relative p-6 rounded-2xl border ${
+                  pkg.popular
+                    ? "border-accent-500 bg-[var(--surface)] shadow-lg shadow-accent-500/10"
+                    : "border-[var(--border)] bg-[var(--surface)]"
+                }`}
+              >
+                {pkg.popular && (
+                  <span className="absolute -top-3 left-6 px-3 py-0.5 rounded-full bg-accent-500 text-white text-xs font-medium">
+                    Most popular
+                  </span>
+                )}
+                <h3 className="text-lg font-bold">{pkg.name}</h3>
+                <div className="mt-3 flex items-baseline gap-1">
+                  <span className="text-3xl font-bold">{pkg.price}</span>
+                  <span className="text-sm text-[var(--muted)]">{pkg.period}</span>
                 </div>
-                <h2 className="text-2xl font-bold">{service.title}</h2>
-                <p className="mt-3 text-[var(--muted)] leading-relaxed">{service.description}</p>
-                <Link
-                  href="/contact"
-                  className="inline-flex h-10 px-5 items-center justify-center rounded-lg bg-ocean-600 text-white text-sm font-medium mt-6 hover:bg-ocean-700 transition-colors"
-                >
-                  Get a quote →
-                </Link>
-              </div>
-              <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-[var(--muted)] mb-4">What&apos;s included</h3>
-                <ul className="space-y-3">
-                  {service.features.map((f) => (
-                    <li key={f} className="flex items-start gap-3 text-sm">
-                      <svg className="w-5 h-5 text-bush-500 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <p className="mt-3 text-sm text-[var(--muted)]">{pkg.description}</p>
+                <ul className="mt-6 space-y-2.5">
+                  {pkg.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2.5 text-sm">
+                      <svg className="w-4 h-4 text-success-500 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg>
                       {f}
                     </li>
                   ))}
                 </ul>
-              </div>
-            </motion.div>
-          ))}
+                <Link
+                  href="/contact"
+                  className={`mt-8 block text-center py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                    pkg.popular
+                      ? "bg-brand-900 dark:bg-white text-white dark:text-brand-900 hover:bg-brand-800 dark:hover:bg-brand-100"
+                      : "border border-[var(--border)] hover:bg-[var(--surface-hover)]"
+                  }`}
+                >
+                  Get started →
+                </Link>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
 
-      {/* CTA */}
-      <Section className="py-20 bg-[var(--surface)] border-t border-[var(--border)]">
-        <div className="text-center max-w-xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold">Not sure what you need?</h2>
+        {/* Ongoing services */}
+        <div className="mt-24" id="seo">
+          <h2 className="text-2xl font-bold mb-8">Ongoing Services</h2>
+          <div className="grid md:grid-cols-3 gap-6" id="social-media">
+            {ongoingServices.map((service, i) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+                className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)]"
+                id={service.id === "content" ? "content" : undefined}
+              >
+                <h3 className="text-lg font-bold">{service.name}</h3>
+                <div className="mt-3 flex items-baseline gap-1">
+                  <span className="text-3xl font-bold">{service.price}</span>
+                  <span className="text-sm text-[var(--muted)]">{service.period}</span>
+                </div>
+                <ul className="mt-6 space-y-2.5">
+                  {service.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2.5 text-sm">
+                      <svg className="w-4 h-4 text-success-500 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/contact"
+                  className="mt-8 block text-center py-2.5 rounded-xl border border-[var(--border)] text-sm font-medium hover:bg-[var(--surface-hover)] transition-colors"
+                >
+                  Get started →
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* FAQ */}
+        <div className="mt-24 max-w-2xl mx-auto">
+          <h2 className="text-2xl font-bold mb-8 text-center">Common questions</h2>
+          <div className="space-y-4">
+            {[
+              { q: "Do I own my website?", a: "Yes, 100%. You own everything — the code, the design, the content. No lock-in." },
+              { q: "What about hosting?", a: "I can recommend affordable hosting ($5-15/month) or set it up on your existing host. Hosting cost is separate from the build price." },
+              { q: "Can I update the site myself?", a: "Absolutely. I build with easy-to-manage platforms or provide a simple CMS. I'll show you how to make changes." },
+              { q: "What if I need changes after delivery?", a: "Small tweaks within 30 days are free. After that, changes are $49/hour — always quoted upfront." },
+              { q: "Do you work with businesses outside NZ?", a: "My pricing and approach is optimized for NZ small businesses, but I'm happy to chat if you're elsewhere." },
+            ].map((faq) => (
+              <div key={faq.q} className="p-5 rounded-xl border border-[var(--border)] bg-[var(--surface)]">
+                <h3 className="font-semibold text-sm">{faq.q}</h3>
+                <p className="mt-2 text-sm text-[var(--muted)]">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div className="mt-24 text-center">
+          <h2 className="text-2xl font-bold">Not sure what you need?</h2>
           <p className="mt-3 text-[var(--muted)]">
-            No worries — most of our clients start there. Let&apos;s have a free chat and
-            figure out what&apos;ll make the biggest difference for your business.
+            Tell me about your business and I&apos;ll recommend the right package. No pressure.
           </p>
           <Link
             href="/contact"
-            className="inline-flex h-12 px-7 items-center justify-center rounded-xl bg-ocean-600 text-white font-medium mt-8 hover:bg-ocean-700 transition-colors"
+            className="inline-flex h-12 px-7 items-center justify-center rounded-xl bg-brand-900 dark:bg-white text-white dark:text-brand-900 font-medium mt-6 hover:bg-brand-800 dark:hover:bg-brand-100 transition-colors"
           >
-            Book a free consultation →
+            Get a free quote →
           </Link>
         </div>
-      </Section>
-    </>
+      </div>
+    </div>
   );
 }

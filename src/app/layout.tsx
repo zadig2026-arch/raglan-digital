@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Caveat } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { LaunchBanner } from "@/components/launch-banner";
-import { ThemeProvider } from "@/components/theme-provider";
+import { FloatingWhatsApp } from "@/components/floating-whatsapp";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -12,31 +12,37 @@ const inter = Inter({
   display: "swap",
 });
 
+const caveat = Caveat({
+  variable: "--font-caveat",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["500", "700"],
+});
+
 export const metadata: Metadata = {
   title: {
-    default: "Raglan Digital | Helping Local Businesses Thrive Online",
-    template: "%s | Raglan Digital",
+    default: "Scale with Zag | Web Design & Digital Growth for NZ Businesses",
+    template: "%s | Scale with Zag",
   },
   description:
-    "Raglan's local digital agency. We help small businesses build their online presence, attract more customers, and grow. Web design, SEO, social media & more.",
+    "Affordable web design, SEO, social media & content for New Zealand small businesses. Websites from $599 NZD. Real results, fair prices.",
   keywords: [
-    "Raglan",
-    "digital agency",
-    "web design Raglan",
+    "web design New Zealand",
+    "affordable website NZ",
     "SEO New Zealand",
-    "local business",
-    "online presence",
+    "small business website",
+    "digital agency NZ",
     "social media management",
-    "Waikato",
+    "Scale with Zag",
   ],
-  authors: [{ name: "Raglan Digital" }],
+  authors: [{ name: "Scale with Zag" }],
   openGraph: {
     type: "website",
     locale: "en_NZ",
-    siteName: "Raglan Digital",
-    title: "Raglan Digital | Helping Local Businesses Thrive Online",
+    siteName: "Scale with Zag",
+    title: "Scale with Zag | Web Design & Digital Growth for NZ Businesses",
     description:
-      "Raglan's local digital agency helping small businesses build their online presence and grow.",
+      "Affordable web design, SEO, social media & content for New Zealand small businesses. Websites from $599 NZD.",
   },
 };
 
@@ -46,17 +52,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${caveat.variable} h-full`} suppressHydrationWarning>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "name": "Scale with Zag",
+              "description": "Web design, SEO, social media & content for New Zealand small businesses.",
+              "url": "https://scalewithzag.com",
+              "areaServed": { "@type": "Country", "name": "New Zealand" },
+              "priceRange": "$599 - $2499",
+              "founder": { "@type": "Person", "name": "Zag" },
+              "sameAs": ["https://instagram.com/scalewithzag"],
+            }),
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 try {
-                  var mode = localStorage.getItem('theme');
-                  if (mode === 'dark' || (!mode && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                    document.documentElement.classList.add('dark');
-                  }
+                  document.documentElement.classList.add('dark');
                 } catch (e) {}
               })();
             `,
@@ -64,12 +83,11 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col antialiased">
-        <ThemeProvider>
           <LaunchBanner />
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
-        </ThemeProvider>
+          <FloatingWhatsApp />
       </body>
     </html>
   );
