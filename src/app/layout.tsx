@@ -62,7 +62,7 @@ export default function RootLayout({
               "@type": "LocalBusiness",
               "name": "Raglan Digital",
               "description": "Web design, SEO, social media & content for New Zealand small businesses.",
-              "url": "https://raglandigital.co.nz",
+              "url": "https://raglandigital.com",
               "areaServed": { "@type": "Country", "name": "New Zealand" },
               "priceRange": "$599 - $2499",
               "founder": { "@type": "Person", "name": "Zag" },
