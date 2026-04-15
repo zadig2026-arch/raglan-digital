@@ -41,7 +41,7 @@ export default function AboutPage() {
               how good their actual work is.
             </p>
             <p className="text-[var(--foreground)] font-medium">
-              So I built Scale with Zag. You get one person who does this really well,
+              So I built Raglan Digital. You get one person who does this really well,
               at a price that makes sense, with no middlemen.
             </p>
             <p>
@@ -74,7 +74,7 @@ export default function AboutPage() {
               Run the tools first. Then send me your results — I&apos;ll tell you what I&apos;d fix.
             </p>
             <a
-              href="https://wa.me/64XXXXXXXXX?text=Hey%20Zag%2C%20I%20want%20to%20chat%20about%20my%20business."
+              href="https://wa.me/33752032213?text=Hey%20Zag%2C%20I%20want%20to%20chat%20about%20my%20business."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-12 px-7 items-center justify-center rounded-xl bg-accent-500 text-white font-medium mt-4 hover:bg-accent-600 transition-colors gap-2"

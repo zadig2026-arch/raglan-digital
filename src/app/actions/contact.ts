@@ -30,8 +30,8 @@ export async function submitContactForm(
 
   try {
     await resend.emails.send({
-      from: "Raglan Digital <noreply@raglandigital.com>",
-      to: ["hello@raglandigital.com"],
+      from: "Raglan Digital <noreply@raglandigital.co.nz>",
+      to: ["hello@raglandigital.co.nz"],
       replyTo: email,
       subject: `New enquiry from ${name}${business ? ` (${business})` : ""}`,
       html: `

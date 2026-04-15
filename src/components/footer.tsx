@@ -1,57 +1,34 @@
 import Link from "next/link";
-import { Logo } from "./logo";
-
-const footerLinks = {
-  Services: [
-    { href: "/services", label: "Web Design" },
-    { href: "/services#seo", label: "SEO & Google" },
-    { href: "/services#social-media", label: "Social Media" },
-    { href: "/services#content", label: "Content & Copy" },
-  ],
-  "Free Tools": [
-    { href: "/tools/seo-audit", label: "SEO Audit" },
-    { href: "/tools/meta-generator", label: "Meta Generator" },
-    { href: "/tools/speed-checker", label: "Speed Checker" },
-    { href: "/tools/digital-checklist", label: "Digital Checklist" },
-  ],
-  Learn: [
-    { href: "/learn", label: "Guides & Tips" },
-    { href: "/about", label: "About Zag" },
-    { href: "https://wa.me/64XXXXXXXXX", label: "Contact" },
-  ],
-};
 
 export function Footer() {
   return (
-    <footer className="border-t border-[var(--border)] bg-[var(--surface)]">
-      <div className="max-w-6xl mx-auto px-6 py-14">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
-          <div className="col-span-2 md:col-span-1">
-            <Link href="/"><Logo /></Link>
-            <p className="mt-4 text-sm text-[var(--muted)] leading-relaxed max-w-xs">
-              Web design, SEO & digital growth for NZ small businesses. Fair prices, real results.
+    <footer className="border-t border-[var(--border)]">
+      <div className="max-w-4xl mx-auto px-6 py-12">
+        <div className="flex flex-col sm:flex-row items-start justify-between gap-8">
+          <div>
+            <span className="text-sm font-semibold tracking-tight">raglan<span className="text-accent-400">digital</span></span>
+            <p className="mt-2 text-[11px] text-[var(--muted)] max-w-[200px] leading-relaxed">
+              Web design, SEO & digital growth for small businesses in New Zealand.
             </p>
           </div>
 
-          {Object.entries(footerLinks).map(([title, items]) => (
-            <div key={title}>
-              <h4 className="text-sm font-semibold mb-4">{title}</h4>
-              <ul className="space-y-2.5">
-                {items.map((item) => (
-                  <li key={item.href}>
-                    <Link href={item.href} className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+          <div className="flex gap-10 text-[11px]">
+            <div className="space-y-2.5">
+              <p className="text-[10px] font-medium text-[var(--muted)] uppercase tracking-widest mb-3">Work</p>
+              <Link href="/services" className="block text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">Services</Link>
+              <Link href="/tools" className="block text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">Free tools</Link>
+              <Link href="/learn" className="block text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">Learn</Link>
             </div>
-          ))}
+            <div className="space-y-2.5">
+              <p className="text-[10px] font-medium text-[var(--muted)] uppercase tracking-widest mb-3">Connect</p>
+              <Link href="/about" className="block text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">About</Link>
+              <a href="https://wa.me/33752032213" target="_blank" rel="noopener noreferrer" className="block text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">WhatsApp</a>
+            </div>
+          </div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--muted)]">
-          <p>&copy; {new Date().getFullYear()} Scale with Zag. All rights reserved.</p>
-          <p>Built with care in New Zealand</p>
+        <div className="mt-10 pt-5 border-t border-[var(--border)] text-[10px] text-[var(--muted)]">
+          &copy; {new Date().getFullYear()} Raglan Digital
         </div>
       </div>
     </footer>

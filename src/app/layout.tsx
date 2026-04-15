@@ -3,8 +3,8 @@ import { Inter, Caveat } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { LaunchBanner } from "@/components/launch-banner";
 import { FloatingWhatsApp } from "@/components/floating-whatsapp";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -21,8 +21,8 @@ const caveat = Caveat({
 
 export const metadata: Metadata = {
   title: {
-    default: "Scale with Zag | Web Design & Digital Growth for NZ Businesses",
-    template: "%s | Scale with Zag",
+    default: "Raglan Digital | Web Design & Digital Growth for NZ Businesses",
+    template: "%s | Raglan Digital",
   },
   description:
     "Affordable web design, SEO, social media & content for New Zealand small businesses. Websites from $599 NZD. Real results, fair prices.",
@@ -33,14 +33,14 @@ export const metadata: Metadata = {
     "small business website",
     "digital agency NZ",
     "social media management",
-    "Scale with Zag",
+    "Raglan Digital",
   ],
-  authors: [{ name: "Scale with Zag" }],
+  authors: [{ name: "Raglan Digital" }],
   openGraph: {
     type: "website",
     locale: "en_NZ",
-    siteName: "Scale with Zag",
-    title: "Scale with Zag | Web Design & Digital Growth for NZ Businesses",
+    siteName: "Raglan Digital",
+    title: "Raglan Digital | Web Design & Digital Growth for NZ Businesses",
     description:
       "Affordable web design, SEO, social media & content for New Zealand small businesses. Websites from $599 NZD.",
   },
@@ -60,13 +60,13 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              "name": "Scale with Zag",
+              "name": "Raglan Digital",
               "description": "Web design, SEO, social media & content for New Zealand small businesses.",
-              "url": "https://scalewithzag.com",
+              "url": "https://raglandigital.co.nz",
               "areaServed": { "@type": "Country", "name": "New Zealand" },
               "priceRange": "$599 - $2499",
               "founder": { "@type": "Person", "name": "Zag" },
-              "sameAs": ["https://instagram.com/scalewithzag"],
+              "sameAs": ["https://instagram.com/raglandigital"],
             }),
           }}
         />
@@ -76,7 +76,7 @@ export default function RootLayout({
               (function() {
                 try {
                   var mode = localStorage.getItem('theme');
-                  if (mode === 'dark' || (!mode && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  if (mode === 'dark') {
                     document.documentElement.classList.add('dark');
                   }
                 } catch (e) {}
@@ -86,11 +86,12 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col antialiased">
-          <LaunchBanner />
+        <ThemeProvider>
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
           <FloatingWhatsApp />
+        </ThemeProvider>
       </body>
     </html>
   );
