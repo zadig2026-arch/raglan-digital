@@ -127,7 +127,7 @@ export default function LearnPage() {
               Run the tools, send me your results. I&apos;ll tell you what I&apos;d fix and quote you a fair price.
             </p>
             <a
-              href="https://wa.me/64XXXXXXXXX?text=Hey%20Zag%2C%20I%20read%20your%20guides%20and%20I%20need%20help."
+              href="https://wa.me/33752032213?text=Hey%20Zadig%2C%20I%20read%20your%20guides%20and%20I%20need%20help."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-12 px-7 items-center justify-center rounded-xl bg-accent-500 text-white font-medium mt-6 hover:bg-accent-600 transition-colors gap-2"

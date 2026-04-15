@@ -6,19 +6,20 @@ interface SectionProps {
   children: React.ReactNode;
   className?: string;
   id?: string;
+  wide?: boolean;
 }
 
-export function Section({ children, className = "", id }: SectionProps) {
+export function Section({ children, className = "", id, wide }: SectionProps) {
   return (
     <motion.section
       id={id}
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
       className={`px-6 ${className}`}
     >
-      <div className="max-w-5xl mx-auto">{children}</div>
+      <div className={`${wide ? "max-w-4xl" : "max-w-3xl"} mx-auto`}>{children}</div>
     </motion.section>
   );
 }

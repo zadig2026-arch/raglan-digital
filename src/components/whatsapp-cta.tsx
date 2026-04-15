@@ -9,7 +9,7 @@ interface WhatsAppCTAProps {
 
 export function WhatsAppCTA({ result, nextTool }: WhatsAppCTAProps) {
   const message = encodeURIComponent(
-    `Hey Zag, I just ran your ${result}\n\nHere's what I got — what would you fix first?\n\n`
+    `Hey Zadig, I just ran your ${result}\n\nHere's what I got — what would you fix first?\n\n`
   );
 
   return (
@@ -20,7 +20,7 @@ export function WhatsAppCTA({ result, nextTool }: WhatsAppCTAProps) {
       </p>
       <div className="mt-4 flex flex-col sm:flex-row gap-3">
         <a
-          href={`https://wa.me/64XXXXXXXXX?text=${message}`}
+          href={`https://wa.me/33752032213?text=${message}`}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex h-10 px-5 items-center justify-center rounded-lg bg-accent-500 text-white text-sm font-medium hover:bg-accent-600 transition-colors gap-2"

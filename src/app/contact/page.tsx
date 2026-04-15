@@ -1,5 +1,11 @@
-import { redirect } from "next/navigation";
+import type { Metadata } from "next";
+import { ContactForm } from "@/components/contact-form";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Get in touch with Raglan Digital. Send a message or reach out on WhatsApp.",
+};
 
 export default function ContactPage() {
-  redirect("https://wa.me/64XXXXXXXXX?text=Hey%20Zag%2C%20I%20have%20a%20question%20about%20my%20business.");
+  return <ContactForm />;
 }

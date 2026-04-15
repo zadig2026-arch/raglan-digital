@@ -75,7 +75,7 @@ export default function ToolsPage() {
             Send me your results on WhatsApp. I&apos;ll tell you what I&apos;d fix first — and if you want, I&apos;ll do the work.
           </p>
           <a
-            href="https://wa.me/64XXXXXXXXX?text=Hey%20Zag%2C%20I%20just%20ran%20your%20tools.%20Here%20are%20my%20results%3A%0A%0A"
+            href="https://wa.me/33752032213?text=Hey%20Zadig%2C%20I%20just%20ran%20your%20tools.%20Here%20are%20my%20results%3A%0A%0A"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex h-10 px-5 items-center justify-center rounded-lg bg-accent-500 text-white text-sm font-medium mt-4 hover:bg-accent-600 transition-colors gap-2"

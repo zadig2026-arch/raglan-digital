@@ -50,14 +50,12 @@ export function Navbar() {
             )}
           </button>
 
-          <a
-            href="https://wa.me/33752032213"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/contact"
             className="hidden md:inline-flex h-8 px-4 items-center rounded-full bg-accent-500 text-white text-xs font-medium hover:bg-accent-600 transition-colors"
           >
             Get in touch
-          </a>
+          </Link>
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -90,7 +88,7 @@ export function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <a href="https://wa.me/33752032213" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className="block pt-3 text-sm font-medium text-accent-400">Get in touch →</a>
+              <Link href="/contact" onClick={() => setMobileOpen(false)} className="block pt-3 text-sm font-medium text-accent-400">Get in touch →</Link>
             </div>
           </motion.div>
         )}

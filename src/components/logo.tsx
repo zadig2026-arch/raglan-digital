@@ -3,19 +3,21 @@ import Image from "next/image";
 export function Logo({ className = "" }: { className?: string }) {
   return (
     <div className={`flex items-center gap-2.5 select-none ${className}`}>
-      <Image
-        src="/images/zag-logo.png"
-        alt="Zag"
-        width={36}
-        height={36}
-        className="rounded-full"
-      />
-      <div className="flex items-baseline gap-0">
-        <span className="text-xl font-black uppercase tracking-tight text-[var(--foreground)]">
-          SCALE
+      <div className="relative w-8 h-8">
+        <Image
+          src="/images/zag-logo.png"
+          alt="Zadig"
+          width={32}
+          height={32}
+          className="rounded-full ring-2 ring-accent-200 dark:ring-accent-700"
+        />
+      </div>
+      <div className="flex flex-col leading-none">
+        <span className="text-sm font-black uppercase tracking-wide text-[var(--foreground)]">
+          Scale
         </span>
-        <span className="font-hand text-2xl text-accent-500 ml-1 -mb-0.5">
-          with Zag
+        <span className="font-hand text-base text-accent-500 -mt-1">
+          with Zadig
         </span>
       </div>
     </div>

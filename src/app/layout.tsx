@@ -65,7 +65,7 @@ export default function RootLayout({
               "url": "https://raglandigital.com",
               "areaServed": { "@type": "Country", "name": "New Zealand" },
               "priceRange": "$599 - $2499",
-              "founder": { "@type": "Person", "name": "Zag" },
+              "founder": { "@type": "Person", "name": "Zadig" },
               "sameAs": ["https://instagram.com/raglandigital"],
             }),
           }}

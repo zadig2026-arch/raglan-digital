@@ -10,6 +10,7 @@ const packages = [
     price: "$599",
     period: "one-off",
     description: "Perfect for new businesses that need to get online fast.",
+    bestFor: "Freelancers, tradespeople, solo operators — anyone who just needs a clean page to show what they do and how to reach them.",
     features: [
       "One-page responsive website",
       "Mobile-first design",
@@ -27,6 +28,7 @@ const packages = [
     price: "$1,299",
     period: "one-off",
     description: "For established businesses that need a proper online presence.",
+    bestFor: "Cafes, restaurants, clinics, agencies, salons — businesses with multiple services that need separate pages, a map, and solid SEO.",
     features: [
       "Up to 5 pages",
       "Custom design tailored to your brand",
@@ -46,6 +48,7 @@ const packages = [
     price: "$2,499",
     period: "one-off",
     description: "Full digital setup for businesses ready to grow seriously.",
+    bestFor: "E-commerce shops, brands with a blog, businesses that want to sell online or publish content regularly to attract new customers.",
     features: [
       "Up to 10 pages",
       "Premium custom design",
@@ -146,6 +149,7 @@ export default function ServicesPage() {
                   <span className="text-sm text-[var(--muted)]">{pkg.period}</span>
                 </div>
                 <p className="mt-3 text-sm text-[var(--muted)]">{pkg.description}</p>
+                <p className="mt-2 text-xs text-accent-500/80 leading-relaxed"><span className="font-semibold">Best for:</span> {pkg.bestFor}</p>
                 <ul className="mt-6 space-y-2.5">
                   {pkg.features.map((f) => (
                     <li key={f} className="flex items-start gap-2.5 text-sm">

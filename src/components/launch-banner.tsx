@@ -10,7 +10,7 @@ export function LaunchBanner() {
   return (
     <div className="relative bg-warm-900 text-white text-center py-2 px-4 text-sm">
       <span>
-        I build websites for NZ businesses from <strong>$599</strong>.{" "}
+        I build websites for businesses from <strong>$599</strong>.{" "}
         <Link href="/services" className="underline underline-offset-2 hover:text-accent-400 transition-colors">
           See pricing →
         </Link>
