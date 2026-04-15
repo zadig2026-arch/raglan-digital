@@ -54,14 +54,13 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="hidden md:block shrink-0"
+              className="hidden md:block shrink-0 -mr-10 lg:-mr-16"
             >
               <div className="-scale-x-100">
                 <ZagExpression
                   defaultExpression="smile"
                   hoverExpression="laugh"
-                  size={240}
-                  className="rounded-3xl"
+                  size={260}
                 />
               </div>
             </motion.div>
