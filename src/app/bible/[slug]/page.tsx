@@ -19,6 +19,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: article.title,
     description: article.description,
+    openGraph: {
+      title: article.title,
+      description: article.description,
+      type: "article",
+      publishedTime: article.date,
+      authors: ["Zadig"],
+    },
   };
 }
 
@@ -34,6 +41,25 @@ export default async function BibleArticlePage({ params }: Props) {
 
   return (
     <article className="px-6 py-20 md:py-28">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: article.title,
+            description: article.description,
+            datePublished: article.date,
+            author: { "@type": "Person", name: "Zadig" },
+            publisher: {
+              "@type": "Organization",
+              name: "Raglan Digital",
+              url: "https://raglandigital.com",
+            },
+            mainEntityOfPage: `https://raglandigital.com/bible/${slug}`,
+          }),
+        }}
+      />
       <div className="max-w-3xl mx-auto">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-[var(--muted)] mb-8">

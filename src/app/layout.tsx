@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Raglan Digital",
   },
   description:
-    "Affordable web design, SEO, social media & content for New Zealand small businesses. Websites from $599 NZD. Real results, fair prices.",
+    "Web design, SEO, social media & content for local businesses in New Zealand. Real results, fair prices.",
   keywords: [
     "web design New Zealand",
     "affordable website NZ",
@@ -39,11 +39,28 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_NZ",
+    url: "https://raglandigital.com",
     siteName: "Raglan Digital",
     title: "Raglan Digital | Web Design & Digital Growth for NZ Businesses",
     description:
-      "Affordable web design, SEO, social media & content for New Zealand small businesses. Websites from $599 NZD.",
+      "Web design, SEO, social media & content for local businesses in New Zealand. Real results, fair prices.",
+    images: [
+      {
+        url: "https://raglandigital.com/images/raglan-sunset.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Raglan Digital — Web Design for NZ Businesses",
+      },
+    ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Raglan Digital | Web Design & Digital Growth for NZ Businesses",
+    description:
+      "Web design, SEO, social media & content for local businesses in New Zealand.",
+    images: ["https://raglandigital.com/images/raglan-sunset.jpg"],
+  },
+  metadataBase: new URL("https://raglandigital.com"),
 };
 
 export default function RootLayout({
@@ -57,17 +74,25 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              "name": "Raglan Digital",
-              "description": "Web design, SEO, social media & content for New Zealand small businesses.",
-              "url": "https://raglandigital.com",
-              "areaServed": { "@type": "Country", "name": "New Zealand" },
-              "priceRange": "$599 - $2499",
-              "founder": { "@type": "Person", "name": "Zadig" },
-              "sameAs": ["https://instagram.com/raglandigital"],
-            }),
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "LocalBusiness",
+                name: "Raglan Digital",
+                description:
+                  "Web design, SEO, social media & content for New Zealand small businesses.",
+                url: "https://raglandigital.com",
+                areaServed: { "@type": "Country", name: "New Zealand" },
+                founder: { "@type": "Person", name: "Zadig" },
+                sameAs: ["https://instagram.com/raglandigital"],
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: "Raglan Digital",
+                url: "https://raglandigital.com",
+              },
+            ]),
           }}
         />
         <script
@@ -86,9 +111,15 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col antialiased">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-accent-500 focus:text-white focus:rounded-lg focus:text-sm focus:font-medium"
+        >
+          Skip to content
+        </a>
         <ThemeProvider>
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main id="main-content" className="flex-1">{children}</main>
           <Footer />
           <FloatingWhatsApp />
         </ThemeProvider>

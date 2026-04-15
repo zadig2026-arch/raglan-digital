@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ZagExpression } from "@/components/zag-expression";
 
 export default function AboutPage() {
   return (
@@ -17,15 +16,6 @@ export default function AboutPage() {
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight">
             I&apos;m Zadig.
           </h1>
-
-          <div className="mt-10 flex justify-center">
-            <ZagExpression
-              defaultExpression="illustration"
-              hoverExpression="smile"
-              size={160}
-              className="rounded-2xl"
-            />
-          </div>
 
           <div className="mt-10 space-y-5 text-[var(--muted)] leading-relaxed">
             <p>

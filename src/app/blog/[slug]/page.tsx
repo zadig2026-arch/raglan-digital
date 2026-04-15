@@ -19,6 +19,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: "article",
+      publishedTime: post.date,
+      authors: ["Zadig"],
+    },
   };
 }
 
@@ -29,6 +36,25 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <article className="px-6 py-20 md:py-28">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: post.title,
+            description: post.description,
+            datePublished: post.date,
+            author: { "@type": "Person", name: "Zadig" },
+            publisher: {
+              "@type": "Organization",
+              name: "Raglan Digital",
+              url: "https://raglandigital.com",
+            },
+            mainEntityOfPage: `https://raglandigital.com/blog/${slug}`,
+          }),
+        }}
+      />
       <div className="max-w-3xl mx-auto">
         <nav className="flex items-center gap-2 text-sm text-[var(--muted)] mb-8">
           <Link href="/blog" className="hover:text-[var(--foreground)] transition-colors">Blog</Link>

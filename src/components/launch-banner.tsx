@@ -10,9 +10,9 @@ export function LaunchBanner() {
   return (
     <div className="relative bg-warm-900 text-white text-center py-2 px-4 text-sm">
       <span>
-        I build websites for businesses from <strong>$599</strong>.{" "}
+        I build websites for local businesses in NZ.{" "}
         <Link href="/services" className="underline underline-offset-2 hover:text-accent-400 transition-colors">
-          See pricing →
+          See what I offer →
         </Link>
       </span>
       <button onClick={() => setDismissed(true)} className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors" aria-label="Dismiss">✕</button>
