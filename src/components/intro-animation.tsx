@@ -29,15 +29,17 @@ export function IntroAnimation({ onComplete }: IntroAnimationProps) {
   const [index, setIndex] = useState(0);
   const [dimension, setDimension] = useState({ width: 0, height: 0 });
   const [isExiting, setIsExiting] = useState(false);
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(() => {
+    if (typeof window !== "undefined") {
+      return !sessionStorage.getItem("intro-seen");
+    }
+    return true;
+  });
 
   useEffect(() => {
-    if (sessionStorage.getItem("intro-seen")) {
-      setShow(false);
-      return;
-    }
+    if (!show) return;
     setDimension({ width: window.innerWidth, height: window.innerHeight });
-  }, []);
+  }, [show]);
 
   useEffect(() => {
     if (!show || dimension.width === 0) return;

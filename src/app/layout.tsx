@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Caveat } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
@@ -123,6 +124,7 @@ export default function RootLayout({
           <Footer />
           <FloatingWhatsApp />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

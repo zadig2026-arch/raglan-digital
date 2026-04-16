@@ -19,6 +19,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.description,
+    alternates: {
+      canonical: `https://raglandigital.com/blog/${slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.description,
@@ -63,21 +66,21 @@ export default async function BlogPostPage({ params }: Props) {
         </nav>
 
         <div className="flex items-center gap-3 mb-4">
-          <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-ocean-500/10 text-ocean-600 dark:text-ocean-300">
+          <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-accent-500/10 text-accent-600 dark:text-accent-300">
             {post.category}
           </span>
           <span className="text-xs text-[var(--muted)]">{post.readingTime}</span>
           <span className="text-xs text-[var(--muted)]">{new Date(post.date).toLocaleDateString("en-NZ", { year: "numeric", month: "long", day: "numeric" })}</span>
         </div>
 
-        <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-ocean-500 prose-a:no-underline hover:prose-a:underline prose-strong:text-[var(--foreground)]">
+        <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-accent-500 prose-a:no-underline hover:prose-a:underline prose-strong:text-[var(--foreground)]">
           <MDXContent content={post.content} />
         </div>
 
         <div className="mt-16 pt-8 border-t border-[var(--border)] text-center">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm font-medium text-ocean-500 hover:text-ocean-600 transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-medium text-accent-500 hover:text-accent-600 transition-colors"
           >
             ← Back to Blog
           </Link>

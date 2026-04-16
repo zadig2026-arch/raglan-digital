@@ -64,6 +64,29 @@ const services = [
   },
 ];
 
+const faqs = [
+  {
+    q: "Do I own my website?",
+    a: "Yes, 100%. You own everything — the code, the design, the content. No lock-in.",
+  },
+  {
+    q: "What about hosting?",
+    a: "I can recommend affordable hosting or set it up on your existing host. We'll figure out the best option together.",
+  },
+  {
+    q: "Can I update the site myself?",
+    a: "Absolutely. I build with easy-to-manage platforms or provide a simple CMS. I'll show you how to make changes.",
+  },
+  {
+    q: "How much does it cost?",
+    a: "It depends on what you need. Get in touch and I'll give you an honest quote — no pressure, no hidden fees.",
+  },
+  {
+    q: "Do you work with businesses outside NZ?",
+    a: "My approach is optimized for NZ small businesses, but I'm happy to chat if you're elsewhere.",
+  },
+];
+
 export default function ServicesPage() {
   return (
     <div className="px-6 py-20">
@@ -134,32 +157,28 @@ export default function ServicesPage() {
 
         {/* FAQ */}
         <div className="mt-24 max-w-2xl mx-auto">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: faqs.map((faq) => ({
+                  "@type": "Question",
+                  name: faq.q,
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: faq.a,
+                  },
+                })),
+              }),
+            }}
+          />
           <h2 className="text-2xl font-bold mb-8 text-center">
             Common questions
           </h2>
           <div className="space-y-4">
-            {[
-              {
-                q: "Do I own my website?",
-                a: "Yes, 100%. You own everything — the code, the design, the content. No lock-in.",
-              },
-              {
-                q: "What about hosting?",
-                a: "I can recommend affordable hosting or set it up on your existing host. We'll figure out the best option together.",
-              },
-              {
-                q: "Can I update the site myself?",
-                a: "Absolutely. I build with easy-to-manage platforms or provide a simple CMS. I'll show you how to make changes.",
-              },
-              {
-                q: "How much does it cost?",
-                a: "It depends on what you need. Get in touch and I'll give you an honest quote — no pressure, no hidden fees.",
-              },
-              {
-                q: "Do you work with businesses outside NZ?",
-                a: "My approach is optimized for NZ small businesses, but I'm happy to chat if you're elsewhere.",
-              },
-            ].map((faq) => (
+            {faqs.map((faq) => (
               <div
                 key={faq.q}
                 className="p-5 rounded-xl border border-[var(--border)] bg-[var(--surface)]"

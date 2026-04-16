@@ -19,6 +19,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: article.title,
     description: article.description,
+    alternates: {
+      canonical: `https://raglandigital.com/bible/${slug}`,
+    },
     openGraph: {
       title: article.title,
       description: article.description,
@@ -70,7 +73,7 @@ export default async function BibleArticlePage({ params }: Props) {
 
         {/* Meta */}
         <div className="flex items-center gap-3 mb-4">
-          <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-ocean-500/10 text-ocean-600 dark:text-ocean-300">
+          <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-accent-500/10 text-accent-600 dark:text-accent-300">
             {article.category}
           </span>
           <span className="text-xs text-[var(--muted)]">{article.readingTime}</span>
@@ -78,7 +81,7 @@ export default async function BibleArticlePage({ params }: Props) {
         </div>
 
         {/* Content rendered as simple HTML from MDX content */}
-        <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-ocean-500 prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-strong:text-[var(--foreground)]">
+        <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-accent-500 prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-strong:text-[var(--foreground)]">
           <MDXContent content={article.content} />
         </div>
 
@@ -87,19 +90,19 @@ export default async function BibleArticlePage({ params }: Props) {
           {prev ? (
             <Link
               href={`/bible/${prev.slug}`}
-              className="group p-4 rounded-xl border border-[var(--border)] hover:border-ocean-500/30 transition-colors"
+              className="group p-4 rounded-xl border border-[var(--border)] hover:border-accent-500/30 transition-colors"
             >
               <div className="text-xs text-[var(--muted)] mb-1">← Previous</div>
-              <div className="text-sm font-medium group-hover:text-ocean-500 transition-colors">{prev.title}</div>
+              <div className="text-sm font-medium group-hover:text-accent-500 transition-colors">{prev.title}</div>
             </Link>
           ) : <div />}
           {next ? (
             <Link
               href={`/bible/${next.slug}`}
-              className="group p-4 rounded-xl border border-[var(--border)] hover:border-ocean-500/30 transition-colors text-right"
+              className="group p-4 rounded-xl border border-[var(--border)] hover:border-accent-500/30 transition-colors text-right"
             >
               <div className="text-xs text-[var(--muted)] mb-1">Next →</div>
-              <div className="text-sm font-medium group-hover:text-ocean-500 transition-colors">{next.title}</div>
+              <div className="text-sm font-medium group-hover:text-accent-500 transition-colors">{next.title}</div>
             </Link>
           ) : <div />}
         </div>
