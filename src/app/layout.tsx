@@ -6,6 +6,7 @@ import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { FloatingWhatsApp } from "@/components/floating-whatsapp";
+import { LaunchBanner } from "@/components/launch-banner";
 import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({
@@ -114,6 +115,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <ThemeProvider>
+          <LaunchBanner />
           <Navbar />
           <main id="main-content" className="flex-1">{children}</main>
           <Footer />

@@ -3,19 +3,31 @@
 import { useState } from "react";
 import Link from "next/link";
 
+const SPOTS_LEFT = 5;
+
 export function LaunchBanner() {
   const [dismissed, setDismissed] = useState(false);
-  if (dismissed) return null;
+  if (dismissed || SPOTS_LEFT <= 0) return null;
 
   return (
-    <div className="relative bg-warm-900 text-white text-center py-2 px-4 text-sm">
+    <div className="relative bg-warm-900 text-white text-center py-2 px-10 text-xs sm:text-sm">
       <span>
-        I build websites for local businesses in NZ.{" "}
-        <Link href="/services" className="underline underline-offset-2 hover:text-accent-400 transition-colors">
-          See what I offer →
+        I&apos;m new to NZ — building{" "}
+        <strong>{SPOTS_LEFT} free websites</strong> for local businesses.{" "}
+        <Link
+          href="/free-website"
+          className="underline underline-offset-2 hover:text-accent-400 transition-colors"
+        >
+          See if you qualify →
         </Link>
       </span>
-      <button onClick={() => setDismissed(true)} className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors" aria-label="Dismiss">✕</button>
+      <button
+        onClick={() => setDismissed(true)}
+        className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors"
+        aria-label="Dismiss"
+      >
+        ✕
+      </button>
     </div>
   );
 }
