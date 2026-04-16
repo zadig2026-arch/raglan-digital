@@ -37,54 +37,101 @@ const services = [
 ];
 
 function WebDesignDemo({ progress }: { progress: number }) {
-  const p = Math.min(1, Math.max(0, progress));
-
   return (
-    <BrowserMockup url="yourbusiness.co.nz">
-      <div className="p-6 min-h-[280px] relative overflow-hidden">
-        {/* Wireframe layer */}
-        <div
-          className="absolute inset-0 p-6 transition-opacity duration-700"
-          style={{ opacity: p < 0.5 ? 1 : 0 }}
-        >
-          <div className="h-8 w-32 rounded bg-warm-200 dark:bg-warm-700 mb-4" />
-          <div className="h-4 w-48 rounded bg-warm-200 dark:bg-warm-700 mb-2" />
-          <div className="h-4 w-40 rounded bg-warm-200 dark:bg-warm-700 mb-6" />
-          <div className="grid grid-cols-3 gap-3">
-            <div className="h-24 rounded bg-warm-200 dark:bg-warm-700" />
-            <div className="h-24 rounded bg-warm-200 dark:bg-warm-700" />
-            <div className="h-24 rounded bg-warm-200 dark:bg-warm-700" />
+    <div className="relative min-h-[320px] flex items-end justify-center">
+      {/* Desktop / Laptop */}
+      <div className="relative w-[85%] z-10">
+        {/* Screen */}
+        <div className="rounded-t-lg border-2 border-warm-600 dark:border-warm-500 bg-warm-800 dark:bg-warm-900 overflow-hidden">
+          <div className="aspect-[16/10] relative">
+            {/* Site content inside screen */}
+            <div className="absolute inset-0 bg-gradient-to-br from-accent-50 to-white dark:from-accent-950/60 dark:to-warm-900 p-3">
+              {/* Nav */}
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-1.5">
+                  <div className="w-4 h-4 rounded bg-accent-500" />
+                  <span className="text-[7px] font-bold text-[var(--foreground)]">Raglan Surf Cafe</span>
+                </div>
+                <div className="flex gap-2">
+                  <div className="w-6 h-1.5 rounded-full bg-warm-300 dark:bg-warm-600" />
+                  <div className="w-6 h-1.5 rounded-full bg-warm-300 dark:bg-warm-600" />
+                  <div className="w-6 h-1.5 rounded-full bg-warm-300 dark:bg-warm-600" />
+                </div>
+              </div>
+              {/* Hero */}
+              <div className="rounded-lg bg-accent-500/10 dark:bg-accent-500/20 p-3 mb-2">
+                <p className="text-[8px] font-bold leading-tight">Best coffee on<br />the coast.</p>
+                <div className="mt-1.5 h-3.5 w-12 rounded bg-accent-500 flex items-center justify-center">
+                  <span className="text-[5px] text-white font-medium">Book now</span>
+                </div>
+              </div>
+              {/* Cards */}
+              <div className="grid grid-cols-3 gap-1.5">
+                <div className="rounded bg-white dark:bg-warm-800 p-1.5 border border-warm-200 dark:border-warm-700">
+                  <div className="h-6 rounded bg-accent-100 dark:bg-accent-950 mb-1" />
+                  <div className="h-1 w-8 rounded-full bg-warm-300 dark:bg-warm-600" />
+                </div>
+                <div className="rounded bg-white dark:bg-warm-800 p-1.5 border border-warm-200 dark:border-warm-700">
+                  <div className="h-6 rounded bg-accent-100 dark:bg-accent-950 mb-1" />
+                  <div className="h-1 w-8 rounded-full bg-warm-300 dark:bg-warm-600" />
+                </div>
+                <div className="rounded bg-white dark:bg-warm-800 p-1.5 border border-warm-200 dark:border-warm-700">
+                  <div className="h-6 rounded bg-accent-100 dark:bg-accent-950 mb-1" />
+                  <div className="h-1 w-8 rounded-full bg-warm-300 dark:bg-warm-600" />
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="h-10 w-28 rounded-lg bg-warm-300 dark:bg-warm-600 mt-6" />
         </div>
+        {/* Laptop base */}
+        <div className="h-3 bg-warm-600 dark:bg-warm-500 rounded-b-lg mx-auto" style={{ width: "110%", marginLeft: "-5%" }}>
+          <div className="h-1 w-16 bg-warm-500 dark:bg-warm-400 rounded-full mx-auto mt-0.5" />
+        </div>
+      </div>
 
-        {/* Finished site layer */}
-        <div
-          className="absolute inset-0 p-6 transition-opacity duration-700"
-          style={{ opacity: p >= 0.5 ? 1 : 0 }}
-        >
-          <div className="h-8 w-32 rounded bg-accent-500 mb-4 flex items-center px-3">
-            <span className="text-xs text-white font-bold">Your Brand</span>
-          </div>
-          <h3 className="text-lg font-bold">Welcome to Your Business</h3>
-          <p className="text-sm text-[var(--muted)] mt-1">The best experience in Raglan</p>
-          <div className="grid grid-cols-3 gap-3 mt-4">
-            <div className="h-24 rounded-lg bg-accent-100 dark:bg-accent-950 flex items-center justify-center">
-              <span className="text-xs text-accent-600 dark:text-accent-400 font-medium">Menu</span>
+      {/* Tablet — right side */}
+      <div className="absolute right-0 bottom-0 w-[30%] z-20">
+        <div className="rounded-lg border-2 border-warm-600 dark:border-warm-500 bg-warm-800 dark:bg-warm-900 overflow-hidden">
+          <div className="aspect-[3/4] relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-accent-50 to-white dark:from-accent-950/60 dark:to-warm-900 p-2">
+              <div className="flex items-center gap-1 mb-2">
+                <div className="w-2.5 h-2.5 rounded bg-accent-500" />
+                <span className="text-[5px] font-bold">Raglan Surf Cafe</span>
+              </div>
+              <div className="rounded bg-accent-500/10 dark:bg-accent-500/20 p-2 mb-1.5">
+                <p className="text-[6px] font-bold leading-tight">Best coffee on<br />the coast.</p>
+                <div className="mt-1 h-2.5 w-8 rounded bg-accent-500" />
+              </div>
+              <div className="space-y-1">
+                <div className="h-5 rounded bg-white dark:bg-warm-800 border border-warm-200 dark:border-warm-700" />
+                <div className="h-5 rounded bg-white dark:bg-warm-800 border border-warm-200 dark:border-warm-700" />
+              </div>
             </div>
-            <div className="h-24 rounded-lg bg-accent-100 dark:bg-accent-950 flex items-center justify-center">
-              <span className="text-xs text-accent-600 dark:text-accent-400 font-medium">Gallery</span>
-            </div>
-            <div className="h-24 rounded-lg bg-accent-100 dark:bg-accent-950 flex items-center justify-center">
-              <span className="text-xs text-accent-600 dark:text-accent-400 font-medium">Reviews</span>
-            </div>
-          </div>
-          <div className="h-10 w-28 rounded-lg bg-accent-500 mt-6 flex items-center justify-center">
-            <span className="text-xs text-white font-medium">Book now</span>
           </div>
         </div>
       </div>
-    </BrowserMockup>
+
+      {/* Phone — left side */}
+      <div className="absolute left-0 bottom-0 w-[18%] z-20">
+        <div className="rounded-xl border-2 border-warm-600 dark:border-warm-500 bg-warm-800 dark:bg-warm-900 overflow-hidden">
+          <div className="aspect-[9/16] relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-accent-50 to-white dark:from-accent-950/60 dark:to-warm-900 p-1.5">
+              {/* Notch */}
+              <div className="h-1.5 w-6 bg-warm-700 dark:bg-warm-600 rounded-full mx-auto mb-1.5" />
+              <div className="rounded bg-accent-500/10 dark:bg-accent-500/20 p-1.5 mb-1">
+                <p className="text-[4px] font-bold leading-tight">Best coffee on the coast.</p>
+                <div className="mt-0.5 h-2 w-6 rounded bg-accent-500" />
+              </div>
+              <div className="space-y-0.5">
+                <div className="h-4 rounded bg-white dark:bg-warm-800 border border-warm-200 dark:border-warm-700" />
+                <div className="h-4 rounded bg-white dark:bg-warm-800 border border-warm-200 dark:border-warm-700" />
+                <div className="h-4 rounded bg-white dark:bg-warm-800 border border-warm-200 dark:border-warm-700" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
