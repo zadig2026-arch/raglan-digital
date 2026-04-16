@@ -292,12 +292,37 @@ function ToolsPremium() {
 function WhoPremium() {
   return (
     <section className="py-24 md:py-32 px-6 bg-[var(--surface)]">
-      <div className="max-w-2xl mx-auto text-center">
-        <ZagExpression defaultExpression="smile" hoverExpression="laugh" size={100} className="rounded-full mx-auto mb-8" />
-        <TextReveal
-          text="I'm Zadig. Based in Raglan. I build websites for local businesses. Fair prices. You own everything."
-          className="text-xl md:text-2xl font-medium leading-relaxed"
-        />
+      <div className="max-w-3xl mx-auto">
+        <div className="flex flex-col md:flex-row items-start gap-10">
+          <div className="shrink-0 relative group cursor-pointer">
+            <ZagExpression
+              defaultExpression="smile"
+              hoverExpression="happy"
+              size={120}
+              className="rounded-2xl"
+            />
+            <div className="absolute inset-0 flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+              <span className="font-hand text-lg text-accent-500">I&apos;m here</span>
+            </div>
+          </div>
+
+          <div className="flex-1">
+            <TextReveal
+              text="I'm Zadig. I studied audiovisual in France, worked at a digital agency, then moved to Raglan. Locals told me there was work here. So I started."
+              className="text-xl md:text-2xl font-medium leading-relaxed"
+            />
+
+            <div className="mt-8 space-y-4">
+              <p className="text-[var(--muted)] leading-relaxed">
+                No big portfolio yet — I&apos;m just getting started. But I built a set of free tools you can
+                try right now, and I&apos;m ready to help if you need a website or want to improve your online presence.
+              </p>
+              <p className="text-[var(--muted)] leading-relaxed">
+                Fair prices. You own everything. No lock-in.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
