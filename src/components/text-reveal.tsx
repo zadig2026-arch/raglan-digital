@@ -33,10 +33,10 @@ export function TextReveal({ text, className }: TextRevealProps) {
 }
 
 function Word({ children, progress, range }: { children: ReactNode; progress: MotionValue<number>; range: [number, number] }) {
-  const opacity = useTransform(progress, range, [0.12, 1]);
+  const opacity = useTransform(progress, range, [0.25, 1]);
   return (
     <span className="relative mr-[0.3em] mt-[0.15em]">
-      <span className="absolute opacity-[0.12] select-none pointer-events-none" aria-hidden="true">{children}</span>
+      <span className="absolute opacity-[0.25] select-none pointer-events-none" aria-hidden="true">{children}</span>
       <motion.span style={{ opacity }}>
         {children}
       </motion.span>

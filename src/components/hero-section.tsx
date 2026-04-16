@@ -1,17 +1,36 @@
 "use client";
 
-import Link from "next/link";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { IntroAnimation } from "@/components/intro-animation";
 import { AuroraBackground } from "@/components/aurora-bg";
+import { TextReveal } from "@/components/text-reveal";
 
 export function HeroSection() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   return (
     <>
       <IntroAnimation />
 
-      <AuroraBackground className="min-h-[70vh] flex items-center">
-        <section className="px-6 pt-24 pb-16 md:pt-32 md:pb-20 w-full">
+      <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Parallax aurora */}
+        <motion.div style={{ y: bgY }} className="absolute inset-0 -top-20 -bottom-20">
+          <AuroraBackground className="h-full">
+            <div />
+          </AuroraBackground>
+        </motion.div>
+
+        <motion.div
+          style={{ opacity: contentOpacity }}
+          className="relative z-10 px-6 pt-24 pb-16 md:pt-32 md:pb-20 w-full"
+        >
           <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
@@ -20,33 +39,39 @@ export function HeroSection() {
             >
               <p className="font-hand text-xl text-accent-500 mb-3">Hey, I&apos;m Zadig</p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
-                I build websites for
+                Your business deserves
                 <br />
-                local businesses in
-                <br />
-                <span className="text-accent-500">New Zealand.</span>
+                to be <span className="text-accent-500">found.</span>
               </h1>
-              <p className="mt-6 text-lg text-[var(--muted)] max-w-lg leading-relaxed">
-                I make websites and free tools for small businesses. Based in Raglan, NZ.
-              </p>
-              <div className="mt-8 flex flex-wrap items-center gap-3">
-                <Link
-                  href="/services"
-                  className="h-11 px-6 inline-flex items-center rounded-xl bg-accent-500 text-white text-sm font-semibold hover:bg-accent-600 transition-colors"
-                >
-                  What I offer
-                </Link>
-                <Link
-                  href="/contact"
-                  className="h-11 px-6 inline-flex items-center rounded-xl border border-[var(--border)] text-sm font-medium hover:border-accent-500/30 transition-colors"
-                >
-                  Get in touch
-                </Link>
-              </div>
+            </motion.div>
+
+            <div className="mt-6 max-w-lg">
+              <TextReveal
+                text="I build websites that bring customers through your door."
+                className="text-lg md:text-xl text-[var(--muted)] leading-relaxed"
+              />
+            </div>
+
+            {/* Scroll indicator */}
+            <motion.div
+              className="mt-16 flex flex-col items-start gap-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.5, duration: 0.8 }}
+            >
+              <span className="text-xs text-[var(--muted)] tracking-widest uppercase">See how</span>
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+              >
+                <svg className="w-5 h-5 text-accent-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 5v14M5 12l7 7 7-7" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </motion.div>
             </motion.div>
           </div>
-        </section>
-      </AuroraBackground>
+        </motion.div>
+      </section>
     </>
   );
 }
