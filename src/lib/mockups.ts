@@ -108,7 +108,7 @@ export const mockups: MockupData[] = [
     },
     hero: {
       image:
-        "https://images.unsplash.com/photo-1444201983204-c43cbd584d93?auto=format&fit=crop&w=2000&q=80",
+        "https://static.wixstatic.com/media/412420_4ff16c3bd5fa449f8ec6f1fa6f4c1b69~mv2.jpg/v1/fill/w_2000,h_1200,al_c,q_90,enc_avif,quality_auto/412420_4ff16c3bd5fa449f8ec6f1fa6f4c1b69~mv2.jpg",
       headline: "Wake up to Mount Pirongia.",
       subhead:
         "Free-range eggs at breakfast. Pastures out the window. Twenty minutes from Hamilton CBD.",
@@ -129,12 +129,12 @@ export const mockups: MockupData[] = [
       },
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1571508601891-ca5e7a713859?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=1200&q=80",
+      "https://static.wixstatic.com/media/412420_8e22cb5ce2504539b04e44cdaaaeb411~mv2.jpg/v1/fill/w_1500,h_1000,al_c,q_85,enc_avif,quality_auto/412420_8e22cb5ce2504539b04e44cdaaaeb411~mv2.jpg",
+      "https://static.wixstatic.com/media/412420_230f26adb8a046f49ec79ae726806d1c~mv2.jpg/v1/fill/w_1200,h_900,al_c,q_85,enc_avif,quality_auto/412420_230f26adb8a046f49ec79ae726806d1c~mv2.jpg",
+      "https://static.wixstatic.com/media/412420_b1016f1dd9d6418481a31398d36ba05b~mv2.jpg/v1/fill/w_1200,h_900,al_c,q_85,enc_avif,quality_auto/412420_b1016f1dd9d6418481a31398d36ba05b~mv2.jpg",
+      "https://static.wixstatic.com/media/412420_550830a5d92141679e7cbdb8564dfe8b~mv2.jpg/v1/fill/w_1200,h_900,al_c,q_85,enc_avif,quality_auto/412420_550830a5d92141679e7cbdb8564dfe8b~mv2.jpg",
+      "https://static.wixstatic.com/media/412420_b81982bc47974fd58b50ba52fdbbcd7f~mv2.jpg/v1/fill/w_1200,h_900,al_c,q_85,enc_avif,quality_auto/412420_b81982bc47974fd58b50ba52fdbbcd7f~mv2.jpg",
+      "https://static.wixstatic.com/media/412420_d6be6ded4b334937ad16eb3fcf0cbdbe~mv2.png/v1/fill/w_1200,h_900,al_c,q_85,enc_avif,quality_auto/412420_d6be6ded4b334937ad16eb3fcf0cbdbe~mv2.png",
     ],
     contact: {
       address: "170 Foster Road, RD 10, Hamilton 3290",
@@ -164,7 +164,7 @@ export const mockups: MockupData[] = [
     },
     hero: {
       image:
-        "https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=2000&q=80",
+        "https://images.squarespace-cdn.com/content/v1/662396e8f231221c1d593177/80071524-548a-46f2-a322-bdf1efe296e5/IMG_2292_jpg.JPG?format=2500w",
       headline: "Flowers, but make them feel found.",
       subhead:
         "Seasonal arrangements for weddings, weekly subscriptions, and one-off moments.",
@@ -185,12 +185,12 @@ export const mockups: MockupData[] = [
       },
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1488751045188-3c55bbf9a3fa?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1463320726281-696a485928c7?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1567696911980-2eed69a46042?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1469259943454-aa100abba749?auto=format&fit=crop&w=1200&q=80",
+      "https://images.squarespace-cdn.com/content/v1/662396e8f231221c1d593177/9436f950-b411-4de9-9e28-f0a311fde7e5/IMG_4295.PNG?format=1500w",
+      "https://images.squarespace-cdn.com/content/v1/662396e8f231221c1d593177/919c9c6d-c959-43d0-80dd-df85e8a90d04/IMG_4287.PNG?format=1500w",
+      "https://images.squarespace-cdn.com/content/v1/662396e8f231221c1d593177/8c55494b-0362-4f54-a73a-f52ce993ea37/IMG_4285.PNG?format=1500w",
+      "https://images.squarespace-cdn.com/content/v1/662396e8f231221c1d593177/335fc04f-5725-4a9e-8aa3-4e092dca3eb9/IMG_4289.PNG?format=1500w",
+      "https://images.squarespace-cdn.com/content/v1/662396e8f231221c1d593177/a0be86ef-4f00-4352-b22d-1b62e4ee8f5f/IMG_2863.JPG?format=1500w",
+      "https://images.squarespace-cdn.com/content/v1/662396e8f231221c1d593177/d50482cd-11e5-416b-8242-2db0be3bd474/3468969.jpg?format=1500w",
     ],
     contact: {
       address: "Hamilton studio (by appointment)",
@@ -220,7 +220,7 @@ export const mockups: MockupData[] = [
     },
     hero: {
       image:
-        "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=2000&q=80",
+        "https://static.wixstatic.com/media/1839b5_3ae3ba28d719408dbd5cb065202da495~mv2.jpg/v1/fit/w_2000,h_1400,q_90,enc_avif,quality_auto/1839b5_3ae3ba28d719408dbd5cb065202da495~mv2.jpg",
       headline: "Get your hands in the clay.",
       subhead:
         "Handbuilt ceramics for everyday use, and pottery parties for everyone else.",
@@ -241,12 +241,12 @@ export const mockups: MockupData[] = [
       },
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1493106819501-66d381c466f1?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1456735190827-d1262f71b8a3?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=1200&q=80",
+      "https://static.wixstatic.com/media/1839b5_b10a7a9a68f04731a46e60c45f50ae74~mv2.jpg/v1/fit/w_1500,h_1000,q_90,enc_avif,quality_auto/1839b5_b10a7a9a68f04731a46e60c45f50ae74~mv2.jpg",
+      "https://static.wixstatic.com/media/1839b5_d1775b7212a94677a2c1ca8ef3a01bc4~mv2.jpg/v1/fit/w_1200,h_1500,q_90,enc_avif,quality_auto/1839b5_d1775b7212a94677a2c1ca8ef3a01bc4~mv2.jpg",
+      "https://static.wixstatic.com/media/1839b5_5cee9d15276d40a988b0fc53f0d75bd1~mv2.jpg/v1/fit/w_1200,h_1500,q_90,enc_avif,quality_auto/1839b5_5cee9d15276d40a988b0fc53f0d75bd1~mv2.jpg",
+      "https://static.wixstatic.com/media/1839b5_6ac9e5a01a164ed18128e634feb4f1c3~mv2.jpg/v1/fit/w_1200,h_1500,q_90,enc_avif,quality_auto/1839b5_6ac9e5a01a164ed18128e634feb4f1c3~mv2.jpg",
+      "https://static.wixstatic.com/media/1839b5_0ae2cfa58d994897af1bce9c60b06c93~mv2.jpg/v1/fit/w_1200,h_1500,q_90,enc_avif,quality_auto/1839b5_0ae2cfa58d994897af1bce9c60b06c93~mv2.jpg",
+      "https://static.wixstatic.com/media/1839b5_a2399ac349cc4d8e9062ecba5351159b~mv2.jpg/v1/fit/w_1200,h_1500,q_90,enc_avif,quality_auto/1839b5_a2399ac349cc4d8e9062ecba5351159b~mv2.jpg",
     ],
     contact: {
       address: "Cambridge, Waikato (studio address on booking)",
@@ -276,7 +276,7 @@ export const mockups: MockupData[] = [
     },
     hero: {
       image:
-        "https://images.unsplash.com/photo-1469259943454-aa100abba749?auto=format&fit=crop&w=2000&q=80",
+        "https://gails.co.nz/cdn/shop/collections/Wedding_Bouquet_with_Kina.JPG?v=1709327427&width=2400",
       headline: "Sixty years of flowers in Hamilton.",
       subhead:
         "Weddings, sympathy, the everyday bouquet that makes the week. Same family, same shop, since 1965.",
@@ -297,12 +297,12 @@ export const mockups: MockupData[] = [
       },
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1567696911980-2eed69a46042?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1463320726281-696a485928c7?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1488751045188-3c55bbf9a3fa?auto=format&fit=crop&w=1200&q=80",
+      "https://gails.co.nz/cdn/shop/collections/Sunflower_1.png?v=1772404869&width=1500",
+      "https://gails.co.nz/cdn/shop/collections/Black_Wrap.JPG?v=1676667680&width=1500",
+      "https://gails.co.nz/cdn/shop/collections/2014-10-03_11.41.42.jpg?v=1708114150&width=1500",
+      "https://gails.co.nz/cdn/shop/collections/IMG_3013.webp?v=1765169974&width=1500",
+      "https://gails.co.nz/cdn/shop/collections/IMG_9344.jpg?v=1776297454&width=1500",
+      "https://gails.co.nz/cdn/shop/collections/WeChat-Image-20180908105445.jpg?v=1765838397&width=1500",
     ],
     contact: {
       address: "7 Worley Place, Hamilton Central 3204",
