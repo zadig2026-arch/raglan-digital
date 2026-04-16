@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Learn",
   description: "Guides, tips, and tools to help you understand and improve your online presence. Written by Zag for NZ small businesses.",
+  alternates: { canonical: "https://raglandigital.com/learn" },
 };
 
 const categoryColors: Record<string, string> = {

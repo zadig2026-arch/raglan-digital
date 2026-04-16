@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: "Free Tools",
   description:
     "Free website tools for NZ small businesses. Check your SEO, test page speed, generate meta tags, and audit your digital presence.",
+  alternates: { canonical: "https://raglandigital.com/tools" },
 };
 
 export default function ToolsLayout({

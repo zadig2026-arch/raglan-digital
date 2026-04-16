@@ -22,7 +22,7 @@ const caveat = Caveat({
 
 export const metadata: Metadata = {
   title: {
-    default: "Raglan Digital | Web Design & Digital Growth for NZ Businesses",
+    default: "Raglan Digital | Web Design for NZ Small Businesses",
     template: "%s | Raglan Digital",
   },
   description:
@@ -36,13 +36,16 @@ export const metadata: Metadata = {
     "social media management",
     "Raglan Digital",
   ],
+  alternates: {
+    canonical: "https://raglandigital.com",
+  },
   authors: [{ name: "Raglan Digital" }],
   openGraph: {
     type: "website",
     locale: "en_NZ",
     url: "https://raglandigital.com",
     siteName: "Raglan Digital",
-    title: "Raglan Digital | Web Design & Digital Growth for NZ Businesses",
+    title: "Raglan Digital | Web Design for NZ Small Businesses",
     description:
       "Web design, SEO, social media & content for local businesses in New Zealand. Real results, fair prices.",
     images: [
