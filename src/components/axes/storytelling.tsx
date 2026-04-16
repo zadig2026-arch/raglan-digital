@@ -118,7 +118,8 @@ function ChapterDiagnostic() {
         </div>
 
         {/* All free tools */}
-        <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3">
+        <p className="mt-10 text-center font-hand text-lg text-accent-500 mb-4">Test, don&apos;t guess.</p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {[
             { title: "SEO Audit", icon: Search, href: "/tools/seo-audit" },
             { title: "Speed Test", icon: Gauge, href: "/tools/speed-checker" },
@@ -140,6 +141,12 @@ function ChapterDiagnostic() {
             );
           })}
         </div>
+        <p className="mt-6 text-center text-sm text-[var(--muted)]">
+          These tools give you a quick overview. For a full diagnosis,{' '}
+          <Link href="/contact" className="text-accent-500 font-medium hover:underline">
+            let me take a look
+          </Link>.
+        </p>
       </div>
     </section>
   );
