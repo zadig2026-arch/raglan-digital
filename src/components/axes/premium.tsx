@@ -218,6 +218,31 @@ function DiagnosticPremium() {
             );
           })}
         </div>
+
+        {/* All free tools */}
+        <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3">
+          {[
+            { title: "SEO Audit", icon: Search, href: "/tools/seo-audit" },
+            { title: "Speed Test", icon: Gauge, href: "/tools/speed-checker" },
+            { title: "Meta Generator", icon: FileText, href: "/tools/meta-generator" },
+            { title: "Digital Checklist", icon: ClipboardCheck, href: "/tools/digital-checklist" },
+          ].map((tool) => {
+            const Icon = tool.icon;
+            return (
+              <Card3D key={tool.title}>
+                <Link
+                  href={tool.href}
+                  className="group flex items-center gap-2.5 p-3 rounded-xl border border-[var(--border)] bg-[var(--background)] hover:border-accent-500/30 hover:shadow-md transition-all"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-accent-500/10 flex items-center justify-center shrink-0 group-hover:bg-accent-500/20 transition-colors">
+                    <Icon className="w-4 h-4 text-accent-500" />
+                  </div>
+                  <span className="text-sm font-medium">{tool.title}</span>
+                </Link>
+              </Card3D>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
