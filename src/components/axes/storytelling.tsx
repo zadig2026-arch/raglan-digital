@@ -6,7 +6,6 @@ import { HeroSection } from "@/components/hero-section";
 import { TextReveal } from "@/components/text-reveal";
 import { GoogleSearchMockup } from "@/components/google-search-mockup";
 import { StickyServiceShowcase } from "@/components/sticky-service-showcase";
-import { BrowserMockup } from "@/components/browser-mockup";
 import { AnimatedCounter } from "@/components/animated-counter";
 import { Magnetic } from "@/components/magnetic";
 import { ScrollProgress } from "@/components/scroll-progress";
@@ -190,68 +189,6 @@ function ChapterTransformation() {
   );
 }
 
-function ChapterTools() {
-  const tools = [
-    { title: "SEO Audit", desc: "See what Google sees.", href: "/tools/seo-audit", icon: Search, score: 72 },
-    { title: "Speed Test", desc: "How fast you load.", href: "/tools/speed-checker", icon: Gauge, score: 89 },
-    { title: "Meta Generator", desc: "Your Google listing.", href: "/tools/meta-generator", icon: FileText },
-    { title: "Digital Checklist", desc: "Full presence check.", href: "/tools/digital-checklist", icon: ClipboardCheck },
-  ];
-
-  return (
-    <section className="py-24 md:py-32 px-6">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <p className="font-hand text-xl text-accent-500 mb-3">Try it yourself</p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-            Free tools. No sign-up.
-          </h2>
-          <p className="mt-4 text-lg text-[var(--muted)] max-w-xl mx-auto">
-            Check your website right now — see exactly where you stand.
-          </p>
-        </div>
-
-        <BrowserMockup url="raglandigital.com/tools">
-          <div className="p-6 md:p-8">
-            <div className="grid sm:grid-cols-2 gap-4">
-              {tools.map((tool) => {
-                const Icon = tool.icon;
-                return (
-                  <Link
-                    key={tool.title}
-                    href={tool.href}
-                    className="group p-5 rounded-xl bg-[var(--background)] border border-[var(--border)] hover:border-accent-500/30 hover:shadow-lg hover:shadow-accent-500/5 transition-all duration-300"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-accent-500/10 flex items-center justify-center shrink-0">
-                        <Icon className="w-4 h-4 text-accent-500" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-sm">{tool.title}</h3>
-                        <p className="text-xs text-[var(--muted)]">{tool.desc}</p>
-                      </div>
-                    </div>
-                    {tool.score && (
-                      <div className="mt-4 flex items-center gap-2">
-                        <div className="flex-1 h-2 rounded-full bg-[var(--border)] overflow-hidden">
-                          <div
-                            className="h-full rounded-full bg-accent-500"
-                            style={{ width: `${tool.score}%` }}
-                          />
-                        </div>
-                        <span className="text-xs font-medium text-accent-500">{tool.score}/100</span>
-                      </div>
-                    )}
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        </BrowserMockup>
-      </div>
-    </section>
-  );
-}
 
 function ChapterWho() {
   return (
@@ -341,7 +278,6 @@ export function StorytellingAxe() {
       <ChapterDiagnostic />
       <ChapterTransformation />
       <StickyServiceShowcase />
-      <ChapterTools />
       <ChapterWho />
       <ChapterCTA />
     </>

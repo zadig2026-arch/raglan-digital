@@ -284,42 +284,6 @@ function StatsPremium() {
 }
 
 /* ═══ Tools ═══ */
-function ToolsPremium() {
-  const tools = [
-    { title: "SEO Audit", href: "/tools/seo-audit", icon: Search },
-    { title: "Speed Test", href: "/tools/speed-checker", icon: Gauge },
-    { title: "Meta Generator", href: "/tools/meta-generator", icon: FileText },
-    { title: "Checklist", href: "/tools/digital-checklist", icon: ClipboardCheck },
-  ];
-
-  return (
-    <section className="py-24 md:py-32 px-6">
-      <div className="max-w-4xl mx-auto text-center">
-        <p className="font-hand text-xl text-accent-500 mb-3">Free tools</p>
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-12">
-          Test. Don&apos;t guess.
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {tools.map((tool) => {
-            const Icon = tool.icon;
-            return (
-              <Card3D key={tool.title}>
-                <Link
-                  href={tool.href}
-                  className="block p-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)] hover:border-accent-500/30 hover:shadow-xl transition-all text-center"
-                >
-                  <Icon className="w-6 h-6 text-accent-500 mx-auto mb-3" />
-                  <p className="text-sm font-medium">{tool.title}</p>
-                </Link>
-              </Card3D>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ═══ Who ═══ */
 function WhoPremium() {
   return (
@@ -396,7 +360,6 @@ export function PremiumAxe() {
       <StickyServiceShowcase />
       <DiagnosticPremium />
       <StatsPremium />
-      <ToolsPremium />
       <CTAPremium />
     </>
   );

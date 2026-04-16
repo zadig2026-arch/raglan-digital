@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 40" fill="none">
+  <!-- D (behind, blue) -->
+  <path fill-rule="evenodd" clip-rule="evenodd"
+    d="M26 38V2h10c4 0 7.5 1.5 10 4.5S50 13.5 50 20s-1.5 10-4 13.5-6 4.5-10 4.5H26zm6-6h4c3 0 5.5-1.5 7-4s2.5-5.5 2.5-8-1-5.5-2.5-8-4-4-7-4h-4v24z"
+    fill="#3b82f6"/>
+
+  <!-- R (in front, white — leg crosses into D) -->
+  <path fill-rule="evenodd" clip-rule="evenodd"
+    d="M2 38V2h12c3.5 0 6.5 1 8.5 3s3 4.5 3 7.5c0 2.5-.8 4.5-2.2 6.2-1.5 1.7-3.5 2.8-6.3 3L28 38h-8L10 24H8v14H2zm6-20h5c2 0 3.5-.7 4.5-1.8 1-1.2 1.5-2.7 1.5-4.7 0-2-.5-3.5-1.5-4.6-1-1.2-2.5-1.9-4.5-1.9H8v13z"
+    fill="#ffffff"/>
+</svg>
