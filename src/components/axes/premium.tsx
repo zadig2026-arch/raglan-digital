@@ -360,11 +360,11 @@ export function PremiumAxe() {
       <CursorFollower />
       <HeroPremium />
       <MarqueeBanner />
+      <WhoPremium />
       <StickyServiceShowcase />
       <DiagnosticPremium />
       <StatsPremium />
       <ToolsPremium />
-      <WhoPremium />
       <CTAPremium />
     </>
   );
