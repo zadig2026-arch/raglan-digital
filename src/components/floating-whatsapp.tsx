@@ -1,10 +1,13 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 export function FloatingWhatsApp() {
+  const pathname = usePathname();
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
+  if (pathname?.startsWith("/mockup")) return null;
 
   return (
     <motion.a

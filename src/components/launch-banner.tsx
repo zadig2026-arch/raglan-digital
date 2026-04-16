@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 const SPOTS_LEFT = 5;
 
 export function LaunchBanner() {
+  const pathname = usePathname();
   const [dismissed, setDismissed] = useState(false);
+  if (pathname?.startsWith("/mockup")) return null;
   if (dismissed || SPOTS_LEFT <= 0) return null;
 
   return (
