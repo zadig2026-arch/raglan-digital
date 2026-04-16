@@ -47,3 +47,5 @@ next-env.d.ts
 # private business notes (prospect lists, outreach drafts)
 PROSPECTS.md
 PROSPECTS-*.md
+OUTREACH-DRAFTS.md
+OUTREACH-*.md
