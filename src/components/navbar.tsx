@@ -17,7 +17,7 @@ export function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const { theme, mounted, toggle } = useTheme();
-  if (pathname?.startsWith("/mockup")) return null;
+  if (pathname?.startsWith("/mockup") || pathname?.startsWith("/preview")) return null;
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-2xl bg-[var(--background)]/80">
