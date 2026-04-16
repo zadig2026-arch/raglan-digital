@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Monitor, Search, Share2, FileText } from "lucide-react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { Monitor, Search, Share2 } from "lucide-react";
 import { BrowserMockup } from "./browser-mockup";
 
 const services = [
@@ -10,107 +10,91 @@ const services = [
     id: "web-design",
     name: "Web Design",
     icon: Monitor,
-    description: "A clean, fast website designed around your brand — built to convert visitors into customers.",
+    description: "Custom, mobile-first websites that convert visitors into customers.",
   },
   {
     id: "seo",
     name: "SEO & Google Business",
     icon: Search,
-    description: "Local SEO, Google Business Profile, keyword optimization — so your customers find you first.",
+    description: "Get found first when people search for what you do.",
   },
   {
     id: "social-media",
     name: "Social Media",
     icon: Share2,
-    description: "Consistent, quality content on Facebook and Instagram — so you can focus on your business.",
-  },
-  {
-    id: "content",
-    name: "Content & Copywriting",
-    icon: FileText,
-    description: "SEO-friendly copy for your website, blog, emails, and social media — no robot speak.",
+    description: "Quality content on Facebook & Instagram, 3x/week.",
   },
 ];
 
-/* ═══ Demo: Web Design — multi-device mockup ═══ */
+/* ═══ Demos ═══ */
+
 function WebDesignDemo() {
   return (
-    <div className="relative min-h-[320px] flex items-end justify-center">
-      {/* Desktop / Laptop */}
-      <div className="relative w-[85%] z-10">
-        <div className="rounded-t-lg border-2 border-warm-600 dark:border-warm-500 bg-warm-800 dark:bg-warm-900 overflow-hidden">
-          <div className="aspect-[16/10] relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-accent-50 to-white dark:from-accent-950/60 dark:to-warm-900 p-3">
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-1.5">
-                  <div className="w-4 h-4 rounded bg-accent-500" />
-                  <span className="text-[7px] font-bold text-[var(--foreground)]">Raglan Surf Cafe</span>
-                </div>
-                <div className="flex gap-2">
-                  <div className="w-6 h-1.5 rounded-full bg-warm-300 dark:bg-warm-600" />
-                  <div className="w-6 h-1.5 rounded-full bg-warm-300 dark:bg-warm-600" />
-                  <div className="w-6 h-1.5 rounded-full bg-warm-300 dark:bg-warm-600" />
-                </div>
+    <div className="relative h-full flex items-end justify-center pb-6">
+      {/* Laptop */}
+      <div className="relative w-[78%] z-10">
+        <div className="rounded-t-xl border border-warm-300 dark:border-warm-600 bg-white dark:bg-warm-900 shadow-2xl overflow-hidden">
+          <div className="aspect-[16/10] bg-gradient-to-br from-accent-50 via-white to-accent-50/50 dark:from-accent-950/40 dark:via-warm-900 dark:to-accent-950/20 p-4">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-5 rounded-md bg-accent-500" />
+                <span className="text-[8px] font-bold">yourbusiness</span>
               </div>
-              <div className="rounded-lg bg-accent-500/10 dark:bg-accent-500/20 p-3 mb-2">
-                <p className="text-[8px] font-bold leading-tight">Best coffee on<br />the coast.</p>
-                <div className="mt-1.5 h-3.5 w-12 rounded bg-accent-500 flex items-center justify-center">
-                  <span className="text-[5px] text-white font-medium">Book now</span>
+              <div className="flex gap-3">
+                <div className="w-8 h-1.5 rounded-full bg-warm-200 dark:bg-warm-700" />
+                <div className="w-8 h-1.5 rounded-full bg-warm-200 dark:bg-warm-700" />
+                <div className="w-8 h-1.5 rounded-full bg-warm-200 dark:bg-warm-700" />
+              </div>
+            </div>
+            <div className="rounded-lg bg-accent-500/8 dark:bg-accent-500/15 p-4 mb-3">
+              <p className="text-[10px] font-bold leading-tight">Your business, online.</p>
+              <p className="text-[7px] text-[var(--muted)] mt-1">Raglan, New Zealand</p>
+              <div className="mt-2 h-4 w-14 rounded-md bg-accent-500 flex items-center justify-center">
+                <span className="text-[6px] text-white font-semibold">Get a quote</span>
+              </div>
+            </div>
+            <div className="grid grid-cols-3 gap-2">
+              {["Services", "About", "Contact"].map((l) => (
+                <div key={l} className="rounded-md bg-white dark:bg-warm-800 p-2 border border-warm-100 dark:border-warm-700 shadow-sm">
+                  <div className="h-8 rounded bg-accent-50 dark:bg-accent-950/50 mb-1.5" />
+                  <div className="h-1 w-10 rounded-full bg-warm-200 dark:bg-warm-700" />
                 </div>
-              </div>
-              <div className="grid grid-cols-3 gap-1.5">
-                {["Menu", "Gallery", "Reviews"].map((label) => (
-                  <div key={label} className="rounded bg-white dark:bg-warm-800 p-1.5 border border-warm-200 dark:border-warm-700">
-                    <div className="h-6 rounded bg-accent-100 dark:bg-accent-950 mb-1" />
-                    <div className="h-1 w-8 rounded-full bg-warm-300 dark:bg-warm-600" />
-                  </div>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
         </div>
-        <div className="h-3 bg-warm-600 dark:bg-warm-500 rounded-b-lg mx-auto" style={{ width: "110%", marginLeft: "-5%" }}>
-          <div className="h-1 w-16 bg-warm-500 dark:bg-warm-400 rounded-full mx-auto mt-0.5" />
+        <div className="h-3 bg-warm-200 dark:bg-warm-600 rounded-b-xl shadow-lg" style={{ width: "108%", marginLeft: "-4%" }}>
+          <div className="h-1 w-20 bg-warm-300 dark:bg-warm-500 rounded-full mx-auto mt-0.5" />
         </div>
       </div>
-
       {/* Tablet */}
-      <div className="absolute right-0 bottom-0 w-[30%] z-20">
-        <div className="rounded-lg border-2 border-warm-600 dark:border-warm-500 bg-warm-800 dark:bg-warm-900 overflow-hidden">
-          <div className="aspect-[3/4] relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-accent-50 to-white dark:from-accent-950/60 dark:to-warm-900 p-2">
-              <div className="flex items-center gap-1 mb-2">
-                <div className="w-2.5 h-2.5 rounded bg-accent-500" />
-                <span className="text-[5px] font-bold">Raglan Surf Cafe</span>
-              </div>
-              <div className="rounded bg-accent-500/10 dark:bg-accent-500/20 p-2 mb-1.5">
-                <p className="text-[6px] font-bold leading-tight">Best coffee on<br />the coast.</p>
-                <div className="mt-1 h-2.5 w-8 rounded bg-accent-500" />
-              </div>
-              <div className="space-y-1">
-                <div className="h-5 rounded bg-white dark:bg-warm-800 border border-warm-200 dark:border-warm-700" />
-                <div className="h-5 rounded bg-white dark:bg-warm-800 border border-warm-200 dark:border-warm-700" />
-              </div>
+      <div className="absolute right-0 bottom-6 w-[26%] z-20">
+        <div className="rounded-lg border border-warm-300 dark:border-warm-600 bg-white dark:bg-warm-900 shadow-xl overflow-hidden">
+          <div className="aspect-[3/4] bg-gradient-to-br from-accent-50 to-white dark:from-accent-950/40 dark:to-warm-900 p-2.5">
+            <div className="rounded bg-accent-500/8 dark:bg-accent-500/15 p-2 mb-2">
+              <p className="text-[6px] font-bold">Your business, online.</p>
+              <div className="mt-1 h-2.5 w-9 rounded bg-accent-500" />
+            </div>
+            <div className="space-y-1.5">
+              <div className="h-6 rounded bg-white dark:bg-warm-800 border border-warm-100 dark:border-warm-700 shadow-sm" />
+              <div className="h-6 rounded bg-white dark:bg-warm-800 border border-warm-100 dark:border-warm-700 shadow-sm" />
             </div>
           </div>
         </div>
       </div>
-
       {/* Phone */}
-      <div className="absolute left-0 bottom-0 w-[18%] z-20">
-        <div className="rounded-xl border-2 border-warm-600 dark:border-warm-500 bg-warm-800 dark:bg-warm-900 overflow-hidden">
-          <div className="aspect-[9/16] relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-accent-50 to-white dark:from-accent-950/60 dark:to-warm-900 p-1.5">
-              <div className="h-1.5 w-6 bg-warm-700 dark:bg-warm-600 rounded-full mx-auto mb-1.5" />
-              <div className="rounded bg-accent-500/10 dark:bg-accent-500/20 p-1.5 mb-1">
-                <p className="text-[4px] font-bold leading-tight">Best coffee on the coast.</p>
-                <div className="mt-0.5 h-2 w-6 rounded bg-accent-500" />
-              </div>
-              <div className="space-y-0.5">
-                <div className="h-4 rounded bg-white dark:bg-warm-800 border border-warm-200 dark:border-warm-700" />
-                <div className="h-4 rounded bg-white dark:bg-warm-800 border border-warm-200 dark:border-warm-700" />
-                <div className="h-4 rounded bg-white dark:bg-warm-800 border border-warm-200 dark:border-warm-700" />
-              </div>
+      <div className="absolute left-0 bottom-6 w-[15%] z-20">
+        <div className="rounded-2xl border border-warm-300 dark:border-warm-600 bg-white dark:bg-warm-900 shadow-xl overflow-hidden">
+          <div className="aspect-[9/16] bg-gradient-to-br from-accent-50 to-white dark:from-accent-950/40 dark:to-warm-900 p-1.5">
+            <div className="h-1 w-5 bg-warm-300 dark:bg-warm-600 rounded-full mx-auto mb-1.5" />
+            <div className="rounded bg-accent-500/8 dark:bg-accent-500/15 p-1.5 mb-1">
+              <p className="text-[4px] font-bold">Your plumber.</p>
+              <div className="mt-0.5 h-1.5 w-5 rounded bg-accent-500" />
+            </div>
+            <div className="space-y-0.5">
+              <div className="h-4 rounded bg-white dark:bg-warm-800 border border-warm-100 dark:border-warm-700" />
+              <div className="h-4 rounded bg-white dark:bg-warm-800 border border-warm-100 dark:border-warm-700" />
+              <div className="h-4 rounded bg-white dark:bg-warm-800 border border-warm-100 dark:border-warm-700" />
             </div>
           </div>
         </div>
@@ -119,221 +103,336 @@ function WebDesignDemo() {
   );
 }
 
-/* ═══ Demo: SEO ═══ */
 function SEODemo() {
   return (
-    <BrowserMockup url="analytics.google.com">
-      <div className="p-6 min-h-[280px]">
-        <p className="text-xs text-[var(--muted)] mb-1">Monthly visitors</p>
-        <p className="text-3xl font-bold text-accent-500">340</p>
-        <div className="flex items-end gap-2 mt-6 h-36">
-          {[
-            { month: "Jan", h: 3 }, { month: "Feb", h: 8 },
-            { month: "Mar", h: 13 }, { month: "Apr", h: 26 },
-            { month: "May", h: 46 }, { month: "Jun", h: 100 },
-          ].map((d) => (
-            <div key={d.month} className="flex-1 flex flex-col items-center gap-1">
-              <div className="w-full rounded-t-md bg-accent-500/80" style={{ height: `${d.h}%`, minHeight: 4 }} />
-              <span className="text-[10px] text-[var(--muted)]">{d.month}</span>
+    <div className="h-full flex items-center">
+      <BrowserMockup url="analytics.google.com">
+        <div className="p-6">
+          <div className="flex items-end justify-between mb-2">
+            <div>
+              <p className="text-[10px] text-[var(--muted)] uppercase tracking-wider">Monthly visitors</p>
+              <p className="text-3xl font-bold text-accent-500 mt-1">340</p>
             </div>
-          ))}
+            <div className="text-right">
+              <span className="text-[10px] font-medium text-success-500 bg-success-500/10 px-2 py-0.5 rounded-full">+2,733%</span>
+            </div>
+          </div>
+
+          {/* Curve chart */}
+          <div className="relative h-36 mt-2">
+            <svg viewBox="0 0 300 120" className="w-full h-full" preserveAspectRatio="none">
+              {/* Grid lines */}
+              {[0, 30, 60, 90].map((y) => (
+                <line key={y} x1="0" y1={y} x2="300" y2={y} stroke="var(--border)" strokeWidth="0.5" strokeDasharray="4 4" />
+              ))}
+              {/* Gradient fill under curve */}
+              <defs>
+                <linearGradient id="curveGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="rgb(59 130 246)" stopOpacity="0.3" />
+                  <stop offset="100%" stopColor="rgb(59 130 246)" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M0,115 C20,112 40,108 60,105 C80,102 100,98 120,88 C140,78 160,65 180,48 C200,31 220,18 240,10 C260,5 280,2 300,0"
+                fill="none"
+                stroke="rgb(59 130 246)"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              />
+              <path
+                d="M0,115 C20,112 40,108 60,105 C80,102 100,98 120,88 C140,78 160,65 180,48 C200,31 220,18 240,10 C260,5 280,2 300,0 L300,120 L0,120 Z"
+                fill="url(#curveGrad)"
+              />
+              {/* Data points */}
+              {[
+                { x: 0, y: 115 }, { x: 60, y: 105 }, { x: 120, y: 88 },
+                { x: 180, y: 48 }, { x: 240, y: 10 }, { x: 300, y: 0 },
+              ].map((p, i) => (
+                <circle key={i} cx={p.x} cy={p.y} r="3.5" fill="rgb(59 130 246)" stroke="white" strokeWidth="1.5" />
+              ))}
+            </svg>
+            {/* X axis labels */}
+            <div className="flex justify-between mt-1.5 px-0.5">
+              {["Jan", "Feb", "Mar", "Apr", "May", "Jun"].map((m) => (
+                <span key={m} className="text-[9px] text-[var(--muted)]">{m}</span>
+              ))}
+            </div>
+          </div>
+
+          {/* Mini stats row */}
+          <div className="flex gap-4 mt-4 pt-3 border-t border-[var(--border)]">
+            <div>
+              <p className="text-[9px] text-[var(--muted)] uppercase">Ranking</p>
+              <p className="text-sm font-bold text-accent-500">#1</p>
+            </div>
+            <div>
+              <p className="text-[9px] text-[var(--muted)] uppercase">Clicks</p>
+              <p className="text-sm font-bold text-accent-500">1.2k</p>
+            </div>
+            <div>
+              <p className="text-[9px] text-[var(--muted)] uppercase">Reviews</p>
+              <p className="text-sm font-bold text-accent-500">4.8 ★</p>
+            </div>
+          </div>
         </div>
-      </div>
-    </BrowserMockup>
+      </BrowserMockup>
+    </div>
   );
 }
 
-/* ═══ Demo: Social Media ═══ */
 function SocialDemo() {
+  const posts = [
+    { day: "Mon", platform: "IG", status: "published", label: "Summer menu launch" },
+    { day: "Wed", platform: "FB", status: "published", label: "Customer spotlight" },
+    { day: "Fri", platform: "IG", status: "scheduled", label: "Behind the scenes" },
+  ];
+
   return (
-    <BrowserMockup url="instagram.com/yourbusiness">
-      <div className="p-6 min-h-[280px]">
-        <div className="flex items-center gap-3 mb-5">
-          <div className="w-10 h-10 rounded-full bg-accent-500 flex items-center justify-center">
-            <span className="text-white text-xs font-bold">YB</span>
+    <div className="h-full flex items-center">
+      <div className="w-full rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-2xl overflow-hidden">
+        {/* Dashboard header */}
+        <div className="px-4 py-3 border-b border-[var(--border)] flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-md bg-accent-500 flex items-center justify-center">
+              <Share2 className="w-3 h-3 text-white" />
+            </div>
+            <span className="text-xs font-bold">Content Calendar</span>
           </div>
-          <div>
-            <p className="text-sm font-semibold">yourbusiness</p>
-            <p className="text-xs text-[var(--muted)]">847 followers</p>
-          </div>
+          <span className="text-[9px] text-[var(--muted)]">This week</span>
         </div>
-        <div className="space-y-3">
+
+        {/* Metrics row */}
+        <div className="grid grid-cols-3 gap-px bg-[var(--border)]">
           {[
-            { text: "New summer menu is here!", bg: "bg-accent-100 dark:bg-accent-950" },
-            { text: "Thanks for 100 five-star reviews!", bg: "bg-success-400/10" },
-            { text: "Live music this Friday", bg: "bg-warm-100 dark:bg-warm-800" },
-          ].map((post, i) => (
-            <div key={i} className={`p-4 rounded-xl ${post.bg}`}>
-              <p className="text-sm">{post.text}</p>
+            { label: "Reach", value: "12.4k", change: "+18%" },
+            { label: "Engagement", value: "4.2%", change: "+0.8%" },
+            { label: "Followers", value: "10.2k", change: "+312" },
+          ].map((m) => (
+            <div key={m.label} className="bg-[var(--surface)] p-3 text-center">
+              <p className="text-[9px] text-[var(--muted)] uppercase tracking-wider">{m.label}</p>
+              <p className="text-sm font-bold mt-0.5">{m.value}</p>
+              <p className="text-[9px] text-success-500 mt-0.5">{m.change}</p>
             </div>
           ))}
         </div>
+
+        {/* Post queue */}
+        <div className="p-3 space-y-2">
+          <p className="text-[9px] text-[var(--muted)] uppercase tracking-wider mb-1">Scheduled posts</p>
+          {posts.map((post, i) => (
+            <div key={i} className="flex items-center gap-2.5 p-2 rounded-lg bg-[var(--background)] border border-[var(--border)]">
+              <div className="w-8 h-8 rounded-md bg-accent-500/10 flex items-center justify-center shrink-0">
+                <span className="text-[8px] font-bold text-accent-500">{post.platform}</span>
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-[10px] font-medium truncate">{post.label}</p>
+                <p className="text-[8px] text-[var(--muted)]">{post.day} · 10:00 AM</p>
+              </div>
+              <span className={`text-[8px] px-1.5 py-0.5 rounded-full font-medium ${
+                post.status === "published"
+                  ? "bg-success-500/10 text-success-500"
+                  : "bg-accent-500/10 text-accent-500"
+              }`}>
+                {post.status === "published" ? "Live" : "Scheduled"}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* Platforms footer */}
+        <div className="px-4 py-2.5 border-t border-[var(--border)] flex items-center justify-between">
+          <div className="flex items-center gap-1.5">
+            <span className="text-[8px] text-[var(--muted)]">Platforms:</span>
+            <div className="flex gap-1">
+              {["IG", "FB"].map((p) => (
+                <span key={p} className="text-[7px] font-bold bg-accent-500/10 text-accent-500 px-1.5 py-0.5 rounded">{p}</span>
+              ))}
+            </div>
+          </div>
+          <span className="text-[8px] text-accent-500 font-medium">3x / week</span>
+        </div>
       </div>
-    </BrowserMockup>
+    </div>
   );
 }
 
-/* ═══ Demo: Content ═══ */
-function ContentDemo() {
-  return (
-    <BrowserMockup url="docs.google.com">
-      <div className="p-6 min-h-[280px] font-mono text-sm leading-relaxed space-y-3">
-        <p className="text-[var(--foreground)]">
-          <span className="text-accent-500">Fresh local ingredients</span> meet ocean views at Raglan&apos;s favourite neighbourhood cafe.
-        </p>
-        <p className="text-[var(--foreground)]">
-          Open 7 days, 7am–3pm. <span className="text-accent-500">Book your table</span> or walk in — we&apos;ll save you a spot by the window.
-        </p>
-        <p className="text-[var(--foreground)]">
-          Catering for events up to 60 guests. <span className="text-accent-500">See our catering menu →</span>
-        </p>
-      </div>
-    </BrowserMockup>
-  );
-}
+const demoComponents = [WebDesignDemo, SEODemo, SocialDemo];
 
-const demos = [WebDesignDemo, SEODemo, SocialDemo, ContentDemo];
+/* ═══ Main ═══ */
 
-/* ═══ Main component ═══ */
 export function StickyServiceShowcase() {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  // Progress bar that fills as you scroll through the section
+  const progressHeight = useTransform(smoothProgress, [0, 1], ["0%", "100%"]);
+
   return (
-    <div ref={containerRef} className="relative" style={{ height: `${services.length * 70}vh` }}>
-      <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-        <div className="w-full max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-          {/* Left: labels */}
+    <section ref={containerRef} className="relative" style={{ height: "225vh" }}>
+      <div className="sticky top-0 h-screen flex items-center">
+        <div className="w-full max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 lg:gap-20 items-center">
+          {/* Left — service labels with progress line */}
           <div>
             <p className="font-hand text-xl text-accent-500 mb-3">How I help</p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-8">
               Everything your business needs online.
             </h2>
-            <div className="space-y-2">
-              {services.map((service, i) => {
-                const Icon = service.icon;
-                return (
+
+            <div className="relative">
+              {/* Vertical progress track */}
+              <div className="absolute left-[18px] top-3 bottom-3 w-[2px] bg-[var(--border)] rounded-full">
+                <motion.div
+                  className="w-full bg-accent-500 rounded-full origin-top"
+                  style={{ height: progressHeight }}
+                />
+              </div>
+
+              <div className="space-y-1 relative">
+                {services.map((service, i) => (
                   <ServiceLabel
                     key={service.id}
                     service={service}
-                    icon={Icon}
                     index={i}
-                    total={services.length}
-                    progress={scrollYProgress}
+                    progress={smoothProgress}
                   />
-                );
-              })}
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Right: animated demo */}
-          <div className="hidden md:block">
-            <ServiceDemoSwitcher progress={scrollYProgress} />
+          {/* Right — demo area (perspective for 3D wheel effect) */}
+          <div className="hidden md:block h-[400px] relative overflow-hidden" style={{ perspective: 1200 }}>
+            {demoComponents.map((Demo, i) => (
+              <DemoPanel key={i} index={i} progress={smoothProgress}>
+                <Demo />
+              </DemoPanel>
+            ))}
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
+/* ═══ Service label ═══ */
+
 function ServiceLabel({
   service,
-  icon: Icon,
   index,
-  total,
   progress,
 }: {
   service: (typeof services)[0];
-  icon: any;
   index: number;
-  total: number;
   progress: any;
 }) {
-  const start = index / total;
-  const end = (index + 1) / total;
-  const mid = (start + end) / 2;
+  const Icon = service.icon;
+  const total = services.length;
+  const segStart = index / total;
+  const segEnd = (index + 1) / total;
 
-  // Smooth bell curve: ramp up over 15%, hold, ramp down over 15%
-  const opacity = useTransform(
-    progress,
-    [start, start + 0.08, mid, end - 0.08, end],
-    index === 0
-      ? [1, 1, 1, 1, 0.4]       // First label starts visible
-      : [0.4, 1, 1, 1, 0.4]
-  );
+  const isActive = useTransform(progress, (v: number) => {
+    if (index === 0 && v <= segStart) return true;
+    if (index === total - 1 && v >= segEnd) return true;
+    return v >= segStart && v < segEnd;
+  });
+
+  const opacity = useTransform(isActive, (active: boolean) => active ? 1 : 0.4);
+  const bgOpacity = useTransform(isActive, (active: boolean) => active ? 1 : 0);
 
   return (
     <motion.div
       style={{ opacity }}
-      className="flex items-start gap-3 p-4 rounded-xl"
+      className="flex items-start gap-4 p-3 rounded-xl relative"
     >
-      <div className="w-9 h-9 rounded-lg bg-accent-500/10 flex items-center justify-center shrink-0 mt-0.5">
-        <Icon className="w-4.5 h-4.5 text-accent-500" />
-      </div>
-      <div>
-        <p className="font-semibold">{service.name}</p>
-        <p className="text-sm text-[var(--muted)] mt-0.5">{service.description}</p>
+      {/* Active background */}
+      <motion.div
+        className="absolute inset-0 rounded-xl bg-accent-500/5 dark:bg-accent-500/10"
+        style={{ opacity: bgOpacity }}
+      />
+
+      {/* Icon dot */}
+      <motion.div
+        className="relative z-10 w-9 h-9 rounded-full flex items-center justify-center shrink-0"
+        style={{
+          backgroundColor: useTransform(isActive, (a: boolean) =>
+            a ? "rgb(59 130 246 / 0.15)" : "rgb(59 130 246 / 0.05)"
+          ),
+        }}
+      >
+        <Icon className="w-4 h-4 text-accent-500" />
+      </motion.div>
+
+      <div className="relative z-10">
+        <p className="font-semibold text-sm">{service.name}</p>
+        <p className="text-xs text-[var(--muted)] mt-0.5 leading-relaxed">{service.description}</p>
       </div>
     </motion.div>
   );
 }
 
-function ServiceDemoSwitcher({ progress }: { progress: any }) {
-  return (
-    <div className="relative h-[360px]">
-      {demos.map((Demo, i) => (
-        <DemoSlide key={i} index={i} total={demos.length} progress={progress}>
-          <Demo />
-        </DemoSlide>
-      ))}
-    </div>
-  );
-}
+/* ═══ Demo panel ═══ */
 
-function DemoSlide({
+function DemoPanel({
   children,
   index,
-  total,
   progress,
 }: {
   children: React.ReactNode;
   index: number;
-  total: number;
   progress: any;
 }) {
-  const start = index / total;
-  const end = (index + 1) / total;
+  const total = demoComponents.length;
+  const segStart = index / total;
+  const segEnd = (index + 1) / total;
 
-  // Wider transition zones (15% of total scroll instead of 5%)
-  const enterEnd = start + 0.1;
-  const exitStart = end - 0.1;
+  // Vertical wheel: translateY goes 100% → 0% → -100%
+  const y = useTransform(progress, (v: number) => {
+    if (index === 0 && v <= segStart) return 0;
+    if (index === total - 1 && v >= segEnd) return 0;
+    if (v < segStart) return 100;
+    if (v >= segEnd) return -100;
+    const t = (v - segStart) / (segEnd - segStart);
+    return (1 - t * 2) * 100;
+  });
 
-  const opacity = useTransform(
-    progress,
-    index === 0
-      ? [0, enterEnd, exitStart, end]      // First slide starts visible
-      : [start, enterEnd, exitStart, end],
-    index === 0
-      ? [1, 1, 1, 0]
-      : [0, 1, 1, 0]
-  );
+  // 3D drum rotation: -25deg → 0deg → 25deg
+  const rotateX = useTransform(progress, (v: number) => {
+    if (index === 0 && v <= segStart) return 0;
+    if (index === total - 1 && v >= segEnd) return 0;
+    if (v < segStart) return -25;
+    if (v >= segEnd) return 25;
+    const t = (v - segStart) / (segEnd - segStart);
+    return (t * 2 - 1) * 25;
+  });
 
-  const y = useTransform(
-    progress,
-    index === 0
-      ? [0, enterEnd, exitStart, end]
-      : [start, enterEnd, exitStart, end],
-    index === 0
-      ? [0, 0, 0, -30]
-      : [30, 0, 0, -30]
-  );
+  // Opacity: fade in/out at edges
+  const opacity = useTransform(progress, (v: number) => {
+    if (index === 0 && v <= segStart + 0.04) return 1;
+    if (index === total - 1 && v >= segEnd - 0.04) return 1;
+    if (v < segStart - 0.02 || v > segEnd + 0.02) return 0;
+    if (v < segStart + 0.04) return Math.min(1, (v - segStart + 0.02) / 0.06);
+    if (v > segEnd - 0.04) return Math.min(1, (segEnd + 0.02 - v) / 0.06);
+    return 1;
+  });
 
   return (
     <motion.div
-      style={{ opacity, y }}
+      style={{
+        y: useTransform(y, (v) => `${v}%`),
+        rotateX,
+        opacity,
+        transformOrigin: "center center",
+      }}
       className="absolute inset-0"
     >
       {children}

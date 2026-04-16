@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Monitor, Search, Share2, FileText } from "lucide-react";
+import { Monitor, Search, Share2 } from "lucide-react";
 
 const services = [
   {
@@ -46,20 +46,6 @@ const services = [
       "Community management",
       "Monthly analytics report",
       "Platform: Facebook + Instagram",
-    ],
-  },
-  {
-    id: "content",
-    name: "Content & Copywriting",
-    icon: FileText,
-    description:
-      "Words that sound like you, not a robot. SEO-friendly copy for your website, blog, emails, and social media.",
-    features: [
-      "SEO-optimized page copy",
-      "Blog posts",
-      "Email campaigns",
-      "Social media captions",
-      "Brand voice guide included",
     ],
   },
 ];

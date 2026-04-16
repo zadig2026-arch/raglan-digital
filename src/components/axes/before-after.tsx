@@ -300,7 +300,7 @@ function CTABA() {
             </Link>
           </Magnetic>
           <Magnetic>
-            <a href="https://wa.me/64221234567" target="_blank" rel="noopener noreferrer" className="h-12 px-8 inline-flex items-center gap-2 rounded-xl border-2 border-white/30 text-white text-sm font-semibold hover:bg-white/10 transition-colors">
+            <a href="https://wa.me/33752032213" target="_blank" rel="noopener noreferrer" className="h-12 px-8 inline-flex items-center gap-2 rounded-xl border-2 border-white/30 text-white text-sm font-semibold hover:bg-white/10 transition-colors">
               WhatsApp me
             </a>
           </Magnetic>

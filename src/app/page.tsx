@@ -14,14 +14,15 @@ const axes: Record<AxeType, React.ComponentType> = {
 };
 
 export default function Home() {
-  const [activeAxe, setActiveAxe] = useState<AxeType>(() => {
-    if (typeof window !== "undefined") {
-      return (sessionStorage.getItem("site-axe") as AxeType) || "storytelling";
-    }
-    return "storytelling";
-  });
-
+  const [activeAxe, setActiveAxe] = useState<AxeType>("storytelling");
   const [transitioning, setTransitioning] = useState(false);
+
+  useEffect(() => {
+    const stored = sessionStorage.getItem("site-axe") as AxeType | null;
+    if (stored && stored in axes) {
+      setActiveAxe(stored);
+    }
+  }, []);
 
   useEffect(() => {
     sessionStorage.setItem("site-axe", activeAxe);

@@ -80,9 +80,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/* scroll-behavior: smooth removed — breaks Framer Motion useScroll */
 
 ::selection {
   background-color: var(--accent);

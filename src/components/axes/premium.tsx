@@ -3,7 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, useMotionValue, useSpring, useScroll, useTransform } from "framer-motion";
-import { Monitor, Search, Share2, FileText, Gauge, ClipboardCheck } from "lucide-react";
+import { Search, FileText, Gauge, ClipboardCheck } from "lucide-react";
 import { TextReveal } from "@/components/text-reveal";
 import { AnimatedCounter } from "@/components/animated-counter";
 import { Magnetic } from "@/components/magnetic";
@@ -11,6 +11,7 @@ import { AuroraBackground } from "@/components/aurora-bg";
 import { Marquee } from "@/components/marquee";
 import { ZagExpression } from "@/components/zag-expression";
 import { BeforeAfterSlider } from "@/components/before-after-slider";
+import { StickyServiceShowcase } from "@/components/sticky-service-showcase";
 
 /* ═══ Cursor Follower ═══ */
 function CursorFollower() {
@@ -150,48 +151,6 @@ function MarqueeBanner() {
         speed={30}
       />
     </div>
-  );
-}
-
-/* ═══ Services with 3D cards ═══ */
-function ServicesPremium() {
-  const services = [
-    { name: "Web Design", icon: Monitor, desc: "Custom, mobile-first websites that convert." },
-    { name: "SEO & Google", icon: Search, desc: "Get found when people search for what you do." },
-    { name: "Social Media", icon: Share2, desc: "Consistent content. 3x/week. You focus on your business." },
-    { name: "Copywriting", icon: FileText, desc: "Words that sound like you, rank on Google." },
-  ];
-
-  return (
-    <section className="py-24 md:py-32 px-6">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="font-hand text-xl text-accent-500 mb-3">Services</p>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-            Everything you need.
-            <br />
-            Nothing you don&apos;t.
-          </h2>
-        </div>
-
-        <div className="grid sm:grid-cols-2 gap-4">
-          {services.map((service, i) => {
-            const Icon = service.icon;
-            return (
-              <Card3D key={service.name}>
-                <div className="p-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] hover:border-accent-500/30 transition-colors h-full">
-                  <div className="w-12 h-12 rounded-xl bg-accent-500/10 flex items-center justify-center mb-5">
-                    <Icon className="w-6 h-6 text-accent-500" />
-                  </div>
-                  <h3 className="text-lg font-bold">{service.name}</h3>
-                  <p className="text-sm text-[var(--muted)] mt-2 leading-relaxed">{service.desc}</p>
-                </div>
-              </Card3D>
-            );
-          })}
-        </div>
-      </div>
-    </section>
   );
 }
 
@@ -343,7 +302,7 @@ function CTAPremium() {
             </Link>
           </Magnetic>
           <Magnetic>
-            <a href="https://wa.me/64221234567" target="_blank" rel="noopener noreferrer" className="h-14 px-10 inline-flex items-center gap-2 rounded-2xl border-2 border-white/30 text-white font-semibold hover:bg-white/10 transition-colors">
+            <a href="https://wa.me/33752032213" target="_blank" rel="noopener noreferrer" className="h-14 px-10 inline-flex items-center gap-2 rounded-2xl border-2 border-white/30 text-white font-semibold hover:bg-white/10 transition-colors">
               WhatsApp
             </a>
           </Magnetic>
@@ -359,7 +318,7 @@ export function PremiumAxe() {
       <CursorFollower />
       <HeroPremium />
       <MarqueeBanner />
-      <ServicesPremium />
+      <StickyServiceShowcase />
       <BeforeAfterPremium />
       <StatsPremium />
       <ToolsPremium />
