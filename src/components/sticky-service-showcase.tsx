@@ -396,34 +396,43 @@ function DemoPanel({
   const segEnd = (index + 1) / total;
   const mid = (segStart + segEnd) / 2;
 
-  // Continuous motion: 50 → 0 → -50 across the segment (no plateau)
+  // Continuous motion through each segment
+  // First panel: 0 → -50 (only exits up, no entry from below)
+  // Middle panels: 50 → 0 → -50 (enter from below, exit above)
+  // Last panel: 50 → 0 (only enters from below, stays)
   const y = useTransform(progress, (v: number) => {
     if (index === 0 && v <= segStart) return 0;
     if (index === total - 1 && v >= segEnd) return 0;
     if (v < segStart) return 50;
     if (v >= segEnd) return -50;
     const t = (v - segStart) / (segEnd - segStart);
+    if (index === 0) return t * -50;
+    if (index === total - 1) return (1 - t) * 50;
     return (0.5 - t) * 100;
   });
 
-  // Gentle 3D rotation: -12 → 0 → 12
   const rotateX = useTransform(progress, (v: number) => {
     if (index === 0 && v <= segStart) return 0;
     if (index === total - 1 && v >= segEnd) return 0;
     if (v < segStart) return -12;
     if (v >= segEnd) return 12;
     const t = (v - segStart) / (segEnd - segStart);
+    if (index === 0) return t * 12;
+    if (index === total - 1) return (1 - t) * -12;
     return (t - 0.5) * 24;
   });
 
-  // Opacity: bell curve peaking at segment midpoint
   const opacity = useTransform(progress, (v: number) => {
     if (index === 0 && v <= segStart) return 1;
     if (index === total - 1 && v >= segEnd) return 1;
     if (v < segStart - 0.02 || v > segEnd + 0.02) return 0;
-    // Distance from midpoint, normalized 0→1
-    const d = Math.abs(v - mid) / (segEnd - segStart) * 2;
-    // Smooth bell: 1 at center, 0 at edges
+    const t = (v - segStart) / (segEnd - segStart);
+    // First: starts at 1, fades to 0
+    if (index === 0) return 1 - t * t;
+    // Last: starts at 0, fades to 1
+    if (index === total - 1) return t * t;
+    // Middle: bell curve
+    const d = Math.abs(t - 0.5) * 2;
     return Math.max(0, 1 - d * d);
   });
 
