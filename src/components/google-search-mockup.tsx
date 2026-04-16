@@ -73,7 +73,7 @@ export function GoogleSearchMockup({
           <span className="text-sm text-[var(--foreground)]">{query}</span>
         </div>
         <p className="text-xs text-[var(--muted)] mt-3 px-1">
-          About {(Math.random() * 900000 + 100000).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")} results
+          About 234,000 results
         </p>
       </div>
 

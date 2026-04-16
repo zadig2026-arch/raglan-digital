@@ -6,8 +6,9 @@ type Theme = "light" | "dark";
 
 const ThemeContext = createContext<{
   theme: Theme;
+  mounted: boolean;
   toggle: () => void;
-}>({ theme: "light", toggle: () => {} });
+}>({ theme: "light", mounted: false, toggle: () => {} });
 
 export function useTheme() {
   return useContext(ThemeContext);
@@ -37,7 +38,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const toggle = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
 
   return (
-    <ThemeContext.Provider value={{ theme, toggle }}>
+    <ThemeContext.Provider value={{ theme, mounted, toggle }}>
       {children}
     </ThemeContext.Provider>
   );
