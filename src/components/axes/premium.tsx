@@ -3,14 +3,13 @@
 import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, useMotionValue, useSpring, useScroll, useTransform } from "framer-motion";
-import { Search, FileText, Gauge, ClipboardCheck } from "lucide-react";
+import { Search, FileText, Gauge, ClipboardCheck, Smartphone } from "lucide-react";
 import { TextReveal } from "@/components/text-reveal";
 import { AnimatedCounter } from "@/components/animated-counter";
 import { Magnetic } from "@/components/magnetic";
 import { AuroraBackground } from "@/components/aurora-bg";
 import { Marquee } from "@/components/marquee";
 import { ZagExpression } from "@/components/zag-expression";
-import { BeforeAfterSlider } from "@/components/before-after-slider";
 import { StickyServiceShowcase } from "@/components/sticky-service-showcase";
 
 /* ═══ Cursor Follower ═══ */
@@ -154,53 +153,71 @@ function MarqueeBanner() {
   );
 }
 
-/* ═══ Before/After ═══ */
-function BeforeAfterPremium() {
+/* ═══ Diagnostic ═══ */
+const diagnosticsPremium = [
+  {
+    icon: Search,
+    stat: "73%",
+    caption: "of local searches lead to a visit within 24 hours.",
+    problem: "But only if your business shows up.",
+    cta: "Audit your SEO",
+    href: "/tools/seo-audit",
+  },
+  {
+    icon: Gauge,
+    stat: "53%",
+    caption: "of visitors leave if your site takes more than 3 seconds.",
+    problem: "Slow sites lose customers before they see your offer.",
+    cta: "Test your speed",
+    href: "/tools/speed-checker",
+  },
+  {
+    icon: Smartphone,
+    stat: "60%",
+    caption: "of all searches happen on a phone.",
+    problem: "If your site isn't mobile-friendly, you're invisible.",
+    cta: "Check your site",
+    href: "/tools/digital-checklist",
+  },
+];
+
+function DiagnosticPremium() {
   return (
     <section className="py-24 md:py-32 px-6 bg-[var(--surface)]">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <p className="font-hand text-xl text-accent-500 mb-3">The shift</p>
+          <p className="font-hand text-xl text-accent-500 mb-3">Free diagnosis</p>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tighter">
-            Before. After.
+            Is your website working?
           </h2>
+          <p className="mt-4 text-[var(--muted)] max-w-md mx-auto">
+            Most small business sites have these problems. Test yours in 30 seconds.
+          </p>
         </div>
-        <Card3D>
-          <BeforeAfterSlider
-            beforeLabel="Without"
-            afterLabel="With us"
-            beforeContent={
-              <div className="p-10 md:p-16 bg-warm-200 dark:bg-warm-800 min-h-[320px] flex flex-col justify-center">
-                <div className="space-y-3 opacity-40">
-                  <div className="h-10 w-44 rounded-lg bg-warm-400 dark:bg-warm-600" />
-                  <div className="h-5 w-72 rounded bg-warm-300 dark:bg-warm-700" />
-                  <div className="h-5 w-56 rounded bg-warm-300 dark:bg-warm-700" />
-                  <div className="h-12 w-32 rounded-xl bg-warm-400 dark:bg-warm-600 mt-4" />
-                </div>
-              </div>
-            }
-            afterContent={
-              <div className="p-10 md:p-16 bg-gradient-to-br from-accent-50 to-accent-100 dark:from-accent-950/40 dark:to-accent-950/20 min-h-[320px] flex flex-col justify-center">
-                <div className="space-y-3">
-                  <div className="h-10 w-44 rounded-lg bg-accent-500 flex items-center px-4">
-                    <span className="text-sm text-white font-bold">Your Brand</span>
+
+        <div className="grid sm:grid-cols-3 gap-4">
+          {diagnosticsPremium.map((d) => {
+            const Icon = d.icon;
+            return (
+              <Card3D key={d.href}>
+                <Link
+                  href={d.href}
+                  className="group block p-6 rounded-2xl border border-[var(--border)] bg-[var(--background)] hover:border-accent-500/30 hover:shadow-xl transition-all h-full"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-accent-500/10 flex items-center justify-center mb-4 group-hover:bg-accent-500/20 transition-colors">
+                    <Icon className="w-5 h-5 text-accent-500" />
                   </div>
-                  <h3 className="text-xl font-bold">Welcome to Your Business</h3>
-                  <p className="text-sm text-[var(--muted)]">The best experience in Raglan, NZ</p>
-                  <div className="flex gap-3 mt-2">
-                    <div className="h-12 px-6 rounded-xl bg-accent-500 flex items-center">
-                      <span className="text-sm text-white font-medium">Book now</span>
-                    </div>
-                    <div className="h-12 px-6 rounded-xl border border-accent-300 flex items-center">
-                      <span className="text-sm text-accent-600 font-medium">Menu</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            }
-          />
-        </Card3D>
-        <p className="mt-4 text-center text-xs text-[var(--muted)]">Drag to compare</p>
+                  <p className="text-4xl font-bold text-accent-500">{d.stat}</p>
+                  <p className="text-sm mt-2 leading-relaxed">{d.caption}</p>
+                  <p className="text-xs text-[var(--muted)] mt-2">{d.problem}</p>
+                  <span className="inline-flex items-center gap-1 mt-4 text-sm font-medium text-accent-500 group-hover:gap-2 transition-all">
+                    {d.cta} <span aria-hidden="true">&rarr;</span>
+                  </span>
+                </Link>
+              </Card3D>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
@@ -319,7 +336,7 @@ export function PremiumAxe() {
       <HeroPremium />
       <MarqueeBanner />
       <StickyServiceShowcase />
-      <BeforeAfterPremium />
+      <DiagnosticPremium />
       <StatsPremium />
       <ToolsPremium />
       <WhoPremium />

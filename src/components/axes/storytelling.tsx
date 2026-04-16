@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Search, Gauge, FileText, ClipboardCheck } from "lucide-react";
+import { Search, Gauge, FileText, ClipboardCheck, Smartphone } from "lucide-react";
 import { HeroSection } from "@/components/hero-section";
 import { TextReveal } from "@/components/text-reveal";
 import { GoogleSearchMockup } from "@/components/google-search-mockup";
@@ -11,7 +11,6 @@ import { AnimatedCounter } from "@/components/animated-counter";
 import { Magnetic } from "@/components/magnetic";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { ZagExpression } from "@/components/zag-expression";
-import { BeforeAfterSlider } from "@/components/before-after-slider";
 
 function ChapterProblem() {
   const searchResults = [
@@ -56,51 +55,67 @@ function ChapterProblem() {
   );
 }
 
-function ChapterBeforeAfter() {
+const diagnostics = [
+  {
+    icon: Search,
+    stat: "73%",
+    caption: "of local searches lead to a visit within 24 hours.",
+    problem: "But only if your business shows up. Most don't.",
+    cta: "Audit your SEO",
+    href: "/tools/seo-audit",
+  },
+  {
+    icon: Gauge,
+    stat: "53%",
+    caption: "of visitors leave if your site takes more than 3 seconds.",
+    problem: "Slow sites lose customers before they even see your offer.",
+    cta: "Test your speed",
+    href: "/tools/speed-checker",
+  },
+  {
+    icon: Smartphone,
+    stat: "60%",
+    caption: "of all searches happen on a phone.",
+    problem: "If your site isn't mobile-friendly, you're invisible to most people.",
+    cta: "Check your site",
+    href: "/tools/digital-checklist",
+  },
+];
+
+function ChapterDiagnostic() {
   return (
     <section className="py-24 md:py-32 px-6 bg-[var(--surface)]">
-      <div className="max-w-3xl mx-auto">
-        <p className="font-hand text-xl text-accent-500 mb-3 text-center">See the difference</p>
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center mb-10">
-          What a website does for your business.
+      <div className="max-w-4xl mx-auto">
+        <p className="font-hand text-xl text-accent-500 mb-3 text-center">Free diagnosis</p>
+        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center mb-4">
+          Is your website working?
         </h2>
+        <p className="text-center text-[var(--muted)] mb-12 max-w-lg mx-auto">
+          Most small business sites have these problems. Test yours in 30 seconds.
+        </p>
 
-        <BeforeAfterSlider
-          beforeLabel="Without a website"
-          afterLabel="With Raglan Digital"
-          beforeContent={
-            <div className="p-8 md:p-12 bg-warm-200 dark:bg-warm-800 min-h-[280px] flex flex-col justify-center">
-              <div className="max-w-md opacity-50">
-                <div className="h-8 w-40 rounded bg-warm-400 dark:bg-warm-600 mb-4" />
-                <div className="h-4 w-64 rounded bg-warm-300 dark:bg-warm-700 mb-2" />
-                <div className="h-4 w-48 rounded bg-warm-300 dark:bg-warm-700 mb-6" />
-                <div className="h-10 w-28 rounded bg-warm-400 dark:bg-warm-600" />
-              </div>
-              <p className="mt-6 text-warm-600 dark:text-warm-400 text-sm">No online presence. Invisible to search.</p>
-            </div>
-          }
-          afterContent={
-            <div className="p-8 md:p-12 bg-accent-50 dark:bg-accent-950/30 min-h-[280px] flex flex-col justify-center">
-              <div className="max-w-md">
-                <div className="h-8 w-40 rounded bg-accent-500 mb-4 flex items-center px-3">
-                  <span className="text-xs text-white font-bold">Your Brand</span>
+        <div className="grid sm:grid-cols-3 gap-4">
+          {diagnostics.map((d) => {
+            const Icon = d.icon;
+            return (
+              <Link
+                key={d.href}
+                href={d.href}
+                className="group p-6 rounded-2xl border border-[var(--border)] bg-[var(--background)] hover:border-accent-500/30 hover:shadow-lg transition-all"
+              >
+                <div className="w-10 h-10 rounded-xl bg-accent-500/10 flex items-center justify-center mb-4 group-hover:bg-accent-500/20 transition-colors">
+                  <Icon className="w-5 h-5 text-accent-500" />
                 </div>
-                <h3 className="text-lg font-bold">Welcome to Your Business</h3>
-                <p className="text-sm text-[var(--muted)] mt-1">The best experience in Raglan</p>
-                <div className="flex gap-2 mt-4">
-                  <div className="h-10 px-4 rounded-lg bg-accent-500 flex items-center">
-                    <span className="text-xs text-white font-medium">Book now</span>
-                  </div>
-                  <div className="h-10 px-4 rounded-lg border border-accent-500/30 flex items-center">
-                    <span className="text-xs text-accent-500 font-medium">View menu</span>
-                  </div>
-                </div>
-              </div>
-              <p className="mt-6 text-accent-600 dark:text-accent-400 text-sm font-medium">Found on Google. Customers book online.</p>
-            </div>
-          }
-        />
-        <p className="mt-4 text-center text-xs text-[var(--muted)]">Drag the slider to compare</p>
+                <p className="text-4xl font-bold text-accent-500">{d.stat}</p>
+                <p className="text-sm mt-2 leading-relaxed">{d.caption}</p>
+                <p className="text-xs text-[var(--muted)] mt-2">{d.problem}</p>
+                <span className="inline-flex items-center gap-1 mt-4 text-sm font-medium text-accent-500 group-hover:gap-2 transition-all">
+                  {d.cta} <span aria-hidden="true">&rarr;</span>
+                </span>
+              </Link>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
@@ -292,7 +307,7 @@ export function StorytellingAxe() {
       <ScrollProgress />
       <HeroSection />
       <ChapterProblem />
-      <ChapterBeforeAfter />
+      <ChapterDiagnostic />
       <ChapterTransformation />
       <StickyServiceShowcase />
       <ChapterTools />
