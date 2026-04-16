@@ -269,8 +269,8 @@ export function StickyServiceShowcase() {
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
+    stiffness: 60,
+    damping: 20,
     restDelta: 0.001,
   });
 
@@ -278,7 +278,7 @@ export function StickyServiceShowcase() {
   const progressHeight = useTransform(smoothProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section ref={containerRef} className="relative" style={{ height: "225vh" }}>
+    <section ref={containerRef} className="relative" style={{ height: "350vh" }}>
       <div className="sticky top-0 h-screen flex items-center">
         <div className="w-full max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 lg:gap-20 items-center">
           {/* Left — service labels with progress line */}
@@ -394,35 +394,37 @@ function DemoPanel({
   const total = demoComponents.length;
   const segStart = index / total;
   const segEnd = (index + 1) / total;
+  const mid = (segStart + segEnd) / 2;
 
-  // Vertical wheel: translateY goes 100% → 0% → -100%
+  // Continuous motion: 50 → 0 → -50 across the segment (no plateau)
   const y = useTransform(progress, (v: number) => {
     if (index === 0 && v <= segStart) return 0;
     if (index === total - 1 && v >= segEnd) return 0;
-    if (v < segStart) return 100;
-    if (v >= segEnd) return -100;
+    if (v < segStart) return 50;
+    if (v >= segEnd) return -50;
     const t = (v - segStart) / (segEnd - segStart);
-    return (1 - t * 2) * 100;
+    return (0.5 - t) * 100;
   });
 
-  // 3D drum rotation: -25deg → 0deg → 25deg
+  // Gentle 3D rotation: -12 → 0 → 12
   const rotateX = useTransform(progress, (v: number) => {
     if (index === 0 && v <= segStart) return 0;
     if (index === total - 1 && v >= segEnd) return 0;
-    if (v < segStart) return -25;
-    if (v >= segEnd) return 25;
+    if (v < segStart) return -12;
+    if (v >= segEnd) return 12;
     const t = (v - segStart) / (segEnd - segStart);
-    return (t * 2 - 1) * 25;
+    return (t - 0.5) * 24;
   });
 
-  // Opacity: fade in/out at edges
+  // Opacity: bell curve peaking at segment midpoint
   const opacity = useTransform(progress, (v: number) => {
-    if (index === 0 && v <= segStart + 0.04) return 1;
-    if (index === total - 1 && v >= segEnd - 0.04) return 1;
+    if (index === 0 && v <= segStart) return 1;
+    if (index === total - 1 && v >= segEnd) return 1;
     if (v < segStart - 0.02 || v > segEnd + 0.02) return 0;
-    if (v < segStart + 0.04) return Math.min(1, (v - segStart + 0.02) / 0.06);
-    if (v > segEnd - 0.04) return Math.min(1, (segEnd + 0.02 - v) / 0.06);
-    return 1;
+    // Distance from midpoint, normalized 0→1
+    const d = Math.abs(v - mid) / (segEnd - segStart) * 2;
+    // Smooth bell: 1 at center, 0 at edges
+    return Math.max(0, 1 - d * d);
   });
 
   return (
