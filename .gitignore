@@ -43,3 +43,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .gstack/
+
+# private business notes (prospect lists, outreach drafts)
+PROSPECTS.md
+PROSPECTS-*.md
