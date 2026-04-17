@@ -14,23 +14,25 @@ import { ZagExpression } from "@/components/zag-expression";
 function ChapterProblem() {
   const searchResults = [
     {
-      title: "Raglan Surf Cafe — Best Coffee on the Coast",
-      url: "raglansurfcafe.co.nz",
-      description: "Award-winning coffee and brunch in the heart of Raglan. Open 7 days, 7am–3pm.",
+      title: "Your Competitor — Best Coffee on the Coast",
+      url: "yourcompetitor.co.nz",
+      description: "Honestly? You should be the one ranked here. Not us.",
       stars: 4.7,
       reviews: 312,
     },
     {
-      title: "The Shack Raglan — Food & Drinks",
-      url: "theshackraglan.nz",
-      description: "Laid-back vibes and great food. Live music every Friday. Book online or walk in.",
+      title: "Not Your Business — Food & Drinks",
+      url: "notyourbusiness.nz",
+      description: "Your cafe is probably better. Your SEO... isn't.",
       stars: 4.3,
       reviews: 189,
     },
     {
-      title: "Raglan Cafes — TripAdvisor",
-      url: "tripadvisor.com › raglan › restaurants",
-      description: "Best cafes in Raglan: See reviews and photos of cafes in Raglan on TripAdvisor.",
+      title: "Still Not Your Business — Brunch & Coffee",
+      url: "stillnotyourbusiness.co.nz",
+      description: "Single-origin coffee and seasonal brunch. Ranks above you since 2023. Thanks.",
+      stars: 4.5,
+      reviews: 204,
     },
   ];
 
