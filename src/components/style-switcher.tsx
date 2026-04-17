@@ -19,7 +19,7 @@ interface StyleSwitcherProps {
 export function StyleSwitcher({ active, onChange }: StyleSwitcherProps) {
   return (
     <motion.div
-      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50"
+      className="hidden md:block fixed bottom-6 left-1/2 -translate-x-1/2 z-50"
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
