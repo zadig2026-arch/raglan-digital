@@ -49,3 +49,6 @@ PROSPECTS.md
 PROSPECTS-*.md
 OUTREACH-DRAFTS.md
 OUTREACH-*.md
+
+# generated GBP assets (local-only, not pushed to the live site)
+/public/gbp/
