@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Lora, Inter, Caveat } from "next/font/google";
-import { PreviewBanner } from "@/components/preview-banner";
 
 const display = Lora({
   subsets: ["latin"],
@@ -90,9 +89,8 @@ export default function GailsFloralPreview() {
       className={`${display.variable} ${body.variable} ${script.variable} bg-[#FBF7F0] text-[#1F0F12] antialiased`}
       style={{ fontFamily: "var(--font-body), system-ui, sans-serif" }}
     >
-      <PreviewBanner />
       {/* ─── Top bar ─── */}
-      <header className="absolute top-11 left-0 right-0 z-30 px-6 md:px-12 py-7 flex items-center justify-between text-white">
+      <header className="absolute top-0 left-0 right-0 z-30 px-6 md:px-12 py-7 flex items-center justify-between text-white">
         <span
           className="text-[18px] drop-shadow"
           style={{
@@ -501,9 +499,15 @@ export default function GailsFloralPreview() {
             © {new Date().getFullYear()} Gail&apos;s Floral Studio · Hamilton
             since 1965
           </span>
-          <span className="opacity-70" style={{ fontWeight: 400 }}>
-            Preview by Raglan Digital
-          </span>
+          <a
+            href="https://raglandigital.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="opacity-70 hover:opacity-100 transition-opacity"
+            style={{ fontWeight: 400 }}
+          >
+            Designed by Raglan Digital · raglandigital.com
+          </a>
         </div>
       </footer>
     </div>

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Cormorant_Garamond, Inter } from "next/font/google";
-import { PreviewBanner } from "@/components/preview-banner";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -95,9 +94,8 @@ export default function AdaiaFloraPreview() {
       className={`${cormorant.variable} ${inter.variable} bg-[#FBF6F1] text-[#221816] antialiased`}
       style={{ fontFamily: "var(--font-body), system-ui, sans-serif" }}
     >
-      <PreviewBanner />
       {/* ─── Top bar ─── */}
-      <header className="absolute top-11 left-0 right-0 z-20 px-6 md:px-12 py-7 flex items-center justify-between">
+      <header className="absolute top-0 left-0 right-0 z-20 px-6 md:px-12 py-7 flex items-center justify-between">
         <span
           className="text-[15px] tracking-[0.3em] uppercase"
           style={{ fontWeight: 500 }}
@@ -516,9 +514,15 @@ export default function AdaiaFloraPreview() {
           <span style={{ fontWeight: 400 }}>
             © {new Date().getFullYear()} Adaia Flora · Hamilton NZ
           </span>
-          <span className="opacity-60" style={{ fontWeight: 400 }}>
-            Preview by Raglan Digital
-          </span>
+          <a
+            href="https://raglandigital.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="opacity-60 hover:opacity-100 transition-opacity"
+            style={{ fontWeight: 400 }}
+          >
+            Designed by Raglan Digital · raglandigital.com
+          </a>
         </div>
       </footer>
     </div>

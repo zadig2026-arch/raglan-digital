@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Cormorant_Garamond, IBM_Plex_Sans } from "next/font/google";
-import { PreviewBanner } from "@/components/preview-banner";
 
 const display = Cormorant_Garamond({
   subsets: ["latin"],
@@ -61,9 +60,8 @@ export default function ParkHousePreview() {
       className={`${display.variable} ${body.variable} bg-[#F8F4ED] text-[#1F2A24] antialiased`}
       style={{ fontFamily: "var(--font-body), system-ui, sans-serif" }}
     >
-      <PreviewBanner />
       {/* ─── Top bar ─── */}
-      <header className="absolute top-11 left-0 right-0 z-30 px-6 md:px-12 py-7 flex items-center justify-between text-white">
+      <header className="absolute top-0 left-0 right-0 z-30 px-6 md:px-12 py-7 flex items-center justify-between text-white">
         <span
           className="text-[14px] tracking-[0.4em] uppercase drop-shadow"
           style={{ fontWeight: 400 }}
@@ -381,9 +379,15 @@ export default function ParkHousePreview() {
           <span style={{ fontWeight: 400 }}>
             © {new Date().getFullYear()} Park House · Victoria Street, Cambridge
           </span>
-          <span className="opacity-60" style={{ fontWeight: 400 }}>
-            Preview by Raglan Digital
-          </span>
+          <a
+            href="https://raglandigital.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="opacity-60 hover:opacity-100 transition-opacity"
+            style={{ fontWeight: 400 }}
+          >
+            Designed by Raglan Digital · raglandigital.com
+          </a>
         </div>
       </footer>
     </div>
