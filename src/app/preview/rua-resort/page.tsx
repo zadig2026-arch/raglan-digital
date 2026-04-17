@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Cormorant_Garamond, IBM_Plex_Sans } from "next/font/google";
+import { PreviewBanner } from "@/components/preview-banner";
 
 const display = Cormorant_Garamond({
   subsets: ["latin"],
@@ -60,8 +61,9 @@ export default function RuaResortPreview() {
       className={`${display.variable} ${body.variable} bg-[#F5F2EB] text-[#1A1D17] antialiased`}
       style={{ fontFamily: "var(--font-body), system-ui, sans-serif" }}
     >
+      <PreviewBanner />
       {/* ─── Top bar ─── */}
-      <header className="absolute top-0 left-0 right-0 z-30 px-6 md:px-12 py-7 flex items-center justify-between text-white">
+      <header className="absolute top-11 left-0 right-0 z-30 px-6 md:px-12 py-7 flex items-center justify-between text-white">
         <span
           className="text-[14px] tracking-[0.35em] uppercase drop-shadow"
           style={{ fontWeight: 400 }}
