@@ -22,30 +22,26 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const HERO =
-  "https://images.unsplash.com/photo-1551776235-dde6d4829808?auto=format&fit=crop&w=2400&q=80";
+const HERO = "/prospects/park-house/01.jpeg";
 
 const ROOMS = [
   {
     name: "The Victoria",
-    body: "Our largest room, opposite Victoria Park. King bed, deep bath, original 1928 sash windows.",
+    body: "Our largest room, looking onto Victoria Park. Queen bed, sitting area, heritage windows with afternoon light.",
     rate: "From $245",
-    image:
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1600&q=80",
+    image: "/prospects/park-house/06.jpeg",
   },
   {
     name: "The Garden",
-    body: "Quieter side of the house, looking onto the courtyard garden. Queen bed, ensuite bath, soft morning light.",
+    body: "Quieter side of the house, leadlight windows onto the garden. Queen bed, wicker reading corner, morning light.",
     rate: "From $195",
-    image:
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=80",
+    image: "/prospects/park-house/04.jpeg",
   },
   {
     name: "The Loft",
-    body: "Top of the house, with skylights and a writing desk. Queen bed, walk-in shower, the most private room.",
+    body: "Upstairs at the back, quiet and soft. Queen bed, period wallpaper, the most private of the three.",
     rate: "From $215",
-    image:
-      "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1600&q=80",
+    image: "/prospects/park-house/03.jpeg",
   },
 ];
 
