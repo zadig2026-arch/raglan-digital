@@ -9,7 +9,12 @@ const SPOTS_LEFT = 5;
 export function LaunchBanner() {
   const pathname = usePathname();
   const [dismissed, setDismissed] = useState(false);
-  if (pathname?.startsWith("/mockup") || pathname?.startsWith("/preview")) return null;
+  if (
+    pathname?.startsWith("/mockup") ||
+    pathname?.startsWith("/preview") ||
+    pathname?.startsWith("/examples")
+  )
+    return null;
   if (dismissed || SPOTS_LEFT <= 0) return null;
 
   return (

@@ -225,7 +225,7 @@ function FadeUp({
 // ─────────────────────────────────────────────────────────────────────────────
 // The main experience
 // ─────────────────────────────────────────────────────────────────────────────
-export function LykkeExperience() {
+export function CafeExperience() {
   const [introDone, setIntroDone] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
 
@@ -387,7 +387,7 @@ export function LykkeExperience() {
       <footer className="px-6 pb-10 pt-16 md:px-12">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 border-t border-[#1C1714]/10 pt-8 text-[11px] uppercase tracking-[0.3em] md:flex-row">
           <span className="opacity-50" style={{ fontWeight: 500 }}>
-            © {new Date().getFullYear()} Lykke · 1 Greenwood St, Frankton
+            Sample café & restaurant design · Concept, {new Date().getFullYear()}
           </span>
           <a
             href="https://raglandigital.com"
@@ -441,15 +441,23 @@ function FloatingNav() {
               "inset 0 1px 1px rgba(255,255,255,0.35), 0 10px 30px -10px rgba(28,23,20,0.2)",
           }}
         >
-          <span
-            className="hidden px-4 text-[13px] text-[#1C1714]/80 sm:block"
-            style={{
-              fontFamily: "var(--font-lykke-display)",
-              fontStyle: "italic",
-              fontWeight: 500,
-            }}
-          >
-            Lykke
+          <span className="hidden items-center gap-2.5 pl-4 pr-2 sm:flex">
+            <span
+              className="text-[13px] text-[#1C1714]/80"
+              style={{
+                fontFamily: "var(--font-lykke-display)",
+                fontStyle: "italic",
+                fontWeight: 500,
+              }}
+            >
+              Lykke
+            </span>
+            <span
+              className="rounded-full border border-[#C27154]/40 bg-[#C27154]/10 px-2 py-0.5 text-[9px] uppercase tracking-[0.25em] text-[#C27154]"
+              style={{ fontWeight: 600 }}
+            >
+              Sample
+            </span>
           </span>
           <div className="hidden items-center gap-1 sm:flex">
             {links.map((l) => (

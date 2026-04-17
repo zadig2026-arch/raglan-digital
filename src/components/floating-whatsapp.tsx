@@ -7,7 +7,12 @@ export function FloatingWhatsApp() {
   const pathname = usePathname();
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
-  if (pathname?.startsWith("/mockup") || pathname?.startsWith("/preview")) return null;
+  if (
+    pathname?.startsWith("/mockup") ||
+    pathname?.startsWith("/preview") ||
+    pathname?.startsWith("/examples")
+  )
+    return null;
 
   return (
     <motion.a
