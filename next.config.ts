@@ -4,6 +4,19 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  async rewrites() {
+    return [
+      // Static HTML previews in public/preview/* — rewrite clean URLs to index.html
+      {
+        source: "/preview/ms-sewing-station",
+        destination: "/preview/ms-sewing-station/index.html",
+      },
+      {
+        source: "/preview/ms-sewing-station/",
+        destination: "/preview/ms-sewing-station/index.html",
+      },
+    ];
+  },
   async headers() {
     return [
       {
