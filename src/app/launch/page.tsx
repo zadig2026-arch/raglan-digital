@@ -3,46 +3,54 @@ import Link from "next/link";
 import { FreeWebsiteForm } from "@/components/free-website-form";
 
 export const metadata: Metadata = {
-  title: "Free website for NZ small businesses",
+  title: "Launch pricing — $399 NZD websites for NZ small businesses",
   description:
-    "I'm building 5 free websites for NZ small businesses to start my portfolio in New Zealand. No catch — see if you qualify.",
+    "Launch pricing: $399 NZD for a custom 1-3 page website. First 5 paying clients in New Zealand only. No fake discount, no catch.",
 };
 
 const SPOTS_LEFT = 5;
 
-export default function FreeWebsitePage() {
+export default function LaunchPage() {
   return (
     <div className="px-6 py-24 md:py-32">
       <div className="max-w-3xl mx-auto">
+        <div className="mb-10 flex justify-center">
+          <Link
+            href="/start?service=help"
+            className="inline-flex items-center gap-2 text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors underline underline-offset-4"
+          >
+            Not sure if this is for you? Take the 2-min quiz →
+          </Link>
+        </div>
         {/* Hero */}
         <div className="text-center">
           <p className="text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-5">
-            The honest pitch
+            Launch pricing
           </p>
           <h1 className="text-display-lg">
-            5 free websites. No catch.
+            5 websites. $399 NZD. No catch.
           </h1>
           <p className="mt-6 text-lg text-[var(--muted)] max-w-2xl mx-auto">
-            I&apos;m new to New Zealand. To build my portfolio here, I&apos;m
-            offering 5 small local businesses a complete website — entirely
-            free. You keep the site, the domain, the code. No lock-in, no
-            hidden fees.
+            I&apos;m new to New Zealand and building a paying client book.
+            Launch pricing for my first 5 paying clients: $399 NZD for a
+            complete website. After those 5 are signed, the price goes up.
+            That&apos;s the deal — honest, no fake discount.
           </p>
           <p className="mt-3 text-sm text-accent-500 font-medium">
-            {SPOTS_LEFT} spot{SPOTS_LEFT > 1 ? "s" : ""} left
+            {SPOTS_LEFT} spot{SPOTS_LEFT > 1 ? "s" : ""} left at this price
           </p>
         </div>
 
-        {/* The honest exchange */}
+        {/* The exchange */}
         <div className="mt-20 grid sm:grid-cols-2 gap-6">
           <div className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)]">
             <p className="text-[11px] uppercase tracking-[0.25em] text-accent-500 font-medium mb-1">You get</p>
             <ul className="mt-4 space-y-3 text-sm">
               <li className="flex items-start gap-2.5">
-                <Check />A custom 1-3 page website (worth ~$1,500 NZD)
+                <Check />A custom 1-3 page website, designed around your brand
               </li>
               <li className="flex items-start gap-2.5">
-                <Check />Mobile-first, fast, modern design
+                <Check />Mobile-first, fast, modern — no template feel
               </li>
               <li className="flex items-start gap-2.5">
                 <Check />Hosting + SSL forever, on me (via Cloudflare Pages)
@@ -59,6 +67,9 @@ export default function FreeWebsitePage() {
               <li className="flex items-start gap-2.5">
                 <Check />Delivered in 10 days from your assets
               </li>
+              <li className="flex items-start gap-2.5">
+                <Check />One round of revisions included
+              </li>
             </ul>
           </div>
 
@@ -66,21 +77,20 @@ export default function FreeWebsitePage() {
             <p className="text-[11px] uppercase tracking-[0.25em] text-accent-500 font-medium mb-1">I get</p>
             <ul className="mt-4 space-y-3 text-sm">
               <li className="flex items-start gap-2.5">
-                <Check />
-                Permission to feature your site as an example on my portfolio
+                <Check />Your $399 NZD — paid at delivery, not upfront
+              </li>
+              <li className="flex items-start gap-2.5">
+                <Check />Permission to feature your site as an example on my
+                portfolio
               </li>
               <li className="flex items-start gap-2.5">
                 <Check />A short testimonial (written or 1-min video, your
-                choice)
-              </li>
-              <li className="flex items-start gap-2.5">
-                <Check />Maybe — if it makes sense — a chat about ongoing SEO
-                later
+                choice) once you&apos;re happy with the site
               </li>
             </ul>
             <p className="mt-5 text-xs text-[var(--muted)]">
-              That&apos;s it. No obligation to buy anything. If you&apos;re happy
-              with the site and walk away, that&apos;s fine.
+              No deposit, no upfront commitment. You only pay if the final site
+              is a yes from you.
             </p>
           </div>
         </div>
@@ -88,23 +98,25 @@ export default function FreeWebsitePage() {
         {/* Why */}
         <div className="mt-20 max-w-2xl mx-auto">
           <h2 className="text-2xl font-bold tracking-tight">
-            Why I&apos;m doing this.
+            Why this price, and why 5 spots.
           </h2>
           <div className="mt-5 space-y-4 text-sm text-[var(--muted)] leading-relaxed">
             <p>
               I studied audiovisual production in France, then worked at a
               digital agency for years before moving to NZ. I know how to
-              deliver. What I don&apos;t have yet are NZ examples to show.
+              deliver. What I don&apos;t have yet are NZ case studies and a
+              sustainable client book here.
             </p>
             <p>
-              Buying logos and fake testimonials is easy. But I want my first
-              clients here to be real, and the work to speak for itself. So
-              instead of pretending I&apos;ve worked with everyone, I&apos;m
-              giving 5 sites away to make it real.
+              So I&apos;m opening 5 launch-priced spots at $399 NZD. No fake
+              &quot;normally $1,500&quot; nonsense crossed out. It&apos;s
+              simply my intro price to get real NZ work on my portfolio. Once
+              the 5 spots are gone, the price goes up — that&apos;s the only
+              reason you&apos;d get it at $399.
             </p>
             <p>
-              That&apos;s the deal. Honest, no tricks. If you&apos;re a small
-              business owner who&apos;d benefit, apply below.
+              If that sounds fair, apply below. If you&apos;d rather wait and
+              see more work first, I get it — no hard feelings.
             </p>
           </div>
         </div>
@@ -119,7 +131,7 @@ export default function FreeWebsitePage() {
             </li>
             <li className="flex items-start gap-2.5">
               <Check />You currently have no website, or one that&apos;s
-              clearly outdated
+              clearly broken or outdated
             </li>
             <li className="flex items-start gap-2.5">
               <Check />You can provide your logo + 5-10 photos + a few lines
@@ -130,20 +142,30 @@ export default function FreeWebsitePage() {
               site goes live
             </li>
           </ul>
+          <p className="mt-6 text-xs text-[var(--muted)]">
+            If your current site already works well, this offer isn&apos;t for
+            you — I only take on no-site or broken-site projects at this price.
+          </p>
         </div>
 
         {/* Form */}
         <div className="mt-20" id="apply">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-center">
-            Apply for a free website
+            Apply for a $399 launch spot
           </h2>
           <p className="mt-3 text-sm text-[var(--muted)] text-center max-w-lg mx-auto">
             Tell me about your business. I usually reply within 24h. If you
             qualify, I&apos;ll send you a mockup of your future site within a
-            few days.
+            few days — still no payment at that point.
           </p>
           <div className="mt-10">
-            <FreeWebsiteForm />
+            <FreeWebsiteForm
+              serviceTag="launch-offer-399"
+              buttonLabel="Apply for a $399 spot"
+              successTitle="Application received!"
+              successBody="I'll review your business and get back to you within 24h. If you qualify, I'll send you a free mockup of your future site within a few days — no payment until delivery."
+              testimonialCopy="If you're happy with the final site, I'm welcome to a short testimonial and to feature it as a portfolio example."
+            />
           </div>
         </div>
 
@@ -152,7 +174,7 @@ export default function FreeWebsitePage() {
           <p>
             Prefer to chat first? Message me on{" "}
             <a
-              href="https://wa.me/33752032213?text=Hey%20Zadig%2C%20I%27m%20interested%20in%20the%20free%20website%20offer."
+              href="https://wa.me/33752032213?text=Hey%20Zadig%2C%20I%27m%20interested%20in%20the%20%24399%20launch%20offer."
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-2 hover:text-accent-500 transition-colors"

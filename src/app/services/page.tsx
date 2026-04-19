@@ -75,14 +75,22 @@ const faqs = [
 
 export default function ServicesPage() {
   return (
-    <div className="px-6 py-20">
+    <div className="px-6 py-24 md:py-32">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="font-hand text-2xl text-accent-500 mb-2">Services</p>
-          <h1 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight">
+        <div className="mb-10 flex justify-center">
+          <Link
+            href="/start?service=help"
+            className="inline-flex items-center gap-2 text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors underline underline-offset-4"
+          >
+            Not sure which one? Take the 2-min quiz →
+          </Link>
+        </div>
+        <div className="text-center mb-20">
+          <p className="text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-5">Services</p>
+          <h1 className="text-display-lg">
             What I can help with.
           </h1>
-          <p className="mt-4 text-lg text-[var(--muted)] max-w-2xl mx-auto">
+          <p className="mt-6 text-lg text-[var(--muted)] max-w-2xl mx-auto">
             Every business is different. Let&apos;s chat about what you need and
             I&apos;ll put together something that fits.
           </p>

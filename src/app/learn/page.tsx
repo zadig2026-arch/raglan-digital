@@ -22,14 +22,14 @@ export default function LearnPage() {
   return (
     <>
       {/* Header */}
-      <section className="px-6 pt-20 pb-12 md:pt-28 md:pb-16">
+      <section className="px-6 pt-24 pb-16 md:pt-32 md:pb-20">
         <div className="max-w-6xl mx-auto">
-          <div className="max-w-2xl">
-            <p className="font-hand text-2xl text-accent-500 mb-2">Learn</p>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-              I want you to understand your business online
+          <div className="max-w-3xl">
+            <p className="text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-5">Learn</p>
+            <h1 className="text-display-lg">
+              I want you to understand your business online.
             </h1>
-            <p className="mt-5 text-lg text-[var(--muted)] leading-relaxed">
+            <p className="mt-6 text-lg text-[var(--muted)] leading-relaxed">
               Guides to build your knowledge. Tips you can use this week.
               Everything I know, written down so you can do it yourself — or know exactly what to ask me for.
             </p>

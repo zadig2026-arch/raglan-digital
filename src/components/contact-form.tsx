@@ -13,18 +13,18 @@ export function ContactForm() {
   const [state, formAction, isPending] = useActionState(submitContactForm, initialState);
 
   return (
-    <div className="px-6 py-20">
+    <div className="px-6 py-24 md:py-32">
       <div className="max-w-2xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <p className="font-hand text-2xl text-accent-500 mb-2">Get in touch</p>
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight">
+          <p className="text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-5">Get in touch</p>
+          <h1 className="text-display-lg">
             Let&apos;s talk about your business.
           </h1>
-          <p className="mt-4 text-[var(--muted)] max-w-lg">
+          <p className="mt-6 text-[var(--muted)] max-w-lg">
             Send me a message and I&apos;ll get back to you within 24 hours.
             Or if you prefer, message me directly on WhatsApp.
           </p>

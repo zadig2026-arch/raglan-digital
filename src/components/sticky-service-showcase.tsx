@@ -283,8 +283,8 @@ export function StickyServiceShowcase() {
         <div className="w-full max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 lg:gap-20 items-center">
           {/* Left — service labels with progress line */}
           <div>
-            <p className="font-hand text-xl text-accent-500 mb-3">How I help</p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-8">
+            <p className="text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-5">How I help</p>
+            <h2 className="text-display-lg mb-8">
               Everything your business needs online.
             </h2>
 

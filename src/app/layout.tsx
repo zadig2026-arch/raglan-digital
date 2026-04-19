@@ -8,6 +8,7 @@ import { Footer } from "@/components/footer";
 import { FloatingWhatsApp } from "@/components/floating-whatsapp";
 import { LaunchBanner } from "@/components/launch-banner";
 import { ThemeProvider } from "@/components/theme-provider";
+import { CursorGlow } from "@/components/cursor-glow";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -115,6 +116,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <ThemeProvider>
+          <CursorGlow />
           <LaunchBanner />
           <Navbar />
           <main id="main-content" className="flex-1">{children}</main>

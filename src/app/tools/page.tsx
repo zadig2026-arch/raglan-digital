@@ -33,14 +33,14 @@ const tools = [
 
 export default function ToolsPage() {
   return (
-    <div className="px-6 py-20">
+    <div className="px-6 py-24 md:py-32">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="font-hand text-2xl text-accent-500 mb-2">Tools</p>
-          <h1 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight">
-            See where your business stands online
+        <div className="text-center mb-20">
+          <p className="text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-5">Tools</p>
+          <h1 className="text-display-lg">
+            See where your business stands online.
           </h1>
-          <p className="mt-4 text-lg text-[var(--muted)] max-w-2xl mx-auto">
+          <p className="mt-6 text-lg text-[var(--muted)] max-w-2xl mx-auto">
             I built these to help you figure out what&apos;s working and what&apos;s not.
             Run them, then send me your results if you want my take.
           </p>
