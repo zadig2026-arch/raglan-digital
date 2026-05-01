@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { FreeWebsiteForm } from "@/components/free-website-form";
+import { SpotsCounter } from "@/components/spots-counter";
 
 export const metadata: Metadata = {
   title: "Free website for NZ small businesses",
   description:
-    "I'm building 5 free websites for NZ small businesses to start my portfolio in New Zealand. No catch — see if you qualify.",
+    "5 free websites each month for NZ small businesses, in exchange for a short testimonial. No catch — see if you qualify.",
 };
-
-const SPOTS_LEFT = 5;
 
 export default function FreeWebsitePage() {
   return (
@@ -29,7 +29,9 @@ export default function FreeWebsitePage() {
             the domain, the code. No lock-in, no hidden fees.
           </p>
           <p className="mt-3 text-sm text-accent-500 font-medium">
-            {SPOTS_LEFT} spot{SPOTS_LEFT > 1 ? "s" : ""} left
+            <Suspense fallback={<span>Checking availability…</span>}>
+              <SpotsCounter variant="sentence" />
+            </Suspense>
           </p>
         </div>
 

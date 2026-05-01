@@ -15,6 +15,7 @@ export type LeadSource =
   | 'contact-form'
   | 'free-website-form'
   | 'newsletter'
+  | 'exit-intent'
   | 'unknown';
 
 export type LeadStatus =

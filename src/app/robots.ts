@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/v/", "/actions/"],
+      disallow: ["/v/", "/actions/", "/thanks/", "/api/"],
     },
     sitemap: "https://raglandigital.com/sitemap.xml",
   };

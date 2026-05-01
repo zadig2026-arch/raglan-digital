@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Suspense } from "react";
 import { Inter, Caveat } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
@@ -7,6 +8,8 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { FloatingWhatsApp } from "@/components/floating-whatsapp";
 import { LaunchBanner } from "@/components/launch-banner";
+import { StickyMobileCta } from "@/components/sticky-mobile-cta";
+import { ExitIntentModal } from "@/components/exit-intent-modal";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CursorGlow } from "@/components/cursor-glow";
 
@@ -117,11 +120,15 @@ export default function RootLayout({
         </a>
         <ThemeProvider>
           <CursorGlow />
-          <LaunchBanner />
+          <Suspense fallback={null}>
+            <LaunchBanner />
+          </Suspense>
           <Navbar />
           <main id="main-content" className="flex-1">{children}</main>
           <Footer />
           <FloatingWhatsApp />
+          <StickyMobileCta />
+          <ExitIntentModal />
         </ThemeProvider>
         <Analytics />
       </body>

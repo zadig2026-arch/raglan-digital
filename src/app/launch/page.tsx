@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { FreeWebsiteForm } from "@/components/free-website-form";
+import { SpotsCounter } from "@/components/spots-counter";
 
 export const metadata: Metadata = {
   title: "Launch pricing — $399 NZD websites for NZ small businesses",
   description:
-    "Launch pricing: $399 NZD for a custom 1-3 page website. First 5 paying clients in New Zealand only. No fake discount, no catch.",
+    "Launch pricing: $399 NZD for a custom 1-3 page website. 5 NZ small businesses each month. No fake discount, no catch.",
 };
-
-const SPOTS_LEFT = 5;
 
 export default function LaunchPage() {
   return (
@@ -36,7 +36,9 @@ export default function LaunchPage() {
             next batch opens. Honest, no fake discount.
           </p>
           <p className="mt-3 text-sm text-accent-500 font-medium">
-            {SPOTS_LEFT} spot{SPOTS_LEFT > 1 ? "s" : ""} left at this price
+            <Suspense fallback={<span>Checking availability…</span>}>
+              <SpotsCounter variant="sentence" />
+            </Suspense>
           </p>
         </div>
 
