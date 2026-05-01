@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { WhatsAppCTA } from "@/components/whatsapp-cta";
+import Link from "next/link";
 import { FloatingBack } from "@/components/floating-back";
+import { EmailGate } from "@/components/email-gate";
 import { runSpeedCheck, type SpeedResult } from "@/app/actions/speed-check";
 
 const statusDot = { good: "bg-success-500", ok: "bg-accent-500", poor: "bg-red-500" };
@@ -12,6 +13,7 @@ export default function SpeedCheckerPage() {
   const [result, setResult] = useState<SpeedResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [unlocked, setUnlocked] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,6 +21,7 @@ export default function SpeedCheckerPage() {
     setLoading(true);
     setError("");
     setResult(null);
+    setUnlocked(false);
 
     try {
       const data = await runSpeedCheck(url);
@@ -31,6 +34,9 @@ export default function SpeedCheckerPage() {
       setLoading(false);
     }
   };
+
+  const previewMetrics = result?.metrics.slice(0, 2) ?? [];
+  const gatedMetrics = result?.metrics.slice(2) ?? [];
 
   return (
     <div className="px-6 py-20">
@@ -85,28 +91,102 @@ export default function SpeedCheckerPage() {
               </div>
             </div>
 
-            <div className="space-y-3">
-              {result.metrics.map((metric) => (
-                <div key={metric.label} className="p-4 rounded-xl border border-[var(--border)] bg-[var(--surface)]">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <span className={`w-2.5 h-2.5 rounded-full ${statusDot[metric.status]}`} />
-                      <span className="font-medium text-sm">{metric.label}</span>
-                    </div>
-                    <span className="font-mono text-sm font-medium">{metric.value}</span>
-                  </div>
-                  <p className="mt-2 ml-5.5 text-sm text-[var(--muted)]">{metric.tip}</p>
-                </div>
-              ))}
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] text-[var(--muted)] font-semibold mb-3">
+                Top-line — first 2 metrics
+              </p>
+              <div className="space-y-3">
+                {previewMetrics.map((m) => (
+                  <MetricRow key={m.label} metric={m} />
+                ))}
+              </div>
             </div>
 
-            <WhatsAppCTA
-              result={`Speed Test and scored ${result.score}/100`}
-              nextTool={{ title: "Meta Generator", href: "/tools/meta-generator" }}
-            />
+            {!unlocked ? (
+              <EmailGate
+                source="tool-speed-checker"
+                sourceDetail={{
+                  tool_score: result.score,
+                  audit_url: result.url,
+                  metrics_total: result.metrics.length,
+                }}
+                reportPayload={{
+                  kind: "speed-checker",
+                  score: result.score,
+                  url: result.url,
+                  metrics: result.metrics,
+                }}
+                onCaptured={() => setUnlocked(true)}
+                heading={`See the remaining ${gatedMetrics.length} metrics + my fix tips.`}
+                body="Full Core Web Vitals breakdown and prioritized recommendations, sent to your inbox."
+                cta="Email me the speed report"
+              />
+            ) : (
+              <>
+                <div className="p-5 rounded-2xl bg-success-500/10 border border-success-500/30 flex items-start gap-3">
+                  <span className="text-success-600 dark:text-success-400 text-lg leading-none mt-0.5">✓</span>
+                  <div className="text-sm">
+                    <p className="font-semibold text-success-700 dark:text-success-300">
+                      Report sent.
+                    </p>
+                    <p className="text-[var(--muted)] mt-1">
+                      Check your inbox. Below is the full breakdown too.
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-xs uppercase tracking-[0.2em] text-[var(--muted)] font-semibold mb-3">
+                    Full metrics · {result.metrics.length} signals
+                  </p>
+                  <div className="space-y-3">
+                    {gatedMetrics.map((m) => (
+                      <MetricRow key={m.label} metric={m} />
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-8 p-7 rounded-3xl bg-[var(--foreground)] text-[var(--background)] text-center">
+                  <p className="text-xs uppercase tracking-[0.2em] opacity-60 font-semibold mb-3">
+                    A faster site = more customers
+                  </p>
+                  <h3 className="text-2xl font-bold tracking-tight">
+                    $399 launch site, optimized for speed.
+                  </h3>
+                  <p className="mt-3 text-sm opacity-80 max-w-md mx-auto">
+                    Live in 5–10 days. Mobile-first. Built for Core Web Vitals.
+                  </p>
+                  <Link
+                    href="/launch"
+                    className="mt-6 inline-flex h-11 px-6 items-center rounded-full bg-accent-500 text-white text-sm font-semibold hover:bg-accent-600 transition-colors"
+                  >
+                    See the launch offer →
+                  </Link>
+                </div>
+              </>
+            )}
           </div>
         )}
       </div>
+    </div>
+  );
+}
+
+function MetricRow({
+  metric,
+}: {
+  metric: { label: string; value: string; status: "good" | "ok" | "poor"; tip: string };
+}) {
+  return (
+    <div className="p-4 rounded-xl border border-[var(--border)] bg-[var(--surface)]">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <span className={`w-2.5 h-2.5 rounded-full ${statusDot[metric.status]}`} />
+          <span className="font-medium text-sm">{metric.label}</span>
+        </div>
+        <span className="font-mono text-sm font-medium">{metric.value}</span>
+      </div>
+      <p className="mt-2 ml-5 text-sm text-[var(--muted)]">{metric.tip}</p>
     </div>
   );
 }

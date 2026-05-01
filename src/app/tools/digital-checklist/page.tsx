@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { WhatsAppCTA } from "@/components/whatsapp-cta";
+import { useMemo, useState } from "react";
+import Link from "next/link";
 import { FloatingBack } from "@/components/floating-back";
+import { EmailGate } from "@/components/email-gate";
 
 const categories = [
   {
@@ -68,6 +69,7 @@ const categories = [
 
 export default function DigitalChecklistPage() {
   const [checked, setChecked] = useState<Set<string>>(new Set());
+  const [emailSent, setEmailSent] = useState(false);
 
   const toggle = (id: string) => {
     setChecked((prev) => {
@@ -81,6 +83,18 @@ export default function DigitalChecklistPage() {
   const totalItems = categories.reduce((acc, cat) => acc + cat.items.length, 0);
   const completedItems = checked.size;
   const percentage = Math.round((completedItems / totalItems) * 100);
+
+  const missing = useMemo(
+    () =>
+      categories.flatMap((cat) =>
+        cat.items
+          .filter((item) => !checked.has(item.id))
+          .map((item) => ({ category: cat.title, label: item.label })),
+      ),
+    [checked],
+  );
+
+  const canRequestReport = completedItems > 0;
 
   return (
     <div className="px-6 py-20">
@@ -151,9 +165,71 @@ export default function DigitalChecklistPage() {
           })}
         </div>
 
-        <WhatsAppCTA
-          result={`Digital Checklist and completed ${completedItems}/${totalItems} items (${percentage}%)`}
-        />
+        {/* Email gate / report */}
+        <div className="mt-12">
+          {!canRequestReport ? (
+            <p className="text-center text-sm text-[var(--muted)]">
+              Check at least one item to receive a personalized report.
+            </p>
+          ) : !emailSent ? (
+            <EmailGate
+              source="tool-digital-checklist"
+              sourceDetail={{
+                tool_score: percentage,
+                completed: completedItems,
+                total: totalItems,
+                missing_count: missing.length,
+              }}
+              reportPayload={{
+                kind: "digital-checklist",
+                percentage,
+                total: totalItems,
+                completed: completedItems,
+                missing,
+              }}
+              onCaptured={() => setEmailSent(true)}
+              heading={
+                missing.length === 0
+                  ? "Send me my full report (clean sweep!)"
+                  : `Get a ranked list of your ${missing.length} missing items`
+              }
+              body="I'll email you the unchecked items grouped by category, with my recommendation on which to fix first."
+              cta="Email me the report"
+            />
+          ) : (
+            <>
+              <div className="p-5 rounded-2xl bg-success-500/10 border border-success-500/30 flex items-start gap-3">
+                <span className="text-success-600 dark:text-success-400 text-lg leading-none mt-0.5">✓</span>
+                <div className="text-sm">
+                  <p className="font-semibold text-success-700 dark:text-success-300">
+                    Report sent.
+                  </p>
+                  <p className="text-[var(--muted)] mt-1">
+                    Check your inbox. Want me to handle these items for you?
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-8 p-7 rounded-3xl bg-[var(--foreground)] text-[var(--background)] text-center">
+                <p className="text-xs uppercase tracking-[0.2em] opacity-60 font-semibold mb-3">
+                  Done in 10 days, not 10 months
+                </p>
+                <h3 className="text-2xl font-bold tracking-tight">
+                  $399 launch site — covers most of this checklist out of the box.
+                </h3>
+                <p className="mt-3 text-sm opacity-80 max-w-md mx-auto">
+                  Mobile-first, HTTPS, GBP integration, fast on Google. Fixed price.
+                </p>
+                <Link
+                  href="/launch"
+                  className="mt-6 inline-flex h-11 px-6 items-center rounded-full bg-accent-500 text-white text-sm font-semibold hover:bg-accent-600 transition-colors"
+                >
+                  See the launch offer →
+                </Link>
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
