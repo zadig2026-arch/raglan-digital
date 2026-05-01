@@ -2,6 +2,7 @@
 
 import { cookies } from 'next/headers';
 import { Resend } from 'resend';
+import { start } from 'workflow/api';
 import {
   upsertLead,
   updateLeadScore,
@@ -15,6 +16,9 @@ import {
   type LeadSource,
 } from '@/lib/lead-score';
 import { ATTR_COOKIE, parseAttributionCookie } from '@/lib/attribution';
+import { welcomeToolsWorkflow } from '@/lib/workflow/sequences/welcome-tools';
+import { nurtureQuizWorkflow } from '@/lib/workflow/sequences/nurture-quiz';
+import { sql } from '@/lib/db';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -102,9 +106,13 @@ export async function captureLead(input: CaptureLeadInput): Promise<CaptureLeadR
   await updateLeadScore(lead.id, score, status);
 
   if (SOURCES_THAT_TRIGGER_WELCOME_TOOLS.includes(input.source)) {
-    await startOrResumeSequence(lead.id, 'welcome-tools');
+    await triggerSequenceOnce(lead.id, 'welcome-tools', () =>
+      start(welcomeToolsWorkflow, [lead.id]),
+    );
   } else if (SOURCES_THAT_TRIGGER_NURTURE_QUIZ.includes(input.source)) {
-    await startOrResumeSequence(lead.id, 'nurture-quiz');
+    await triggerSequenceOnce(lead.id, 'nurture-quiz', () =>
+      start(nurtureQuizWorkflow, [lead.id]),
+    );
   }
 
   await sendInternalNotification({
@@ -172,6 +180,30 @@ async function sendInternalNotification({
     });
   } catch (err) {
     console.error('Resend internal notification failed:', err);
+  }
+}
+
+async function triggerSequenceOnce(
+  leadId: string,
+  sequence: 'welcome-tools' | 'nurture-quiz' | 'post-discovery' | 'post-launch-care',
+  startWorkflow: () => Promise<{ runId: string }>,
+): Promise<void> {
+  const existing = (await sql`
+    SELECT lead_id FROM sequences_state
+     WHERE lead_id = ${leadId} AND sequence = ${sequence}
+     LIMIT 1
+  `) as Array<{ lead_id: string }>;
+  if (existing.length > 0) return;
+
+  try {
+    const run = await startWorkflow();
+    await startOrResumeSequence(leadId, sequence);
+    await insertLeadEvent(leadId, 'sequence_started', {
+      sequence,
+      run_id: run.runId,
+    });
+  } catch (err) {
+    console.error(`Failed to start workflow ${sequence} for lead ${leadId}:`, err);
   }
 }
 
