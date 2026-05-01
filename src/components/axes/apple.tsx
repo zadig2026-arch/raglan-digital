@@ -8,7 +8,6 @@ import { TextReveal } from "@/components/text-reveal";
 import { AnimatedCounter } from "@/components/animated-counter";
 import { Magnetic } from "@/components/magnetic";
 import { AuroraBackground } from "@/components/aurora-bg";
-import { Marquee } from "@/components/marquee";
 import { ZagExpression } from "@/components/zag-expression";
 import { StickyServiceShowcase } from "@/components/sticky-service-showcase";
 
@@ -26,7 +25,7 @@ function CardHover({ children, className = "" }: { children: React.ReactNode; cl
 }
 
 /* ═══ Hero ═══ */
-function HeroApple() {
+export function AppleHero() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.94]);
@@ -51,40 +50,27 @@ function HeroApple() {
             <span className="text-accent-500">work.</span>
           </motion.h1>
           <motion.p
-            className="mt-8 text-lg md:text-xl text-[var(--muted)] max-w-md mx-auto"
+            className="mt-8 text-lg md:text-xl text-[var(--muted)] max-w-xl mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.35, duration: 0.6 }}
           >
-            Beautiful, fast, found on Google.
+            For NZ small businesses. From $399. Live in 5–10 days.
           </motion.p>
           <motion.div
-            className="mt-12 flex flex-wrap items-center justify-center gap-5"
+            className="mt-12 flex flex-col items-center gap-5"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.55, duration: 0.6 }}
           >
-            {[
-              { slug: "website", label: "I want a website" },
-              { slug: "seo", label: "I want SEO" },
-              { slug: "ads", label: "I want ads" },
-            ].map((intent) => (
-              <Magnetic key={intent.slug}>
-                <Link
-                  href={`/start?service=${intent.slug}`}
-                  className="inline-flex items-center h-12 px-6 rounded-full border border-[var(--border)] bg-[var(--surface)] text-sm font-medium hover:border-[var(--foreground)]/40 hover:bg-[var(--surface-hover)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
-                >
-                  {intent.label}
-                </Link>
-              </Magnetic>
-            ))}
-          </motion.div>
-          <motion.div
-            className="mt-6 flex justify-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-          >
+            <Magnetic>
+              <Link
+                href="/launch"
+                className="inline-flex items-center h-12 px-8 rounded-full bg-accent-500 text-white text-sm font-semibold hover:bg-accent-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+              >
+                Start my $399 launch site →
+              </Link>
+            </Magnetic>
             <Link
               href="/start?service=help"
               className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors underline underline-offset-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)] rounded"
@@ -98,20 +84,8 @@ function HeroApple() {
   );
 }
 
-/* ═══ Marquee ═══ */
-function MarqueeBanner() {
-  return (
-    <div className="py-6 border-y border-[var(--border)]">
-      <Marquee
-        items={["Web Design", "SEO", "Google Business", "Social Media", "Copywriting", "Speed Optimization", "Mobile-First", "No Lock-In"]}
-        speed={30}
-      />
-    </div>
-  );
-}
-
 /* ═══ Who ═══ */
-function WhoApple() {
+export function AppleWho() {
   return (
     <section className="py-28 md:py-40 px-6">
       <div className="max-w-3xl mx-auto">
@@ -133,11 +107,12 @@ function WhoApple() {
 
             <div className="mt-8 space-y-4">
               <p className="text-[var(--muted)] leading-relaxed">
-                No big portfolio yet — I&apos;m just getting started. But I built a set of free tools you can
-                try right now, and I&apos;m ready to help if you need a website or want to improve your online presence.
+                Built for NZ small businesses — fair prices, no retainers,
+                no lock-in. Free tools you can try right now, and a real
+                pair of eyes when you need one.
               </p>
               <p className="text-[var(--muted)] leading-relaxed">
-                Fair prices. You own everything. No lock-in.
+                You own everything. The site, the domain, the code.
               </p>
             </div>
           </div>
@@ -145,6 +120,11 @@ function WhoApple() {
       </div>
     </section>
   );
+}
+
+/* ═══ Sticky service showcase passthrough ═══ */
+export function AppleStickyShowcase() {
+  return <StickyServiceShowcase />;
 }
 
 /* ═══ Diagnostic ═══ */
@@ -175,7 +155,7 @@ const diagnosticsApple = [
   },
 ];
 
-function DiagnosticApple() {
+export function AppleDiagnostic() {
   return (
     <section className="py-28 md:py-40 px-6 bg-[var(--surface)]">
       <div className="max-w-6xl mx-auto">
@@ -248,7 +228,7 @@ function DiagnosticApple() {
 }
 
 /* ═══ Stats ═══ */
-function StatsApple() {
+export function AppleStats() {
   return (
     <section className="py-28 md:py-40 px-6">
       <div className="max-w-4xl mx-auto">
@@ -276,7 +256,7 @@ function StatsApple() {
 }
 
 /* ═══ CTA ═══ */
-function CTAApple() {
+export function AppleCta() {
   return (
     <section className="relative py-36 md:py-56 px-6 bg-[var(--surface)] border-t border-[var(--border)]">
       <div className="relative z-10 max-w-3xl mx-auto text-center">
@@ -286,7 +266,12 @@ function CTAApple() {
         <p className="mt-6 text-lg text-[var(--muted)]">No pressure. No lock-in. Just results.</p>
         <div className="mt-14 flex flex-wrap items-center justify-center gap-4">
           <Magnetic>
-            <Link href="/contact" className="h-12 px-8 inline-flex items-center rounded-full bg-[var(--foreground)] text-[var(--background)] font-medium hover:opacity-90 transition-opacity">
+            <Link href="/launch" className="h-12 px-8 inline-flex items-center rounded-full bg-accent-500 text-white font-semibold hover:bg-accent-600 transition-colors">
+              Start my $399 launch site
+            </Link>
+          </Magnetic>
+          <Magnetic>
+            <Link href="/contact" className="h-12 px-8 inline-flex items-center rounded-full border border-[var(--border)] font-medium hover:bg-[var(--surface-hover)] hover:border-[var(--foreground)]/30 transition-colors">
               Send a message
             </Link>
           </Magnetic>
@@ -301,15 +286,15 @@ function CTAApple() {
   );
 }
 
+/* ═══ Composed export — kept for backward compat ═══ */
 export function AppleAxe() {
   return (
     <>
-      <HeroApple />
-      <MarqueeBanner />
-      <StickyServiceShowcase />
-      <DiagnosticApple />
-      <StatsApple />
-      <CTAApple />
+      <AppleHero />
+      <AppleStickyShowcase />
+      <AppleDiagnostic />
+      <AppleStats />
+      <AppleCta />
     </>
   );
 }

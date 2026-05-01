@@ -30,7 +30,7 @@ const ROOMS = [
     rate: "from $185 / night",
     image:
       "https://static.wixstatic.com/media/412420_230f26adb8a046f49ec79ae726806d1c~mv2.jpg/v1/fill/w_1600,h_1000,al_c,q_90,enc_avif,quality_auto/412420_230f26adb8a046f49ec79ae726806d1c~mv2.jpg",
-    body: "Queen bed, ensuite bath, glass doors that open onto the herb garden and chicken run. Slow mornings, quiet nights.",
+    body: "Queen bed, ensuite bath, glass doors that open onto the herb garden. Slow mornings, quiet nights.",
     sleeps: "2 guests",
     bed: "Queen",
   },
@@ -120,9 +120,8 @@ export default function RuaResortPreview() {
               className="mt-8 text-[16px] md:text-[18px] max-w-md opacity-90 leading-[1.7]"
               style={{ fontWeight: 300 }}
             >
-              Country views, fresh eggs from the hens you'll meet at
-              breakfast, and three rooms made for the kind of rest you
-              forgot was possible.
+              Country views, fresh eggs, and rooms made for the kind of
+              rest you forgot was possible.
             </p>
           </div>
         </div>
@@ -294,16 +293,16 @@ export default function RuaResortPreview() {
               fontWeight: 400,
             }}
           >
-            Six hens, a garden, and a view.
+            A garden, a view, and slow mornings.
           </h2>
           <div
             className="space-y-6 text-[15px] leading-[1.85] opacity-90 max-w-md"
             style={{ fontWeight: 300 }}
           >
             <p>
-              Most of breakfast comes from out the back. The eggs are from the
-              hens you'll meet on your way past the chicken run. The herbs are
-              from the garden. The bread is baked the morning of.
+              Most of breakfast comes from out the back. The eggs are from
+              our own hens. The herbs are from the garden. The bread is
+              baked the morning of.
             </p>
             <p>
               We don't make a thing of it. It's just easier — and tastes
@@ -334,7 +333,7 @@ export default function RuaResortPreview() {
                 fontWeight: 400,
               }}
             >
-              On a hill, north of Hamilton.
+              On a hill, south-west of Hamilton.
             </h2>
           </div>
           <div className="md:col-span-7 md:border-l md:border-[#1A1D17]/15 md:pl-12 space-y-8 text-[15px] leading-[1.85]">
@@ -359,8 +358,8 @@ export default function RuaResortPreview() {
                 From Hamilton CBD
               </p>
               <p style={{ fontWeight: 300 }}>
-                20 minutes north on SH1, then 5 minutes off the main road.
-                We&apos;ll send full directions when you book.
+                About 20 minutes south-west of Hamilton, off the main
+                road. We&apos;ll send full directions when you book.
               </p>
             </div>
             <div>
@@ -444,6 +443,12 @@ export default function RuaResortPreview() {
             Designed by Raglan Digital · raglandigital.com
           </a>
         </div>
+        <p
+          className="max-w-6xl mx-auto mt-6 text-center text-[10px] tracking-[0.2em] uppercase opacity-40"
+          style={{ fontWeight: 400 }}
+        >
+          Concept preview — details to be confirmed with owner
+        </p>
       </footer>
     </div>
   );

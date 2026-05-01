@@ -23,10 +23,10 @@ export default function FreeWebsitePage() {
             5 free websites. No catch.
           </h1>
           <p className="mt-6 text-lg text-[var(--muted)] max-w-2xl mx-auto">
-            I&apos;m new to New Zealand. To build my portfolio here, I&apos;m
-            offering 5 small local businesses a complete website — entirely
-            free. You keep the site, the domain, the code. No lock-in, no
-            hidden fees.
+            To grow Raglan Digital&apos;s case-study library, 5 NZ small
+            businesses each month get a complete website — entirely free,
+            in exchange for a short public testimonial. You keep the site,
+            the domain, the code. No lock-in, no hidden fees.
           </p>
           <p className="mt-3 text-sm text-accent-500 font-medium">
             {SPOTS_LEFT} spot{SPOTS_LEFT > 1 ? "s" : ""} left
@@ -57,7 +57,7 @@ export default function FreeWebsitePage() {
                 <Check />You own everything — code, design, content
               </li>
               <li className="flex items-start gap-2.5">
-                <Check />Delivered in 10 days from your assets
+                <Check />Delivered in 5–10 days from your assets
               </li>
             </ul>
           </div>

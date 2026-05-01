@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { WhatsAppCTA } from "@/components/whatsapp-cta";
+import { FloatingBack } from "@/components/floating-back";
 import { runSeoAudit, type AuditResult } from "@/app/actions/seo-audit";
 
 const statusIcon = { pass: "\u2713", warn: "!", fail: "\u2715" };
@@ -37,12 +37,9 @@ export default function SeoAuditPage() {
 
   return (
     <div className="px-6 py-20">
+      <FloatingBack href="/tools" label="Back to tools" />
       <div className="max-w-2xl mx-auto">
-        <Link href="/tools" className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
-          &larr; Back to tools
-        </Link>
-
-        <h1 className="mt-6 text-3xl md:text-4xl font-bold tracking-tight">SEO Audit</h1>
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight">SEO Audit</h1>
         <p className="mt-3 text-[var(--muted)]">
           Enter your website URL. I&apos;ll fetch your page and check what Google sees &mdash; title, description, headings, images, and more.
         </p>

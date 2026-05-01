@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   /* Sky blue — ocean, Raglan */
   --color-accent-950: #172554;

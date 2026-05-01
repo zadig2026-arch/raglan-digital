@@ -389,6 +389,12 @@ export default function ParkHousePreview() {
             Designed by Raglan Digital · raglandigital.com
           </a>
         </div>
+        <p
+          className="max-w-6xl mx-auto mt-6 text-center text-[10px] tracking-[0.3em] uppercase opacity-40"
+          style={{ fontWeight: 400 }}
+        >
+          Concept preview — details to be confirmed with owner
+        </p>
       </footer>
     </div>
   );

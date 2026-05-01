@@ -20,8 +20,8 @@ export function LaunchBanner() {
   return (
     <div className="relative bg-warm-900 text-white text-center py-2 px-10 text-xs sm:text-sm">
       <span>
-        I&apos;m new to NZ — building{" "}
-        <strong>{SPOTS_LEFT} free websites</strong> for local businesses.{" "}
+        Limited launch —{" "}
+        <strong>{SPOTS_LEFT} free websites</strong> for NZ small businesses this month.{" "}
         <Link
           href="/free-website"
           className="underline underline-offset-2 hover:text-accent-400 transition-colors"

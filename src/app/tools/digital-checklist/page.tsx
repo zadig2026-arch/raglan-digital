@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { WhatsAppCTA } from "@/components/whatsapp-cta";
+import { FloatingBack } from "@/components/floating-back";
 
 const categories = [
   {
@@ -84,12 +84,9 @@ export default function DigitalChecklistPage() {
 
   return (
     <div className="px-6 py-20">
+      <FloatingBack href="/tools" label="Back to tools" />
       <div className="max-w-2xl mx-auto">
-        <Link href="/tools" className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
-          ← Back to tools
-        </Link>
-
-        <h1 className="mt-6 text-3xl md:text-4xl font-bold tracking-tight">Digital Presence Checklist</h1>
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Digital Presence Checklist</h1>
         <p className="mt-3 text-[var(--muted)]">
           Go through each item. Check off what you already have. I&apos;ll help you see what&apos;s missing.
         </p>

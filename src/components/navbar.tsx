@@ -6,11 +6,6 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "./theme-provider";
 
-const intents = [
-  { href: "/services", label: "I have a website" },
-  { href: "/launch", label: "I don't have one yet" },
-];
-
 export function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -31,28 +26,6 @@ export function Navbar() {
         >
           <span className="text-sm font-semibold tracking-tight">raglan<span className="text-accent-400">digital</span></span>
         </Link>
-
-        <div className="hidden md:flex items-center">
-          <div className="flex items-center gap-1 bg-[var(--surface)] rounded-full px-1 py-1 border border-[var(--border)]">
-            {intents.map((intent) => {
-              const active = pathname === intent.href;
-              return (
-                <Link
-                  key={intent.href}
-                  href={intent.href}
-                  aria-current={active ? "page" : undefined}
-                  className={`h-9 inline-flex items-center px-4 rounded-full text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--surface)] ${
-                    active
-                      ? "bg-[var(--background)] text-[var(--foreground)] font-medium shadow-sm"
-                      : "text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface-hover)]"
-                  }`}
-                >
-                  {intent.label}
-                </Link>
-              );
-            })}
-          </div>
-        </div>
 
         <div className="flex items-center gap-2">
           <Link
@@ -112,25 +85,7 @@ export function Navbar() {
             className="md:hidden overflow-hidden border-t border-[var(--border)]"
           >
             <div className="px-6 py-5 space-y-2">
-              {intents.map((intent) => {
-                const active = pathname === intent.href;
-                return (
-                  <Link
-                    key={intent.href}
-                    href={intent.href}
-                    onClick={() => setMobileOpen(false)}
-                    aria-current={active ? "page" : undefined}
-                    className={`flex items-center h-12 px-4 rounded-full text-sm transition-colors ${
-                      active
-                        ? "bg-[var(--surface-hover)] text-[var(--foreground)] font-medium"
-                        : "bg-[var(--surface)] text-[var(--foreground)] hover:bg-[var(--surface-hover)]"
-                    }`}
-                  >
-                    {intent.label}
-                  </Link>
-                );
-              })}
-              <div className="pt-3 mt-3 border-t border-[var(--border)] flex items-center justify-between">
+              <div className="flex items-center justify-between">
                 <Link
                   href="/about"
                   onClick={() => setMobileOpen(false)}

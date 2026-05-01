@@ -22,6 +22,7 @@ interface ZagExpressionProps {
   size?: number;
   className?: string;
   alt?: string;
+  background?: string;
 }
 
 export function ZagExpression({
@@ -30,6 +31,7 @@ export function ZagExpression({
   size = 80,
   className = "",
   alt = "Zadig",
+  background = "bg-warm-900",
 }: ZagExpressionProps) {
   const [hovered, setHovered] = useState(false);
 
@@ -40,7 +42,7 @@ export function ZagExpression({
 
   return (
     <div
-      className={`relative inline-block shrink-0 cursor-default ${className}`}
+      className={`relative inline-block shrink-0 cursor-default overflow-hidden rounded-2xl ${background} ${className}`}
       style={{ width: size, height: size }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

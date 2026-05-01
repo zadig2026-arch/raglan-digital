@@ -1,6 +1,7 @@
 import { getBibleArticles, getArticleBySlug } from "@/lib/content";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { FloatingBack } from "@/components/floating-back";
 import type { Metadata } from "next";
 
 interface Props {
@@ -63,15 +64,8 @@ export default async function BibleArticlePage({ params }: Props) {
           }),
         }}
       />
+      <FloatingBack href="/learn" label="Back to Learn" />
       <div className="max-w-3xl mx-auto">
-        {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-[var(--muted)] mb-8">
-          <Link href="/bible" className="hover:text-[var(--foreground)] transition-colors">The Digital Bible</Link>
-          <span>/</span>
-          <span className="text-[var(--foreground)]">{article.title}</span>
-        </nav>
-
-        {/* Meta */}
         <div className="flex items-center gap-3 mb-4">
           <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-accent-500/10 text-accent-600 dark:text-accent-300">
             {article.category}

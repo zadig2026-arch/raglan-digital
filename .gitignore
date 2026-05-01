@@ -52,3 +52,7 @@ OUTREACH-*.md
 
 # generated GBP assets (local-only, not pushed to the live site)
 /public/gbp/
+.env*.local
+
+# Claude Code local state (scheduled tasks, worktrees, local settings)
+.claude/

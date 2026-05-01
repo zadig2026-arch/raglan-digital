@@ -12,7 +12,21 @@ const initialState: ContactFormState = { success: false };
 const inputClass =
   "w-full h-11 px-4 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-sm focus:outline-none focus:border-accent-500 transition-colors";
 
-export function FreeWebsiteForm() {
+export interface FreeWebsiteFormProps {
+  serviceTag?: string;
+  buttonLabel?: string;
+  successTitle?: string;
+  successBody?: string;
+  testimonialCopy?: string;
+}
+
+export function FreeWebsiteForm({
+  serviceTag = "free-website-offer",
+  buttonLabel = "Apply for a free website",
+  successTitle = "Application received!",
+  successBody = "I'll review your business and get back to you within 24h. If you qualify, I'll send you a mockup of your future site within a few days.",
+  testimonialCopy = "If you build me a great site, I'm happy to give a short testimonial and let you feature it as an example.",
+}: FreeWebsiteFormProps = {}) {
   const [state, formAction, isPending] = useActionState(
     submitContactForm,
     initialState
@@ -25,12 +39,8 @@ export function FreeWebsiteForm() {
         animate={{ opacity: 1, scale: 1 }}
         className="p-8 rounded-2xl bg-accent-50 dark:bg-accent-500/10 border border-accent-200 dark:border-accent-500/20 text-center max-w-xl mx-auto"
       >
-        <h2 className="text-xl font-bold">Application received!</h2>
-        <p className="mt-2 text-sm text-[var(--muted)]">
-          I&apos;ll review your business and get back to you within 24h. If
-          you qualify, I&apos;ll send you a mockup of your future site
-          within a few days.
-        </p>
+        <h2 className="text-xl font-bold">{successTitle}</h2>
+        <p className="mt-2 text-sm text-[var(--muted)]">{successBody}</p>
       </motion.div>
     );
   }
@@ -43,8 +53,7 @@ export function FreeWebsiteForm() {
         </div>
       )}
 
-      {/* Hidden service field tags this submission as the free-website offer */}
-      <input type="hidden" name="service" value="free-website-offer" />
+      <input type="hidden" name="service" value={serviceTag} />
 
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
@@ -149,8 +158,7 @@ export function FreeWebsiteForm() {
           className="mt-1 w-4 h-4 accent-accent-500"
         />
         <span>
-          If you build me a great site, I&apos;m happy to give a short
-          testimonial and let you feature it as an example.{" "}
+          {testimonialCopy}{" "}
           <span className="text-accent-500">*</span>
         </span>
       </label>
@@ -160,7 +168,7 @@ export function FreeWebsiteForm() {
         disabled={isPending}
         className="w-full sm:w-auto h-11 px-7 rounded-xl bg-accent-500 text-white text-sm font-semibold hover:bg-accent-600 transition-colors disabled:opacity-50"
       >
-        {isPending ? "Sending..." : "Apply for a free website"}
+        {isPending ? "Sending..." : buttonLabel}
       </button>
 
       <p className="text-xs text-[var(--muted)]">

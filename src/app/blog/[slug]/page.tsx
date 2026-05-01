@@ -1,6 +1,6 @@
 import { getBlogPosts, getArticleBySlug } from "@/lib/content";
 import { notFound } from "next/navigation";
-import Link from "next/link";
+import { FloatingBack } from "@/components/floating-back";
 import type { Metadata } from "next";
 
 interface Props {
@@ -58,13 +58,8 @@ export default async function BlogPostPage({ params }: Props) {
           }),
         }}
       />
+      <FloatingBack href="/learn" label="Back to Learn" />
       <div className="max-w-3xl mx-auto">
-        <nav className="flex items-center gap-2 text-sm text-[var(--muted)] mb-8">
-          <Link href="/blog" className="hover:text-[var(--foreground)] transition-colors">Blog</Link>
-          <span>/</span>
-          <span className="text-[var(--foreground)] truncate">{post.title}</span>
-        </nav>
-
         <div className="flex items-center gap-3 mb-4">
           <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-accent-500/10 text-accent-600 dark:text-accent-300">
             {post.category}
@@ -77,14 +72,6 @@ export default async function BlogPostPage({ params }: Props) {
           <MDXContent content={post.content} />
         </div>
 
-        <div className="mt-16 pt-8 border-t border-[var(--border)] text-center">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-sm font-medium text-accent-500 hover:text-accent-600 transition-colors"
-          >
-            ← Back to Blog
-          </Link>
-        </div>
       </div>
     </article>
   );

@@ -31,10 +31,9 @@ export default function LaunchPage() {
             5 websites. $399 NZD. No catch.
           </h1>
           <p className="mt-6 text-lg text-[var(--muted)] max-w-2xl mx-auto">
-            I&apos;m new to New Zealand and building a paying client book.
-            Launch pricing for my first 5 paying clients: $399 NZD for a
-            complete website. After those 5 are signed, the price goes up.
-            That&apos;s the deal — honest, no fake discount.
+            Launch pricing for the first 5 NZ small businesses each month:
+            $399 NZD for a complete website. Once those 5 are signed, the
+            next batch opens. Honest, no fake discount.
           </p>
           <p className="mt-3 text-sm text-accent-500 font-medium">
             {SPOTS_LEFT} spot{SPOTS_LEFT > 1 ? "s" : ""} left at this price
@@ -65,7 +64,7 @@ export default function LaunchPage() {
                 <Check />You own everything — code, design, content
               </li>
               <li className="flex items-start gap-2.5">
-                <Check />Delivered in 10 days from your assets
+                <Check />Delivered in 5–10 days from your assets
               </li>
               <li className="flex items-start gap-2.5">
                 <Check />One round of revisions included

@@ -80,7 +80,7 @@ export const tracks: Record<Service, Track> = {
         if (a.urgency === "asap" || a.urgency === "month") {
           return {
             headline: "The $399 launch offer sounds like a perfect match.",
-            body: "You don't have a site yet and you need one fast. That's exactly what the launch offer is built for — a complete 1-3 page website in 10 days, for $399 NZD. Five launch spots total.",
+            body: "You don't have a site yet and you need one fast. That's exactly what the launch offer is built for — a complete 1-3 page website in 5 to 10 days, for $399 NZD. Five launch spots per month.",
             target: { href: "/launch", label: "See the launch offer" },
           };
         }
@@ -143,7 +143,7 @@ export const tracks: Record<Service, Track> = {
       if (a.google_presence === "buried" || a.google_presence === "middle") {
         return {
           headline: "Full SEO + Google Business service.",
-          body: "You know you're not showing up. The monthly SEO service ($250 NZD/mo) handles your Google Business Profile, local keywords, and a monthly fix list. Most local businesses move up within 2-3 months.",
+          body: "You know you're not showing up. The monthly SEO Plan ($349 NZD/mo) handles your Google Business Profile, local keywords, and a monthly fix list. Most local businesses move up within 2-3 months.",
           target: { href: "/services#seo", label: "See the SEO service" },
         };
       }
@@ -235,7 +235,7 @@ export const tracks: Record<Service, Track> = {
       if (a.has_site === "no") {
         return {
           headline: "Start with the $399 launch offer.",
-          body: "You need a foundation first. The $399 launch offer gives you a clean, fast, mobile-first site in 10 days. Once that's up, we can layer SEO or social on top.",
+          body: "You need a foundation first. The $399 launch offer gives you a clean, fast, mobile-first site in 5 to 10 days. Once that's up, we can layer SEO or social on top.",
           target: { href: "/launch", label: "See the launch offer" },
         };
       }
