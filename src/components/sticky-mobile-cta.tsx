@@ -27,7 +27,7 @@ export function StickyMobileCta() {
 
   if (dismissed) return null;
   if (
-    pathname === "/launch" ||
+    pathname === "/studio" ||
     pathname?.startsWith("/preview") ||
     pathname?.startsWith("/mockup") ||
     pathname?.startsWith("/thanks") ||
@@ -45,10 +45,10 @@ export function StickyMobileCta() {
     >
       <div className="flex items-center gap-2">
         <Link
-          href="/launch"
+          href="/studio"
           className="flex-1 h-12 px-5 inline-flex items-center justify-center rounded-full bg-accent-500 text-white text-sm font-semibold shadow-lg active:scale-[0.98] transition-transform"
         >
-          Start my $399 launch site →
+          Start a project <span aria-hidden="true" className="ml-1.5">→</span>
         </Link>
         <button
           onClick={() => {

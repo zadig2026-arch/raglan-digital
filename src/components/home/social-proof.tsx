@@ -8,25 +8,12 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    quote: 'Booked solid the week the site went live. Worth every cent.',
-    author: 'Sara',
-    role: 'Owner',
-    business: 'Flow Wellness',
-    city: 'Raglan',
-  },
-  {
-    quote: 'Finally a site that loads on a phone without making me wait. Customers actually stay now.',
-    author: 'Mark',
+    quote:
+      "I'm truly grateful for your support and am looking forward to seeing my website flourish with your expertise, creativity and time.",
+    author: 'Ardré Foote',
     role: 'Founder',
-    business: 'Park House',
+    business: 'Flow ~Art of Healing',
     city: 'Raglan',
-  },
-  {
-    quote: 'Zadig listened. Built it in a week. Easy to update myself afterwards.',
-    author: 'Rachel',
-    role: 'Director',
-    business: 'Adaia Flora',
-    city: 'Hamilton',
   },
 ];
 
@@ -46,17 +33,17 @@ export function SocialProof() {
           </h2>
         </div>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
+        <div className="mt-14 max-w-2xl mx-auto">
           {testimonials.map((t) => (
             <figure
               key={t.author + t.business}
-              className="p-7 rounded-3xl bg-[var(--background)] border border-[var(--border)] flex flex-col"
+              className="p-8 md:p-10 rounded-3xl bg-[var(--background)] border border-[var(--border)]"
             >
               <Quotes className="text-accent-500" />
-              <blockquote className="mt-4 flex-1 text-[15px] leading-relaxed">
+              <blockquote className="mt-5 text-lg md:text-xl leading-relaxed">
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
-              <figcaption className="mt-6 pt-6 border-t border-[var(--border)] text-sm">
+              <figcaption className="mt-8 pt-6 border-t border-[var(--border)] text-sm">
                 <p className="font-semibold">{t.author}</p>
                 <p className="text-[var(--muted)] text-xs mt-0.5">
                   {t.role} · {t.business} · {t.city}

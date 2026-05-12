@@ -151,16 +151,16 @@ export default function SpeedCheckerPage() {
                     A faster site = more customers
                   </p>
                   <h3 className="text-2xl font-bold tracking-tight">
-                    $399 launch site, optimized for speed.
+                    Studio project, built for speed.
                   </h3>
                   <p className="mt-3 text-sm opacity-80 max-w-md mx-auto">
-                    Live in 5–10 days. Mobile-first. Built for Core Web Vitals.
+                    From $1,250. Mobile-first. Built for Core Web Vitals from the ground up.
                   </p>
                   <Link
-                    href="/launch"
+                    href="/studio"
                     className="mt-6 inline-flex h-11 px-6 items-center rounded-full bg-accent-500 text-white text-sm font-semibold hover:bg-accent-600 transition-colors"
                   >
-                    See the launch offer →
+                    Tell me about your project →
                   </Link>
                 </div>
               </>

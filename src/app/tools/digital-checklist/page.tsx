@@ -212,19 +212,19 @@ export default function DigitalChecklistPage() {
 
               <div className="mt-8 p-7 rounded-3xl bg-[var(--foreground)] text-[var(--background)] text-center">
                 <p className="text-xs uppercase tracking-[0.2em] opacity-60 font-semibold mb-3">
-                  Done in 10 days, not 10 months
+                  Or, skip the checklist
                 </p>
                 <h3 className="text-2xl font-bold tracking-tight">
-                  $399 launch site — covers most of this checklist out of the box.
+                  Studio project — covers most of this out of the box.
                 </h3>
                 <p className="mt-3 text-sm opacity-80 max-w-md mx-auto">
-                  Mobile-first, HTTPS, GBP integration, fast on Google. Fixed price.
+                  From $1,250. Mobile-first, HTTPS, GBP, fast on Google — built in from the start.
                 </p>
                 <Link
-                  href="/launch"
+                  href="/studio"
                   className="mt-6 inline-flex h-11 px-6 items-center rounded-full bg-accent-500 text-white text-sm font-semibold hover:bg-accent-600 transition-colors"
                 >
-                  See the launch offer →
+                  Tell me about your project →
                 </Link>
               </div>
             </>

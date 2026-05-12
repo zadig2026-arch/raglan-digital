@@ -130,7 +130,7 @@ export async function incrementLaunchSpotsTaken(): Promise<void> {
 
 export async function startOrResumeSequence(
   leadId: string,
-  sequence: 'welcome-tools' | 'nurture-quiz' | 'post-discovery' | 'post-launch-care',
+  sequence: 'welcome-tools' | 'nurture-quiz' | 'studio-brief' | 'post-discovery' | 'post-launch-care',
 ): Promise<void> {
   await sql`
     INSERT INTO sequences_state (lead_id, sequence, step, next_send_at)

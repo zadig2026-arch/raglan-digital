@@ -1,7 +1,6 @@
 export type PlanId =
   | 'roast-49'
-  | 'launch-399'
-  | 'growth-1490'
+  | 'studio-from-1250'
   | 'care-129'
   | 'seo-349'
   | 'social-590';
@@ -13,6 +12,7 @@ export interface Plan {
   name: string;
   tagline: string;
   priceNzd: number;
+  priceLabel?: string;
   interval: PlanInterval;
   features: string[];
   ctaLabel: string;
@@ -38,38 +38,24 @@ export const plans: Record<PlanId, Plan> = {
     stripeEnvVar: 'STRIPE_LINK_ROAST_49',
     guarantee: '100% money-back if it doesn\'t help.',
   },
-  'launch-399': {
-    id: 'launch-399',
-    name: 'Launch Site',
-    tagline: 'A clean, fast, mobile-first site live in 5–10 days',
-    priceNzd: 399,
+  'studio-from-1250': {
+    id: 'studio-from-1250',
+    name: 'Studio project',
+    tagline: 'A bespoke site, scoped around what you need — from one-page essentials to multi-page builds.',
+    priceNzd: 1250,
+    priceLabel: 'From $1,250',
     interval: 'one-time',
     features: [
-      '1–3 page custom website',
-      'Mobile-first, fast on Google',
-      'On-page SEO basics + sitemap',
-      'Live in 5–10 days, fixed price',
-      '50% deposit / 50% on launch',
+      'Custom design — not a template',
+      'Built on Next.js, hosted on Vercel',
+      'A self-serve CMS so you stay in control',
+      'Mobile-first, fast on Google, real SEO foundations',
+      '30 days of post-launch support included',
+      'No retainer required, no lock-in — you own it all',
     ],
-    ctaLabel: 'Start my launch site',
-    stripeEnvVar: 'STRIPE_LINK_LAUNCH_399',
-    badge: 'Most popular',
-  },
-  'growth-1490': {
-    id: 'growth-1490',
-    name: 'Growth Site',
-    tagline: 'For when you need more pages, more polish, more support',
-    priceNzd: 1490,
-    interval: 'one-time',
-    features: [
-      '5–7 page custom site',
-      'Google Business Profile setup',
-      '30 days post-launch support',
-      'Copywriting included',
-      'Custom illustrations or photo direction',
-    ],
-    ctaLabel: 'Talk about Growth',
-    stripeEnvVar: 'STRIPE_LINK_GROWTH_1490',
+    ctaLabel: 'Tell me about your project',
+    stripeEnvVar: 'STRIPE_LINK_STUDIO_FROM_1250',
+    badge: 'Bespoke',
   },
   'care-129': {
     id: 'care-129',
@@ -90,15 +76,16 @@ export const plans: Record<PlanId, Plan> = {
   'seo-349': {
     id: 'seo-349',
     name: 'SEO Plan',
-    tagline: 'Get found on Google — local SEO done monthly',
+    tagline: 'Audit, Google Business Profile, monthly content & tracking — the real working SEO stack',
     priceNzd: 349,
     interval: 'monthly',
     features: [
+      'Initial audit + technical fixes',
       'Google Business Profile management',
       'Local keyword targeting',
-      'Monthly fix list + report',
-      'On-page optimization',
-      'Review reply assistance',
+      'Monthly content piece targeting search intent',
+      'Monthly fix list + report on what changed',
+      'Cancel anytime, no contract',
     ],
     ctaLabel: 'Start SEO Plan',
     stripeEnvVar: 'STRIPE_LINK_SEO_349',
@@ -121,11 +108,10 @@ export const plans: Record<PlanId, Plan> = {
   },
 };
 
-export const homepagePricingTiers: PlanId[] = ['launch-399', 'growth-1490', 'care-129'];
+export const homepagePricingTiers: PlanId[] = ['studio-from-1250', 'seo-349', 'care-129'];
 export const fullPricingTiers: PlanId[] = [
   'roast-49',
-  'launch-399',
-  'growth-1490',
+  'studio-from-1250',
   'care-129',
   'seo-349',
   'social-590',
@@ -136,6 +122,7 @@ export function getPlan(id: PlanId): Plan {
 }
 
 export function formatPriceNzd(plan: Plan): string {
+  if (plan.priceLabel) return plan.priceLabel;
   const formatted = new Intl.NumberFormat('en-NZ', {
     style: 'currency',
     currency: 'NZD',

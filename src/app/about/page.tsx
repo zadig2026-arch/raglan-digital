@@ -20,18 +20,21 @@ export default function AboutPage() {
             />
             <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 h-7 px-3 rounded-full bg-accent-500 text-white text-xs font-medium whitespace-nowrap shadow-lg">
               <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-              Available · Raglan, NZ
+              Available · FR &amp; NZ
             </span>
           </div>
 
           <p className="text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-5">
-            Founder · Raglan Digital
+            Independent · web work
           </p>
           <h1 className="text-display-xl">
             Hi, I&apos;m <span className="text-accent-500">Zadig.</span>
           </h1>
           <p className="mt-6 text-lg md:text-xl text-[var(--muted)] max-w-2xl mx-auto leading-relaxed">
-            I build websites for NZ small businesses. Honest prices, no retainers, no lock-in.
+            Je suis français, j&apos;habite Raglan, je travaille des deux côtés du monde.
+          </p>
+          <p className="mt-2 text-base text-[var(--muted)]/80 max-w-2xl mx-auto leading-relaxed">
+            French in Raglan, working both coasts.
           </p>
         </div>
       </section>
@@ -40,19 +43,19 @@ export default function AboutPage() {
       <section className="px-6 py-16">
         <div className="max-w-2xl mx-auto">
           <TextReveal
-            text="Studied audiovisual in France. Worked at a digital agency. Moved to Raglan. Started Raglan Digital."
+            text="Named after a Voltaire novella from 1747. My mother is a French teacher — that one&rsquo;s on her."
             className="text-xl md:text-2xl font-medium leading-relaxed"
           />
 
           <div className="mt-10 space-y-5 text-[var(--muted)] leading-relaxed">
             <p>
-              I noticed a pattern: NZ small businesses have great products but invisible websites — slow, dated, or stuck on Facebook only. Big agencies quote $5k+ and lock you into retainers. DIY tools leave you with a generic template.
+              I studied audiovisual design in France, worked at a digital agency, then moved to Raglan in Aotearoa New Zealand. Different country, same craft. Today I work for small businesses, artists, and practitioners on both sides of the world — a French painters&rsquo; collective and a Raglan wellness practice in the same week, sometimes.
             </p>
             <p>
-              So I built a third option. Fixed-price launch sites at <strong className="text-[var(--foreground)]">$399</strong>, live between 5 and 10 days. Optional monthly Care or SEO Plans if you want me to keep the engine running. No retainer required, no contract, cancel anytime.
+              The reason it works is that the way I work doesn&rsquo;t change much across cultures. Fair prices written down before the work starts. One person on the project, not a handoff team. A site you can actually edit yourself. Honest reply within 48 hours — yes, no, or here&rsquo;s a better fit for you.
             </p>
             <p>
-              You own everything: the site, the domain, the code. Always.
+              <strong className="text-[var(--foreground)]">You own everything: the site, the domain, the code. Always.</strong>
             </p>
           </div>
         </div>
@@ -63,9 +66,9 @@ export default function AboutPage() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-14">
             <p className="text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-4">
-              How I work
+              The rules I work to
             </p>
-            <h2 className="text-display-md">Four rules I won&apos;t break.</h2>
+            <h2 className="text-display-md">Four lines I won&apos;t cross.</h2>
           </div>
 
           <div className="grid gap-5 md:grid-cols-2">
@@ -89,8 +92,34 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ═══ Do / Don't ═══ */}
+      {/* ═══ How I work ═══ */}
       <section className="px-6 py-20">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-4">
+            How I work
+          </p>
+          <h2 className="text-display-md mb-12">
+            From your brief to your launch.
+          </h2>
+
+          <ol className="space-y-8">
+            {steps.map((s, i) => (
+              <li key={s.title} className="flex gap-5">
+                <span className="shrink-0 text-accent-500 text-sm font-mono pt-1 tabular-nums">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="flex-1 pb-8 border-b border-[var(--border)] last:border-0 last:pb-0">
+                  <h3 className="text-lg font-semibold tracking-tight">{s.title}</h3>
+                  <p className="mt-2 text-[var(--muted)] leading-relaxed">{s.body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ═══ Do / Don't ═══ */}
+      <section className="px-6 py-20 bg-[var(--surface)]">
         <div className="max-w-4xl mx-auto grid gap-8 md:grid-cols-2">
           <div>
             <p className="text-xs uppercase tracking-[0.25em] text-accent-500 font-semibold mb-4">
@@ -123,19 +152,19 @@ export default function AboutPage() {
       </section>
 
       {/* ═══ CTA ═══ */}
-      <section className="px-6 py-28 bg-[var(--surface)] border-t border-[var(--border)]">
+      <section className="px-6 py-28 border-t border-[var(--border)]">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-display-lg">Ready when you are.</h2>
           <p className="mt-5 text-[var(--muted)] max-w-lg mx-auto">
-            Pick the way that suits you — self-serve, conversation, or quick chat.
+            Pick the way that suits you — full brief, quick message, or a chat.
           </p>
           <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
             <Magnetic>
               <Link
-                href="/launch"
+                href="/studio"
                 className="h-12 px-7 inline-flex items-center rounded-full bg-accent-500 text-white text-sm font-semibold hover:bg-accent-600 transition-colors"
               >
-                Start my $399 launch site →
+                Tell me about your project <span aria-hidden="true" className="ml-1.5">→</span>
               </Link>
             </Magnetic>
             <Magnetic>
@@ -143,7 +172,7 @@ export default function AboutPage() {
                 href="/contact"
                 className="h-12 px-7 inline-flex items-center rounded-full bg-[var(--foreground)] text-[var(--background)] text-sm font-medium hover:opacity-90 transition-opacity"
               >
-                Send a message
+                Quick message
               </Link>
             </Magnetic>
             <Magnetic>
@@ -166,8 +195,8 @@ export default function AboutPage() {
 const principles: Array<{ eyebrow: string; title: string; body: string }> = [
   {
     eyebrow: "Pricing",
-    title: "Fixed prices, no surprises.",
-    body: "You see the number before you commit. No hourly billing, no scope-creep invoices, no retainers required. The price you see is the price you pay.",
+    title: "Fair prices, no surprises.",
+    body: "Once we&rsquo;ve scoped, the number is fixed. No hourly billing, no scope-creep invoices, no retainers required. The price you see is the price you pay.",
   },
   {
     eyebrow: "Ownership",
@@ -177,28 +206,51 @@ const principles: Array<{ eyebrow: string; title: string; body: string }> = [
   {
     eyebrow: "Communication",
     title: "Real human, not a ticket queue.",
-    body: "You email me, I reply. Within 24h on weekdays, often faster. No support portal, no dashboard, no ‘your request has been logged’.",
+    body: "You email me, I reply. Within 24h on weekdays, often faster. No support portal, no dashboard, no &lsquo;your request has been logged&rsquo;.",
   },
   {
     eyebrow: "Focus",
-    title: "Built for NZ small business.",
-    body: "Not for unicorns, not for global e-commerce, not for SaaS startups. Local florists, tradies, cafes, therapists, B&Bs — the people who actually need a site that brings in calls.",
+    title: "Small businesses, artists, practitioners.",
+    body: "Florists, tradies, cafés, therapists, B&amp;Bs, ceramicists, photographers&rsquo; collectives, wellness practices. People with real customers and limited time, not unicorns or SaaS startups.",
+  },
+];
+
+const steps: Array<{ title: string; body: string }> = [
+  {
+    title: "You send a brief",
+    body: "A few honest sentences via the studio form, an email, or a WhatsApp. No polished spec needed.",
+  },
+  {
+    title: "I read carefully and reply",
+    body: "Within 48h on weekdays. Honest read: project is a fit, isn&rsquo;t a fit, or here are the two or three questions I need answered first.",
+  },
+  {
+    title: "Scope &amp; quote",
+    body: "If we&rsquo;re a fit, you get a short scope document and a fixed quote. Not hourly billing. Not call-for-a-quote.",
+  },
+  {
+    title: "Design &amp; build",
+    body: "I show you a clickable home in days, not weeks. We iterate honestly until it&rsquo;s right. Then I build it on Next.js, with a CMS so you can edit it.",
+  },
+  {
+    title: "Launch &amp; hand over",
+    body: "Zero-downtime launch on your domain. You get a short editor walkthrough so you actually use it. Optional ongoing care or SEO, no retainer required.",
   },
 ];
 
 const dos: string[] = [
-  "Custom 1–7 page websites",
-  "Mobile-first, fast on Google",
-  "Local SEO + Google Business Profile",
-  "Monthly care, edits, hosting",
+  "Bespoke 1–7 page sites, French or English",
+  "Mobile-first, fast on Google, real SEO foundations",
+  "Editor surface so you control your own content",
+  "Migrations from Wix, Squarespace, WordPress, Webflow",
   "Honest advice — even if it&rsquo;s not me you need",
 ];
 
 const donts: string[] = [
-  "$10k+ enterprise rebuilds",
-  "Multi-month strategy decks",
-  "Lock-in retainers or contracts",
-  "Crypto / NFT / gambling sites",
+  "Enterprise rebuilds with multi-team handoffs",
+  "Strategy decks with no shipping at the end",
+  "Lock-in retainers or rolling contracts",
+  "Crypto / NFT / gambling / adult sites",
   "Promises I can&rsquo;t keep",
 ];
 

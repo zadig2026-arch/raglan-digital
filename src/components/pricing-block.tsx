@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { Suspense } from 'react';
 import {
   homepagePricingTiers,
   fullPricingTiers,
@@ -9,7 +8,6 @@ import {
   type Plan,
   type PlanId,
 } from '@/lib/pricing';
-import { SpotsCounter } from './spots-counter';
 
 export interface PricingBlockProps {
   variant?: 'homepage' | 'full';
@@ -21,7 +19,7 @@ export interface PricingBlockProps {
 export function PricingBlock({
   variant = 'homepage',
   heading = 'Simple pricing.',
-  subheading = 'Fixed prices. No retainers required. Cancel monthly plans anytime.',
+  subheading = 'Fair prices. No retainers required. Cancel monthly plans anytime.',
   className = '',
 }: PricingBlockProps) {
   const tiers = variant === 'homepage' ? homepagePricingTiers : fullPricingTiers;
@@ -53,7 +51,7 @@ export function PricingBlock({
 
         {variant === 'homepage' && (
           <p className="mt-10 text-center text-sm text-[var(--muted)]">
-            Looking for a 60-min site roast at $49, or recurring SEO/social?{' '}
+            Looking for a $49 site roast, or recurring social?{' '}
             <Link
               href="/services"
               className="underline underline-offset-4 hover:text-[var(--foreground)] transition-colors"
@@ -69,7 +67,7 @@ export function PricingBlock({
 
 function PricingCard({ planId }: { planId: PlanId }) {
   const plan = getPlan(planId);
-  const featured = plan.id === 'launch-399';
+  const featured = plan.id === 'studio-from-1250';
   const stripeLink = getStripeLink(plan);
   const href = stripeLink ?? fallbackHref(plan);
   const external = Boolean(stripeLink);
@@ -117,21 +115,8 @@ function PricingCard({ planId }: { planId: PlanId }) {
             featured ? 'text-[var(--background)]/60' : 'text-[var(--muted)]'
           }`}
         >
-          NZD · {plan.interval === 'monthly' ? 'Billed monthly' : 'One-time'}
+          NZD · {plan.interval === 'monthly' ? 'Billed monthly' : plan.priceLabel ? 'Scoped per project' : 'One-time'}
         </p>
-
-        {plan.id === 'launch-399' && (
-          <div className="mt-4">
-            <Suspense fallback={null}>
-              <SpotsCounter
-                variant="sentence"
-                className={`text-xs ${
-                  featured ? 'text-[var(--background)]/70' : 'text-[var(--muted)]'
-                }`}
-              />
-            </Suspense>
-          </div>
-        )}
 
         <ul className="mt-8 space-y-3 text-sm">
           {plan.features.map((feature) => (
@@ -174,10 +159,9 @@ function PricingCard({ planId }: { planId: PlanId }) {
 
 function fallbackHref(plan: Plan): string {
   switch (plan.id) {
-    case 'launch-399':
-      return '/launch';
+    case 'studio-from-1250':
+      return '/studio';
     case 'roast-49':
-    case 'growth-1490':
     case 'care-129':
     case 'seo-349':
     case 'social-590':

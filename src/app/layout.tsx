@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Suspense } from "react";
 import { Inter, Caveat } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { FloatingWhatsApp } from "@/components/floating-whatsapp";
-import { LaunchBanner } from "@/components/launch-banner";
 import { StickyMobileCta } from "@/components/sticky-mobile-cta";
 import { ExitIntentModal } from "@/components/exit-intent-modal";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -28,46 +26,49 @@ const caveat = Caveat({
 
 export const metadata: Metadata = {
   title: {
-    default: "Raglan Digital | Web Design for NZ Small Businesses",
-    template: "%s | Raglan Digital",
+    default: "Raglan Digital · by Zadig — Independent web work, FR & NZ",
+    template: "%s · Raglan Digital",
   },
   description:
-    "Web design, SEO, social media & content for local businesses in New Zealand. Real results, fair prices.",
+    "Independent web work by Zadig for small businesses, artists and practitioners. Selected projects across France and Aotearoa NZ.",
   keywords: [
-    "web design New Zealand",
-    "affordable website NZ",
-    "SEO New Zealand",
-    "small business website",
-    "digital agency NZ",
-    "social media management",
+    "Zadig",
     "Raglan Digital",
+    "freelance web design",
+    "Next.js freelancer",
+    "Sanity CMS",
+    "web design New Zealand",
+    "web design France",
+    "bilingual web designer",
+    "small business website",
   ],
   alternates: {
     canonical: "https://raglandigital.com",
   },
-  authors: [{ name: "Raglan Digital" }],
+  authors: [{ name: "Zadig" }],
   openGraph: {
     type: "website",
     locale: "en_NZ",
+    alternateLocale: ["fr_FR"],
     url: "https://raglandigital.com",
     siteName: "Raglan Digital",
-    title: "Raglan Digital | Web Design for NZ Small Businesses",
+    title: "Raglan Digital · by Zadig — Independent web work, FR & NZ",
     description:
-      "Web design, SEO, social media & content for local businesses in New Zealand. Real results, fair prices.",
+      "Independent web work by Zadig for small businesses, artists and practitioners. Selected projects across France and Aotearoa NZ.",
     images: [
       {
         url: "https://raglandigital.com/images/raglan-sunset.jpg",
         width: 1200,
         height: 630,
-        alt: "Raglan Digital — Web Design for NZ Businesses",
+        alt: "Raglan Digital — independent web work by Zadig",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Raglan Digital | Web Design & Digital Growth for NZ Businesses",
+    title: "Raglan Digital · by Zadig",
     description:
-      "Web design, SEO, social media & content for local businesses in New Zealand.",
+      "Independent web work for small businesses, artists and practitioners. France & NZ.",
     images: ["https://raglandigital.com/images/raglan-sunset.jpg"],
   },
   metadataBase: new URL("https://raglandigital.com"),
@@ -88,12 +89,16 @@ export default function RootLayout({
             __html: JSON.stringify([
               {
                 "@context": "https://schema.org",
-                "@type": "LocalBusiness",
+                "@type": "ProfessionalService",
                 name: "Raglan Digital",
+                alternateName: "Raglan Digital · by Zadig",
                 description:
-                  "Web design, SEO, social media & content for New Zealand small businesses.",
+                  "Independent web work by Zadig for small businesses, artists and practitioners. France & Aotearoa NZ.",
                 url: "https://raglandigital.com",
-                areaServed: { "@type": "Country", name: "New Zealand" },
+                areaServed: [
+                  { "@type": "Country", name: "New Zealand" },
+                  { "@type": "Country", name: "France" },
+                ],
                 founder: { "@type": "Person", name: "Zadig" },
                 sameAs: ["https://instagram.com/raglandigital"],
               },
@@ -120,9 +125,6 @@ export default function RootLayout({
         </a>
         <ThemeProvider>
           <CursorGlow />
-          <Suspense fallback={null}>
-            <LaunchBanner />
-          </Suspense>
           <Navbar />
           <main id="main-content" className="flex-1">{children}</main>
           <Footer />

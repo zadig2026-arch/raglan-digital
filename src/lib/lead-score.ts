@@ -11,11 +11,13 @@ export type LeadSource =
   | 'organic'
   | 'meta-ad'
   | 'google-ad'
-  | 'launch-page'
+  | 'project-brief'
   | 'contact-form'
-  | 'free-website-form'
   | 'newsletter'
   | 'exit-intent'
+  // Legacy sources — kept for historical lead rows in DB, not used by active flows
+  | 'launch-page'
+  | 'free-website-form'
   | 'unknown';
 
 export type LeadStatus =
@@ -37,6 +39,8 @@ export interface ScoreInput {
   sourceDetail?: {
     quiz_urgency?: string;
     tool_score?: number;
+    budget_band?: string;
+    language?: string;
     [k: string]: unknown;
   };
   events?: ReadonlyArray<{ event: string; payload?: Record<string, unknown> }>;
@@ -127,6 +131,13 @@ export function computeLeadScore(input: ScoreInput): number {
   if (typeof toolScore === 'number' && toolScore < 50) score += 15;
 
   if (input.source === 'cold-outreach') score += 10;
+  if (input.source === 'project-brief') score += 25;
+
+  const budgetBand = input.sourceDetail?.budget_band;
+  if (budgetBand === '5k-plus' || budgetBand === '3k-5k') score += 15;
+  else if (budgetBand === '1.5k-3k') score += 8;
+
+  if (input.sourceDetail?.language === 'fr') score += 10;
 
   const events = input.events ?? [];
   const eventNames = events.map((e) => e.event);

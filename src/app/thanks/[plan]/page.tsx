@@ -32,52 +32,30 @@ const content: Record<string, ThanksContent> = {
     ],
     upsell: {
       title: "Already know you want a full rebuild?",
-      body: "Skip the wait. Apply for a $399 launch site and we'll start this week.",
-      href: "/launch",
-      cta: "See the $399 launch offer",
+      body: "Skip the wait — tell me about your project and I'll come back with a scope and a price.",
+      href: "/studio",
+      cta: "Start a Studio project",
     },
   },
-  "launch-399": {
-    eyebrow: "Launch site — confirmed",
-    headline: "You're in. Let's build.",
-    body: "Deposit received. The clock starts when you send your assets — logo, photos, and a few lines about your business. Most sites go live in 5 to 10 days from there.",
+  "studio-brief": {
+    eyebrow: "Brief received",
+    headline: "Got it. Reading carefully.",
+    body: "I read every brief personally. Within 48h on weekdays, you'll get an honest reply — yes, no, or a couple of questions to scope properly.",
     nextSteps: [
-      "Reply to the confirmation email with logo + 5–10 photos + 3–4 lines about your business",
-      "I'll send a clickable mockup of the home page within 48h",
-      "We refine, I build, you review checkpoints, we launch",
+      "Watch your inbox for an email from zadig@raglandigital.com",
+      "If your project is a fit, I'll send back a scope outline and a quote",
+      "If it isn't, I'll point you to someone better suited",
     ],
-    upsell: {
-      title: "Add the Care Plan?",
-      body: "Hosting, edits, backups, uptime — handled for $129/mo. Cancel anytime. Most launch clients add it.",
-      href: "/contact?service=care-plan",
-      cta: "Tell me about Care Plan",
-    },
   },
   "launch-applied": {
     eyebrow: "Application received",
-    headline: "Got it. Reviewing now.",
+    headline: "Got it. Reading now.",
     body: "I read every application personally. Within 24h on weekdays, you'll get an honest reply — yes, no, or 'let's chat first'.",
     nextSteps: [
       "Watch your inbox over the next 24h",
       "If qualified, I'll send a free mockup of your future site within a few days",
       "No payment until delivery, no upfront commitment",
     ],
-  },
-  "growth-1490": {
-    eyebrow: "Growth site — confirmed",
-    headline: "Welcome aboard.",
-    body: "Deposit received. Next step is a 30-min discovery call to nail down scope, copy direction, and timeline. I'll send a Cal.com link within the hour.",
-    nextSteps: [
-      "Pick a 30-min slot on the link in your inbox",
-      "Bring 3 sites you like (and 1 you don't) so we can calibrate",
-      "First mockup within 5 days of the call",
-    ],
-    upsell: {
-      title: "Care Plan is included for the first 30 days.",
-      body: "After that, $129/mo if you want me to keep handling hosting, edits, backups. No commitment.",
-      href: "/contact?service=care-plan",
-      cta: "Read about Care Plan",
-    },
   },
   "care-129": {
     eyebrow: "Care Plan — active",

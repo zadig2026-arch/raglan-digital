@@ -29,11 +29,18 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <Link
+            href="/work"
+            aria-current={pathname?.startsWith("/work") ? "page" : undefined}
+            className="hidden md:inline-flex items-center h-11 px-3 text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+          >
+            Work
+          </Link>
+          <Link
             href="/about"
             aria-current={pathname === "/about" ? "page" : undefined}
             className="hidden md:inline-flex items-center h-11 px-3 text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
           >
-            About me
+            About
           </Link>
           <button
             onClick={toggle}
@@ -84,24 +91,30 @@ export function Navbar() {
             transition={{ duration: 0.2 }}
             className="md:hidden overflow-hidden border-t border-[var(--border)]"
           >
-            <div className="px-6 py-5 space-y-2">
-              <div className="flex items-center justify-between">
-                <Link
-                  href="/about"
-                  onClick={() => setMobileOpen(false)}
-                  className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
-                  aria-current={pathname === "/about" ? "page" : undefined}
-                >
-                  About
-                </Link>
-                <Link
-                  href="/contact"
-                  onClick={() => setMobileOpen(false)}
-                  className="text-sm font-medium text-accent-500 hover:text-accent-600 transition-colors"
-                >
-                  Get in touch →
-                </Link>
-              </div>
+            <div className="px-6 py-5 space-y-4">
+              <Link
+                href="/work"
+                onClick={() => setMobileOpen(false)}
+                className="block text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+                aria-current={pathname?.startsWith("/work") ? "page" : undefined}
+              >
+                Work
+              </Link>
+              <Link
+                href="/about"
+                onClick={() => setMobileOpen(false)}
+                className="block text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+                aria-current={pathname === "/about" ? "page" : undefined}
+              >
+                About
+              </Link>
+              <Link
+                href="/contact"
+                onClick={() => setMobileOpen(false)}
+                className="block text-sm font-medium text-accent-500 hover:text-accent-600 transition-colors"
+              >
+                Get in touch →
+              </Link>
             </div>
           </motion.div>
         )}

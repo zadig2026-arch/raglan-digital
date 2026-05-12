@@ -7,15 +7,15 @@ interface Prop {
 
 const props: Prop[] = [
   {
-    eyebrow: '5–10 days',
+    eyebrow: 'Days, not months',
     title: 'Fast.',
-    body: 'Most launch sites go live between 5 and 10 days. No drawn-out kickoff calls, no endless rounds.',
+    body: 'Most projects ship in days, not months. No drawn-out kickoff calls, no endless rounds.',
     icon: 'clock',
   },
   {
-    eyebrow: '$399 NZD',
-    title: 'Fixed.',
-    body: 'You see the price before you commit. No hourly billing surprises, no scope creep.',
+    eyebrow: 'From $1,250 NZD',
+    title: 'Fair.',
+    body: 'You see the scope and the price before you commit. No hourly billing surprises, no scope creep.',
     icon: 'tag',
   },
   {

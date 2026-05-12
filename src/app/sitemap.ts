@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getBibleArticles, getBlogPosts } from "@/lib/content";
+import { getBibleArticles, getBlogPosts, getProjects } from "@/lib/content";
 
 const BASE_URL = "https://raglandigital.com";
 
@@ -18,6 +18,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  const projects = getProjects().map((p) => ({
+    url: `${BASE_URL}/work/${p.slug}`,
+    lastModified: new Date(p.date),
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
+  }));
+
   return [
     {
       url: BASE_URL,
@@ -26,19 +33,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${BASE_URL}/services`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/launch`,
+      url: `${BASE_URL}/work`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.95,
     },
     {
-      url: `${BASE_URL}/clients`,
+      url: `${BASE_URL}/work/concepts`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/services`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.85,
@@ -47,7 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${BASE_URL}/about`,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.7,
+      priority: 0.75,
     },
     {
       url: `${BASE_URL}/contact`,
@@ -59,7 +66,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${BASE_URL}/learn`,
       lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 0.8,
+      priority: 0.7,
     },
     {
       url: `${BASE_URL}/tools`,
@@ -91,6 +98,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    ...projects,
     ...bibleArticles,
     ...blogPosts,
   ];

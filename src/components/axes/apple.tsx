@@ -65,10 +65,10 @@ export function AppleHero() {
           >
             <Magnetic>
               <Link
-                href="/launch"
+                href="/studio"
                 className="inline-flex items-center h-12 px-8 rounded-full bg-accent-500 text-white text-sm font-semibold hover:bg-accent-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
               >
-                Start my $399 launch site →
+                Start a project →
               </Link>
             </Magnetic>
             <Link
@@ -266,8 +266,8 @@ export function AppleCta() {
         <p className="mt-6 text-lg text-[var(--muted)]">No pressure. No lock-in. Just results.</p>
         <div className="mt-14 flex flex-wrap items-center justify-center gap-4">
           <Magnetic>
-            <Link href="/launch" className="h-12 px-8 inline-flex items-center rounded-full bg-accent-500 text-white font-semibold hover:bg-accent-600 transition-colors">
-              Start my $399 launch site
+            <Link href="/studio" className="h-12 px-8 inline-flex items-center rounded-full bg-accent-500 text-white font-semibold hover:bg-accent-600 transition-colors">
+              Start a project
             </Link>
           </Magnetic>
           <Magnetic>

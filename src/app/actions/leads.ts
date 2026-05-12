@@ -18,6 +18,7 @@ import {
 import { ATTR_COOKIE, parseAttributionCookie } from '@/lib/attribution';
 import { welcomeToolsWorkflow } from '@/lib/workflow/sequences/welcome-tools';
 import { nurtureQuizWorkflow } from '@/lib/workflow/sequences/nurture-quiz';
+import { studioBriefWorkflow } from '@/lib/workflow/sequences/studio-brief';
 import { sql } from '@/lib/db';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -34,6 +35,7 @@ const SOURCES_THAT_TRIGGER_WELCOME_TOOLS: LeadSource[] = [
   'tool-speed-checker',
   'tool-digital-checklist',
 ];
+const SOURCES_THAT_TRIGGER_STUDIO_BRIEF: LeadSource[] = ['project-brief'];
 
 export interface CaptureLeadInput {
   email: string;
@@ -113,6 +115,10 @@ export async function captureLead(input: CaptureLeadInput): Promise<CaptureLeadR
     await triggerSequenceOnce(lead.id, 'nurture-quiz', () =>
       start(nurtureQuizWorkflow, [lead.id]),
     );
+  } else if (SOURCES_THAT_TRIGGER_STUDIO_BRIEF.includes(input.source)) {
+    await triggerSequenceOnce(lead.id, 'studio-brief', () =>
+      start(studioBriefWorkflow, [lead.id]),
+    );
   }
 
   await sendInternalNotification({
@@ -137,6 +143,7 @@ function redirectForLead({
   status: string;
   source: LeadSource;
 }): string | undefined {
+  if (source === 'project-brief') return '/thanks/studio-brief';
   if (score >= 50 && source !== 'cold-outreach') return '/discover';
   if (source === 'launch-page' || source === 'free-website-form') return '/thanks/launch-applied';
   return undefined;
@@ -185,7 +192,7 @@ async function sendInternalNotification({
 
 async function triggerSequenceOnce(
   leadId: string,
-  sequence: 'welcome-tools' | 'nurture-quiz' | 'post-discovery' | 'post-launch-care',
+  sequence: 'welcome-tools' | 'nurture-quiz' | 'studio-brief' | 'post-discovery' | 'post-launch-care',
   startWorkflow: () => Promise<{ runId: string }>,
 ): Promise<void> {
   const existing = (await sql`

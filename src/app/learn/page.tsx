@@ -3,8 +3,8 @@ import { getBibleArticles, getBlogPosts } from "@/lib/content";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Learn",
-  description: "Guides, tips, and tools to help you understand and improve your online presence. Written by Zag for NZ small businesses.",
+  title: "Field notes — guides &amp; opinions",
+  description: "Guides, opinions and field notes from Zadig at Raglan Digital. Step-by-step guides for the patient, quick reads for the impatient.",
   alternates: { canonical: "https://raglandigital.com/learn" },
 };
 
@@ -25,13 +25,12 @@ export default function LearnPage() {
       <section className="px-6 pt-24 pb-16 md:pt-32 md:pb-20">
         <div className="max-w-6xl mx-auto">
           <div className="max-w-3xl">
-            <p className="text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-5">Learn</p>
+            <p className="text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-5">Field notes</p>
             <h1 className="text-display-lg">
-              I want you to understand your business online.
+              Things I&apos;ve written down so I don&apos;t forget them.
             </h1>
             <p className="mt-6 text-lg text-[var(--muted)] leading-relaxed">
-              Guides to build your knowledge. Tips you can use this week.
-              Everything I know, written down so you can do it yourself — or know exactly what to ask me for.
+              Step-by-step guides for the patient. Quick opinions for the impatient. Everything I&apos;ve learned working with small businesses, artists and practitioners — so you can do it yourself, or know what to ask me for.
             </p>
           </div>
         </div>
@@ -43,8 +42,8 @@ export default function LearnPage() {
           <div className="flex items-center gap-3 mb-6">
             <div className="w-8 h-8 rounded-lg bg-accent-500/10 text-accent-500 flex items-center justify-center text-sm font-bold">G</div>
             <div>
-              <h2 className="text-xl font-bold">The Digital Bible</h2>
-              <p className="text-sm text-[var(--muted)]">Step-by-step guides. Start here if you&apos;re new.</p>
+              <h2 className="text-xl font-bold">Guides</h2>
+              <p className="text-sm text-[var(--muted)]">Step-by-step. Start here if you&apos;re new.</p>
             </div>
           </div>
 
@@ -86,7 +85,7 @@ export default function LearnPage() {
           <div className="flex items-center gap-3 mb-6">
             <div className="w-8 h-8 rounded-lg bg-accent-500/10 text-accent-500 flex items-center justify-center text-sm font-bold">T</div>
             <div>
-              <h2 className="text-xl font-bold">Tips & Articles</h2>
+              <h2 className="text-xl font-bold">Notes &amp; opinions</h2>
               <p className="text-sm text-[var(--muted)]">Quick reads. Things you can action today.</p>
             </div>
           </div>
@@ -125,7 +124,7 @@ export default function LearnPage() {
           <div className="p-8 rounded-2xl bg-brand-900 dark:bg-brand-950 text-white text-center">
             <h2 className="text-2xl font-bold">Rather I just handle it?</h2>
             <p className="mt-3 text-brand-400 max-w-lg mx-auto">
-              Run the tools, send me your results. I&apos;ll tell you what I&apos;d fix and quote you a fair price.
+              Send me a brief — I&apos;ll read it and reply with a scope and a fair price.
             </p>
             <a
               href="https://wa.me/33752032213?text=Hey%20Zadig%2C%20I%20read%20your%20guides%20and%20I%20need%20help."

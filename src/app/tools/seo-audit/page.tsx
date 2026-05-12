@@ -147,16 +147,16 @@ export default function SeoAuditPage() {
                     Want me to fix this?
                   </p>
                   <h3 className="text-2xl font-bold tracking-tight">
-                    $399 launch site, live in 5–10 days.
+                    Studio project, from $1,250.
                   </h3>
                   <p className="mt-3 text-sm opacity-80 max-w-md mx-auto">
-                    Fixed price, no retainer, you own everything.
+                    Bespoke, scoped to your project. No retainer, you own everything.
                   </p>
                   <Link
-                    href="/launch"
+                    href="/studio"
                     className="mt-6 inline-flex h-11 px-6 items-center rounded-full bg-accent-500 text-white text-sm font-semibold hover:bg-accent-600 transition-colors"
                   >
-                    See the launch offer →
+                    Tell me about your project →
                   </Link>
                 </div>
               </>

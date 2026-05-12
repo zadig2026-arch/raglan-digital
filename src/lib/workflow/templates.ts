@@ -11,6 +11,11 @@ export type TemplateKey =
   | "nurture_quiz_day12_pricing"
   | "nurture_quiz_day18_honest"
   | "nurture_quiz_day30_newsletter"
+  | "studio_brief_d0_thanks"
+  | "studio_brief_d2_recent_work"
+  | "studio_brief_d5_scope"
+  | "studio_brief_d9_fr_nz"
+  | "studio_brief_d14_final"
   | "post_discovery_24h_prep"
   | "post_discovery_2h_recap"
   | "post_discovery_48h_nudge"
@@ -94,23 +99,22 @@ const templates: Record<TemplateKey, Renderer> = {
   }),
 
   welcome_tools_day9_case_studies: ({ greeting }) => ({
-    subject: "5 NZ businesses that fixed this in 10 days",
+    subject: "Two recent projects, very different scopes",
     html: emailLayout({
-      preheader: "Park House, Adaia Flora, Flow Wellness — what changed.",
-      eyebrow: "Day 9 · Case studies",
-      title: "Here&rsquo;s what 10 days of focus looks like",
+      preheader: "A French painters&rsquo; collective and a Raglan wellness practice.",
+      eyebrow: "Day 9 · Recent work",
+      title: "Two projects, France &amp; Aotearoa",
       bodyHtml: `
         <p>${greeting}</p>
-        <p>I&rsquo;m a believer in &ldquo;done is better than perfect&rdquo;. Here are 3 NZ small businesses I&rsquo;ve helped — each one took 5 to 10 days from kickoff to live site:</p>
+        <p>Two recent projects, very different briefs:</p>
         <ul style="padding-left:20px;line-height:1.7;">
-          <li><strong>Flow Wellness</strong> (Raglan) — booked solid the week the site went live</li>
-          <li><strong>Park House</strong> (Raglan) — mobile bounce dropped, direct bookings up</li>
-          <li><strong>Adaia Flora</strong> (Hamilton) — clean rebuild from a broken Wix; site is now her main inbound channel</li>
+          <li><strong>Les Peintres de Royan</strong> (France) — a painters&rsquo; collective wanted one site where the committee could publish without writing code. Live now.</li>
+          <li><strong>Flow ~Art of Healing</strong> (Raglan) — migrating a wellness practice off Wix, keeping the owner fully in control of edits and bookings.</li>
         </ul>
-        <p>If you want yours next:</p>
+        <p>If something in either is close to what you&rsquo;re considering:</p>
       `,
-      ctaHref: utm("/clients", "welcome-tools", "day9-case-studies"),
-      ctaLabel: "See the case studies",
+      ctaHref: utm("/work", "welcome-tools", "day9-case-studies"),
+      ctaLabel: "See the work",
     }),
   }),
 
@@ -123,10 +127,10 @@ const templates: Record<TemplateKey, Renderer> = {
       bodyHtml: `
         <p>${greeting}</p>
         <p>This is my last automated email. If you&rsquo;d rather hear from me later, just reply &ldquo;ping me in 3 months&rdquo; and I will.</p>
-        <p>If now <em>is</em> the moment — there are usually 5 launch spots open at $399 NZD each month. First-come, first-served.</p>
+        <p>If now <em>is</em> the moment — Studio projects start at $1,250 NZD and are scoped around what you need. Send me a brief and I&rsquo;ll reply within 48h.</p>
       `,
-      ctaHref: utm("/launch", "welcome-tools", "day14-final"),
-      ctaLabel: "See if there's a spot left",
+      ctaHref: utm("/studio", "welcome-tools", "day14-final"),
+      ctaLabel: "Send me a brief",
     }),
   }),
 
@@ -156,10 +160,10 @@ const templates: Record<TemplateKey, Renderer> = {
       bodyHtml: `
         <p>${greeting}</p>
         <p>One of my clients had no site at all 6 weeks ago — just an Instagram page and a phone number. Today their site is the #1 channel for new bookings.</p>
-        <p>What changed: a 3-page launch site (10 days), Google Business Profile cleanup, and a single clear call-to-action everywhere. That&rsquo;s it.</p>
+        <p>What changed: a small custom site (under two weeks), Google Business Profile cleanup, and a single clear call-to-action everywhere. That&rsquo;s it.</p>
         <p>Yours could look the same.</p>
       `,
-      ctaHref: utm("/clients", "nurture-quiz", "day3-story"),
+      ctaHref: utm("/work", "nurture-quiz", "day3-story"),
       ctaLabel: "See the case studies",
     }),
   }),
@@ -183,7 +187,7 @@ const templates: Record<TemplateKey, Renderer> = {
   nurture_quiz_day12_pricing: ({ greeting }) => ({
     subject: "What it actually costs",
     html: emailLayout({
-      preheader: "No retainers, no hidden fees, no \"call for a quote\".",
+      preheader: "Public numbers. No retainer required.",
       eyebrow: "Day 12 · Pricing",
       title: "Honest pricing, public numbers",
       bodyHtml: `
@@ -191,10 +195,9 @@ const templates: Record<TemplateKey, Renderer> = {
         <p>Most agencies hide pricing because it&rsquo;s scary. Mine is on the homepage:</p>
         <ul style="padding-left:20px;line-height:1.7;">
           <li><strong>$49</strong> — Site Roast (15-min audit, 48h)</li>
-          <li><strong>$399</strong> — Launch Site (1–3 pages, 5–10 days)</li>
-          <li><strong>$1,490</strong> — Growth Site (5–7 pages, GBP, 30d support)</li>
+          <li><strong>From $1,250</strong> — Studio project (bespoke, scoped per project)</li>
           <li><strong>$129/mo</strong> — Care Plan (hosting + edits)</li>
-          <li><strong>$349/mo</strong> — SEO Plan (local visibility)</li>
+          <li><strong>$349/mo</strong> — SEO Plan (audit, GBP, monthly content, tracking)</li>
         </ul>
         <p>Cancel monthly anytime. No retainer required.</p>
       `,
@@ -213,9 +216,10 @@ const templates: Record<TemplateKey, Renderer> = {
         <p>${greeting}</p>
         <p>I&rsquo;m a good fit if:</p>
         <ul style="padding-left:20px;line-height:1.6;">
-          <li>You&rsquo;re a NZ small business (cafe, tradie, therapist, B&amp;B, retail, services)</li>
+          <li>You&rsquo;re a small business, an artist, a practitioner, or a collective — in FR or NZ</li>
+          <li>You care how the site looks, reads, and lasts</li>
           <li>You want one clear point of contact, not a project manager</li>
-          <li>You like fixed prices and clear timelines</li>
+          <li>You like fair, fixed prices and clear timelines</li>
         </ul>
         <p>I&rsquo;m a bad fit if:</p>
         <ul style="padding-left:20px;line-height:1.6;">
@@ -223,10 +227,10 @@ const templates: Record<TemplateKey, Renderer> = {
           <li>You want monthly retainers and quarterly strategy decks</li>
           <li>You&rsquo;d rather DIY with Squarespace</li>
         </ul>
-        <p>If we&rsquo;re a fit, reply and let&rsquo;s start.</p>
+        <p>If we&rsquo;re a fit, send me a brief.</p>
       `,
-      ctaHref: utm("/contact", "nurture-quiz", "day18-honest"),
-      ctaLabel: "Send me a message",
+      ctaHref: utm("/studio", "nurture-quiz", "day18-honest"),
+      ctaLabel: "Tell me about your project",
     }),
   }),
 
@@ -241,6 +245,102 @@ const templates: Record<TemplateKey, Renderer> = {
         <p>That&rsquo;s the end of the welcome flow. From now on you&rsquo;ll only hear from me once a month — and only if there&rsquo;s something genuinely useful (a new tool, a new case study, a tip that worked).</p>
         <p>If you want to stop hearing from me at any point, just reply &ldquo;unsubscribe&rdquo;.</p>
       `,
+    }),
+  }),
+
+  // ─── studio-brief ───
+  studio_brief_d0_thanks: ({ greeting }) => ({
+    subject: "Got your brief — reading carefully",
+    html: emailLayout({
+      preheader: "Honest reply within 48h on weekdays.",
+      eyebrow: "Day 0 · Received",
+      title: "Got it. Reading carefully.",
+      bodyHtml: `
+        <p>${greeting}</p>
+        <p>Your brief landed. I read every one personally, so it might take a beat — you&rsquo;ll hear back from me within 48h on weekdays.</p>
+        <p>If your project is a fit, I&rsquo;ll come back with a scope outline and a quote. If it isn&rsquo;t, I&rsquo;ll point you to someone better suited rather than waste your time.</p>
+        <p>While you wait, two recent projects to give you a feel for how I work:</p>
+      `,
+      ctaHref: utm("/work", "studio-brief", "day0-thanks"),
+      ctaLabel: "See recent work",
+    }),
+  }),
+
+  studio_brief_d2_recent_work: ({ greeting }) => ({
+    subject: "Two recent projects, two very different briefs",
+    html: emailLayout({
+      preheader: "France and Aotearoa — same approach, different surface.",
+      eyebrow: "Day 2 · Recent work",
+      title: "Two briefs, two surfaces",
+      bodyHtml: `
+        <p>${greeting}</p>
+        <p>While I read through your brief, here are two recent projects you might find useful:</p>
+        <ul style="padding-left:20px;line-height:1.7;">
+          <li><strong>Les Peintres de Royan</strong> — a French painters&rsquo; collective. Sanity-based, committee can publish without me. Live at lespeintresderoyan.fr.</li>
+          <li><strong>Flow ~Art of Healing</strong> — a Raglan wellness practice migrating off Wix. Stripe bookings, full owner control of content.</li>
+        </ul>
+        <p>Different sectors, different countries, same approach: the people behind the work keep control of it.</p>
+      `,
+      ctaHref: utm("/work", "studio-brief", "day2-recent-work"),
+      ctaLabel: "See the work",
+    }),
+  }),
+
+  studio_brief_d5_scope: ({ greeting }) => ({
+    subject: "How I scope a bespoke project",
+    html: emailLayout({
+      preheader: "Brief in, scope out, quote attached. No surprises later.",
+      eyebrow: "Day 5 · How I work",
+      title: "How I scope a bespoke project",
+      bodyHtml: `
+        <p>${greeting}</p>
+        <p>If your brief is the right kind of fit, the next step is a short scope doc and a fixed quote. The process I use:</p>
+        <ol style="padding-left:20px;line-height:1.7;">
+          <li><strong>I read.</strong> Your brief, your existing site, your competitors, your sector. Quietly.</li>
+          <li><strong>I scope.</strong> Pages, features, integrations, content strategy, timeline. Sent as a single doc.</li>
+          <li><strong>I quote.</strong> Fixed price for what we scoped. 50/50 split, deposit + on-launch.</li>
+          <li><strong>You decide.</strong> No pressure, no follow-up nudges. Yes / no / let&rsquo;s talk again later.</li>
+        </ol>
+        <p>Most scope docs land within 5 days of receiving the brief.</p>
+      `,
+      ctaHref: utm("/about", "studio-brief", "day5-scope"),
+      ctaLabel: "More on how I work",
+    }),
+  }),
+
+  studio_brief_d9_fr_nz: ({ greeting }) => ({
+    subject: "Working across France and New Zealand",
+    html: emailLayout({
+      preheader: "Two timezones, one inbox, zero friction.",
+      eyebrow: "Day 9 · FR &amp; NZ",
+      title: "Working across two timezones",
+      bodyHtml: `
+        <p>${greeting}</p>
+        <p>Half my work is in France (Royan, Paris and beyond), half in Aotearoa NZ. A few practical things that come up:</p>
+        <ul style="padding-left:20px;line-height:1.7;">
+          <li><strong>Language.</strong> I work in French or English. Sites can ship bilingual if needed.</li>
+          <li><strong>Hosting &amp; domains.</strong> OVH, Vercel, Netlify, Metaname — I&rsquo;ll meet you on the registrar you already use.</li>
+          <li><strong>Payment.</strong> NZD or EUR. Bank transfer or Stripe.</li>
+          <li><strong>Timezones.</strong> I aim to reply same-day in your timezone, every weekday.</li>
+        </ul>
+        <p>None of this should be a friction. If it ever is, tell me — that&rsquo;s usually a project I haven&rsquo;t taken yet.</p>
+      `,
+    }),
+  }),
+
+  studio_brief_d14_final: ({ greeting }) => ({
+    subject: "Last note — your brief, still open?",
+    html: emailLayout({
+      preheader: "If the moment passed, no worries.",
+      eyebrow: "Day 14 · Final",
+      title: "Still keen, or moment passed?",
+      bodyHtml: `
+        <p>${greeting}</p>
+        <p>If your project is still active and you&rsquo;d like to pick the conversation back up, reply to this email — even one line is enough.</p>
+        <p>If the moment has passed, no worries. I&rsquo;ll stop following up after this and you can always come back later.</p>
+      `,
+      ctaHref: utm("/studio", "studio-brief", "day14-final"),
+      ctaLabel: "Send a new brief",
     }),
   }),
 
@@ -275,7 +375,7 @@ const templates: Record<TemplateKey, Renderer> = {
         <p>Quick recap of what we discussed and the next step. I&rsquo;ll send the scope document separately within the day.</p>
         <p>To lock in your spot, the deposit link is ready when you are.</p>
       `,
-      ctaHref: utm("/launch", "post-discovery", "2h-recap"),
+      ctaHref: utm("/studio", "post-discovery", "2h-recap"),
       ctaLabel: "Lock in my spot",
     }),
   }),
@@ -288,9 +388,9 @@ const templates: Record<TemplateKey, Renderer> = {
       title: "Still keen?",
       bodyHtml: `
         <p>${greeting}</p>
-        <p>I&rsquo;ve held a launch spot for you. If today&rsquo;s not the right moment, just reply and I&rsquo;ll release it back to the pool. No hard feelings.</p>
+        <p>I&rsquo;ve been holding a slot for your project. If today&rsquo;s not the right moment, just reply and I&rsquo;ll free it up. No hard feelings.</p>
       `,
-      ctaHref: utm("/launch", "post-discovery", "48h-nudge"),
+      ctaHref: utm("/studio", "post-discovery", "48h-nudge"),
       ctaLabel: "Confirm my spot",
     }),
   }),
@@ -303,7 +403,7 @@ const templates: Record<TemplateKey, Renderer> = {
       title: "Closing your spot tomorrow",
       bodyHtml: `
         <p>${greeting}</p>
-        <p>I&rsquo;ll need to release your launch spot tomorrow if I don&rsquo;t hear back. No worries either way — life happens.</p>
+        <p>I&rsquo;ll need to free up your project slot tomorrow if I don&rsquo;t hear back. No worries either way — life happens.</p>
         <p>One reply (yes / not now / later) is all I need.</p>
       `,
     }),
@@ -372,16 +472,16 @@ const templates: Record<TemplateKey, Renderer> = {
   }),
 
   post_launch_d60_referral: ({ greeting }) => ({
-    subject: "Know another NZ business who&rsquo;d use this?",
+    subject: "Know someone else who&rsquo;d use this?",
     html: emailLayout({
       preheader: "Referrals get a free month of Care Plan + a $50 thank-you.",
       eyebrow: "Day 60 · Referral",
       title: "If you know someone who needs this",
       bodyHtml: `
         <p>${greeting}</p>
-        <p>If you know another NZ small business that could use a $399 launch site, I&rsquo;d love an intro.</p>
-        <p>You get a free month of Care Plan and a $50 thank-you. They get the launch price even if the batch is full.</p>
-        <p>Just reply with their name and number — I&rsquo;ll take it from there.</p>
+        <p>If you know another small business, artist or practitioner who could use a Studio project, I&rsquo;d love an intro.</p>
+        <p>You get a free month of Care Plan and a $50 thank-you. They get an honest read on whether the project is a fit.</p>
+        <p>Just reply with their name and contact — I&rsquo;ll take it from there.</p>
       `,
     }),
   }),
