@@ -62,28 +62,7 @@ export default function WorkPage() {
         </div>
       </section>
 
-      <section className="px-6 py-20 bg-[var(--surface)] border-t border-[var(--border)]">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-5">
-            Also in the studio
-          </p>
-          <h2 className="text-display-md md:text-display-lg">
-            Concept work — sector demos.
-          </h2>
-          <p className="mt-5 text-[var(--muted)] max-w-2xl mx-auto leading-relaxed">
-            Mockups built to show small businesses what their site could look like. Not
-            commissioned projects — concept demonstrations by sector.
-          </p>
-          <Link
-            href="/work/concepts"
-            className="mt-10 inline-flex items-center gap-2 h-12 px-6 rounded-full border border-[var(--border)] text-sm font-medium hover:bg-[var(--surface-hover)] transition-colors"
-          >
-            Browse the concepts <span aria-hidden="true">→</span>
-          </Link>
-        </div>
-      </section>
-
-      <section className="px-6 py-24 md:py-32">
+      <section className="px-6 py-24 border-t border-[var(--border)]">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-display-lg">Have a project?</h2>
           <p className="mt-5 text-[var(--muted)] max-w-lg mx-auto">
@@ -94,7 +73,7 @@ export default function WorkPage() {
               href="/contact"
               className="h-12 px-7 inline-flex items-center rounded-full bg-accent-500 text-white text-sm font-semibold hover:bg-accent-600 transition-colors"
             >
-              Send a message
+              Get in touch
             </Link>
             <a
               href="https://wa.me/33752032213"

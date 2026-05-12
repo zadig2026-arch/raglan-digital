@@ -6,8 +6,6 @@ import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { FloatingWhatsApp } from "@/components/floating-whatsapp";
-import { StickyMobileCta } from "@/components/sticky-mobile-cta";
-import { ExitIntentModal } from "@/components/exit-intent-modal";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CursorGlow } from "@/components/cursor-glow";
 
@@ -129,8 +127,6 @@ export default function RootLayout({
           <main id="main-content" className="flex-1">{children}</main>
           <Footer />
           <FloatingWhatsApp />
-          <StickyMobileCta />
-          <ExitIntentModal />
         </ThemeProvider>
         <Analytics />
       </body>

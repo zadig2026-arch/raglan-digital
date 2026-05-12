@@ -8,7 +8,6 @@ import { Magnetic } from "@/components/magnetic";
 export default function AboutPage() {
   return (
     <>
-      {/* ═══ Hero ═══ */}
       <section className="px-6 pt-28 md:pt-40 pb-16">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-block relative group cursor-default mb-10">
@@ -25,7 +24,7 @@ export default function AboutPage() {
           </div>
 
           <p className="text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-5">
-            Independent · web work
+            About
           </p>
           <h1 className="text-display-xl">
             Hi, I&apos;m <span className="text-accent-500">Zadig.</span>
@@ -39,7 +38,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ═══ Story ═══ */}
       <section className="px-6 py-16">
         <div className="max-w-2xl mx-auto">
           <TextReveal
@@ -52,7 +50,7 @@ export default function AboutPage() {
               I studied audiovisual design in France, worked at a digital agency, then moved to Raglan in Aotearoa New Zealand. Different country, same craft. Today I work for small businesses, artists, and practitioners on both sides of the world — a French painters&rsquo; collective and a Raglan wellness practice in the same week, sometimes.
             </p>
             <p>
-              The reason it works is that the way I work doesn&rsquo;t change much across cultures. Fair prices written down before the work starts. One person on the project, not a handoff team. A site you can actually edit yourself. Honest reply within 48 hours — yes, no, or here&rsquo;s a better fit for you.
+              The way I work doesn&rsquo;t change much across cultures. Fair prices written down before the work starts. One person on the project, not a handoff team. A site you can actually edit yourself. Honest reply within 48 hours — yes, no, or here&rsquo;s a better fit for you.
             </p>
             <p>
               <strong className="text-[var(--foreground)]">You own everything: the site, the domain, the code. Always.</strong>
@@ -61,39 +59,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ═══ Principles ═══ */}
-      <section className="px-6 py-20 bg-[var(--surface)]">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center max-w-xl mx-auto mb-14">
-            <p className="text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-4">
-              The rules I work to
-            </p>
-            <h2 className="text-display-md">Four lines I won&apos;t cross.</h2>
-          </div>
-
-          <div className="grid gap-5 md:grid-cols-2">
-            {principles.map((p) => (
-              <div
-                key={p.title}
-                className="p-7 rounded-3xl bg-[var(--background)] border border-[var(--border)]"
-              >
-                <p className="text-xs uppercase tracking-wider text-accent-500 font-semibold">
-                  {p.eyebrow}
-                </p>
-                <h3 className="mt-2 text-xl font-semibold tracking-tight">
-                  {p.title}
-                </h3>
-                <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed">
-                  {p.body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ How I work ═══ */}
-      <section className="px-6 py-20">
+      <section className="px-6 py-20 bg-[var(--surface)] border-y border-[var(--border)]">
         <div className="max-w-3xl mx-auto">
           <p className="text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-4">
             How I work
@@ -118,61 +84,19 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ═══ Do / Don't ═══ */}
-      <section className="px-6 py-20 bg-[var(--surface)]">
-        <div className="max-w-4xl mx-auto grid gap-8 md:grid-cols-2">
-          <div>
-            <p className="text-xs uppercase tracking-[0.25em] text-accent-500 font-semibold mb-4">
-              What I do
-            </p>
-            <ul className="space-y-3 text-[15px]">
-              {dos.map((item) => (
-                <li key={item} className="flex gap-3">
-                  <Check className="text-accent-500 shrink-0 mt-0.5" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p className="text-xs uppercase tracking-[0.25em] text-[var(--muted)] font-semibold mb-4">
-              What I don&apos;t do
-            </p>
-            <ul className="space-y-3 text-[15px] text-[var(--muted)]">
-              {donts.map((item) => (
-                <li key={item} className="flex gap-3">
-                  <Cross className="shrink-0 mt-1" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ CTA ═══ */}
-      <section className="px-6 py-28 border-t border-[var(--border)]">
+      <section className="px-6 py-24">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-display-lg">Ready when you are.</h2>
           <p className="mt-5 text-[var(--muted)] max-w-lg mx-auto">
-            Pick the way that suits you — full brief, quick message, or a chat.
+            Send me a message, or jump on WhatsApp.
           </p>
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
-            <Magnetic>
-              <Link
-                href="/studio"
-                className="h-12 px-7 inline-flex items-center rounded-full bg-accent-500 text-white text-sm font-semibold hover:bg-accent-600 transition-colors"
-              >
-                Tell me about your project <span aria-hidden="true" className="ml-1.5">→</span>
-              </Link>
-            </Magnetic>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Magnetic>
               <Link
                 href="/contact"
-                className="h-12 px-7 inline-flex items-center rounded-full bg-[var(--foreground)] text-[var(--background)] text-sm font-medium hover:opacity-90 transition-opacity"
+                className="h-12 px-7 inline-flex items-center rounded-full bg-accent-500 text-white text-sm font-semibold hover:bg-accent-600 transition-colors"
               >
-                Quick message
+                Get in touch
               </Link>
             </Magnetic>
             <Magnetic>
@@ -192,33 +116,10 @@ export default function AboutPage() {
   );
 }
 
-const principles: Array<{ eyebrow: string; title: string; body: string }> = [
-  {
-    eyebrow: "Pricing",
-    title: "Fair prices, no surprises.",
-    body: "Once we&rsquo;ve scoped, the number is fixed. No hourly billing, no scope-creep invoices, no retainers required. The price you see is the price you pay.",
-  },
-  {
-    eyebrow: "Ownership",
-    title: "You own it all.",
-    body: "The domain, the hosting, the code, the content. If you ever want to leave, you take everything with you. There&rsquo;s nothing to extract — it&rsquo;s already yours.",
-  },
-  {
-    eyebrow: "Communication",
-    title: "Real human, not a ticket queue.",
-    body: "You email me, I reply. Within 24h on weekdays, often faster. No support portal, no dashboard, no &lsquo;your request has been logged&rsquo;.",
-  },
-  {
-    eyebrow: "Focus",
-    title: "Small businesses, artists, practitioners.",
-    body: "Florists, tradies, cafés, therapists, B&amp;Bs, ceramicists, photographers&rsquo; collectives, wellness practices. People with real customers and limited time, not unicorns or SaaS startups.",
-  },
-];
-
 const steps: Array<{ title: string; body: string }> = [
   {
     title: "You send a brief",
-    body: "A few honest sentences via the studio form, an email, or a WhatsApp. No polished spec needed.",
+    body: "A few honest sentences via the contact form, an email, or a WhatsApp. No polished spec needed.",
   },
   {
     title: "I read carefully and reply",
@@ -234,63 +135,6 @@ const steps: Array<{ title: string; body: string }> = [
   },
   {
     title: "Launch &amp; hand over",
-    body: "Zero-downtime launch on your domain. You get a short editor walkthrough so you actually use it. Optional ongoing care or SEO, no retainer required.",
+    body: "Zero-downtime launch on your domain. You get a short editor walkthrough. You own everything.",
   },
 ];
-
-const dos: string[] = [
-  "Bespoke 1–7 page sites, French or English",
-  "Mobile-first, fast on Google, real SEO foundations",
-  "Editor surface so you control your own content",
-  "Migrations from Wix, Squarespace, WordPress, Webflow",
-  "Honest advice — even if it&rsquo;s not me you need",
-];
-
-const donts: string[] = [
-  "Enterprise rebuilds with multi-team handoffs",
-  "Strategy decks with no shipping at the end",
-  "Lock-in retainers or rolling contracts",
-  "Crypto / NFT / gambling / adult sites",
-  "Promises I can&rsquo;t keep",
-];
-
-function Check({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 16 16"
-      fill="none"
-      className={className}
-      aria-hidden="true"
-    >
-      <path
-        d="M3 8.5l3 3 7-7"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function Cross({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 16 16"
-      fill="none"
-      className={className}
-      aria-hidden="true"
-    >
-      <path
-        d="M4 4l8 8M12 4l-8 8"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
