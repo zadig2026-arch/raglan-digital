@@ -38,10 +38,6 @@ function ShowcaseCard({
       aria-label={`Read case study — ${c.title}`}
     >
       <div className="showcase-stage">
-        <div className="device laptop behind">
-          <div className="screen">{laptopScreen}</div>
-          <div className="base" />
-        </div>
         <div className="device laptop main">
           <div className="screen">{laptopScreen}</div>
           <div className="base" />

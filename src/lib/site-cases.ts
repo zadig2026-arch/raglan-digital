@@ -31,8 +31,8 @@ export const STATUS_LABEL: Record<CaseStatus, string> = {
 };
 
 export const STATUS_PILL_CLASS: Record<CaseStatus, string> = {
-  live: "",
-  active: "",
+  live: "live",
+  active: "active",
   progress: "progress",
   concept: "concept",
 };

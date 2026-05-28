@@ -69,26 +69,8 @@ export function ClientScripts() {
       document.addEventListener("mousemove", onOrbMove);
     }
 
-    // ---------- Nav scroll-spy (home anchors) ----------
-    const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>(".nav .links a[data-section]"));
-    const sections = navLinks
-      .map((a) => document.getElementById(a.dataset.section!))
-      .filter((s): s is HTMLElement => Boolean(s));
-    let onScrollSpy: (() => void) | null = null;
-    if (sections.length) {
-      onScrollSpy = () => {
-        const y = window.scrollY + 140;
-        let active = sections[0];
-        sections.forEach((s) => {
-          if (s.offsetTop <= y) active = s;
-        });
-        navLinks.forEach((a) =>
-          a.classList.toggle("active", a.dataset.section === active.id && !a.classList.contains("cta")),
-        );
-      };
-      window.addEventListener("scroll", onScrollSpy, { passive: true });
-      onScrollSpy();
-    }
+    // Nav scroll-spy now lives in nav.tsx (React-owned, IntersectionObserver) so
+    // it no longer fights React re-renders for the .active class.
 
     // ---------- Blob parallax ----------
     const blobs = Array.from(document.querySelectorAll<HTMLElement>(".blob"));
@@ -108,7 +90,6 @@ export function ClientScripts() {
       io?.disconnect();
       if (onOrbMove) document.removeEventListener("mousemove", onOrbMove);
       if (orbRaf) cancelAnimationFrame(orbRaf);
-      if (onScrollSpy) window.removeEventListener("scroll", onScrollSpy);
       if (onBlobScroll) window.removeEventListener("scroll", onBlobScroll);
     };
   }, [pathname]);

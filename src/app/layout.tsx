@@ -8,6 +8,7 @@ import { Footer } from "@/components/site/footer";
 import { WaFloating } from "@/components/site/wa-floating";
 import { ClientScripts } from "@/components/site/client-scripts";
 import { IntroOverlay } from "@/components/site/intro-overlay";
+import { RouteProgress } from "@/components/site/route-progress";
 
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -121,6 +122,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           Skip to content
         </a>
         <IntroOverlay />
+        <RouteProgress />
         <BlobField />
         <Nav />
         <main id="main-content">{children}</main>
