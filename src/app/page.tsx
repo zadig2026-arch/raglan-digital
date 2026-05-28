@@ -8,6 +8,15 @@ export default function Home() {
     <>
       {/* HERO */}
       <header className="hero">
+        <div className="hero-field" aria-hidden="true">
+          <span className="bubble bb1" />
+          <span className="bubble bb2" />
+          <span className="bubble bb3" />
+          <span className="bubble bb4" />
+          <span className="bubble bb5" />
+          <span className="bubble bb6" />
+          <span className="bubble bb7" />
+        </div>
         <div className="wrap">
           <div className="hero-grid">
             <div>
@@ -47,11 +56,6 @@ export default function Home() {
 
             <div className="hero-orb reveal" data-delay="2" aria-hidden="true">
               <div className="stage" />
-              <div className="orb-shape capsule-mint" />
-              <div className="orb-shape capsule-coral" />
-              <div className="orb-shape capsule-butter" />
-              <div className="orb-shape dot-lavender" />
-              <div className="orb-shape dot-sky" />
             </div>
           </div>
         </div>

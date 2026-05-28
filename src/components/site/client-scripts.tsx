@@ -34,47 +34,61 @@ export function ClientScripts() {
       });
     }
 
-    // ---------- Hero orb parallax ----------
+    // ---------- Hero orb + roaming bubble field ----------
+    // All motion is a single JS-driven `transform` per frame. A per-frame inline
+    // transform repaints reliably on every GPU; a CSS animation on the individual
+    // `translate`/`rotate` properties did not (the orb looked frozen in headed
+    // Chrome even though its timeline kept advancing).
     const orb = document.querySelector<HTMLElement>(".hero-orb");
+    const stage = orb?.querySelector<HTMLElement>(".stage") ?? null;
+    const bubbles = Array.from(document.querySelectorAll<HTMLElement>(".hero-field .bubble"));
     let orbRaf = 0;
     let onOrbMove: ((ev: MouseEvent) => void) | null = null;
-    if (orb && !reduce) {
-      const shapes = Array.from(orb.querySelectorAll<HTMLElement>(".orb-shape"));
-      const stage = orb.querySelector<HTMLElement>(".stage");
+    if (!reduce && (stage || bubbles.length)) {
       const clamp = (v: number, m: number) => Math.max(-m, Math.min(m, v));
-      let mx = 0, my = 0, cx = 0, cy = 0, raf = 0;
-      const loop = () => {
-        cx += (mx - cx) * 0.07;
-        cy += (my - cy) * 0.07;
-        // Parallax lives on `transform` and composes over the CSS idle float
-        // (which animates `translate`/`rotate`). The stage also tilts in 3D
-        // (the .hero-orb parent sets `perspective`).
+      // o* = cursor relative to the orb centre (sphere tilt).
+      // v* = cursor relative to the viewport centre (field parallax).
+      let omx = 0, omy = 0, ocx = 0, ocy = 0;
+      let vmx = 0, vmy = 0, vcx = 0, vcy = 0;
+      const t0 = performance.now();
+      const loop = (now: number) => {
+        const t = (now - t0) / 1000;
+        ocx += (omx - ocx) * 0.08; ocy += (omy - ocy) * 0.08;
+        vcx += (vmx - vcx) * 0.06; vcy += (vmy - vcy) * 0.06;
         if (stage) {
+          const fy = Math.sin(t * 0.7) * -10;   // gentle vertical bob
+          const fr = Math.sin(t * 0.45) * 1.6;  // slow sway
           stage.style.transform =
-            `translate3d(${cx * 16}px, ${cy * 16}px, 0) ` +
-            `rotateX(${-cy * 7}deg) rotateY(${cx * 9}deg)`;
+            `translate3d(${ocx * 16}px, ${ocy * 16 + fy}px, 0) ` +
+            `rotate(${fr}deg) rotateX(${-ocy * 7}deg) rotateY(${ocx * 9}deg)`;
         }
-        shapes.forEach((s, i) => {
-          const depth = 22 + i * 9;
-          s.style.transform = `translate3d(${cx * depth}px, ${cy * depth}px, 0)`;
-        });
-        if (Math.abs(mx - cx) > 0.0005 || Math.abs(my - cy) > 0.0005) {
-          raf = requestAnimationFrame(loop);
-          orbRaf = raf;
-        } else {
-          raf = 0;
+        for (let i = 0; i < bubbles.length; i++) {
+          const p = i * 1.7;
+          // Two summed sines per axis -> organic, non-repeating wandering that
+          // ranges across most of the hero.
+          const ax = 130 + (i % 4) * 42;
+          const ay = 92 + (i % 3) * 46;
+          const w1 = 0.22 + (i % 5) * 0.028;
+          const w2 = 0.16 + (i % 3) * 0.022;
+          const x = ax * Math.sin(t * w1 + p) + ax * 0.45 * Math.sin(t * w2 * 1.7 + p * 0.6);
+          const y = ay * Math.cos(t * w2 + p) + ay * 0.5 * Math.cos(t * w1 * 1.3 + p * 0.9);
+          const depth = 12 + (i % 4) * 9;       // parallax strength
+          const sc = 1 + 0.09 * Math.sin(t * 0.5 + p);
+          const rot = 7 * Math.sin(t * 0.22 + p);
+          bubbles[i].style.transform =
+            `translate3d(${x + vcx * depth}px, ${y + vcy * depth}px, 0) rotate(${rot}deg) scale(${sc})`;
         }
+        orbRaf = requestAnimationFrame(loop);
       };
+      orbRaf = requestAnimationFrame(loop);
       onOrbMove = (ev: MouseEvent) => {
-        const rect = orb.getBoundingClientRect();
-        // Offset from the orb centre, normalised by half-size and clamped so the
-        // orb leans toward the cursor without chasing it across the whole screen.
-        mx = clamp((ev.clientX - rect.left - rect.width / 2) / (rect.width / 2), 1);
-        my = clamp((ev.clientY - rect.top - rect.height / 2) / (rect.height / 2), 1);
-        if (!raf) {
-          raf = requestAnimationFrame(loop);
-          orbRaf = raf;
+        if (orb) {
+          const r = orb.getBoundingClientRect();
+          omx = clamp((ev.clientX - r.left - r.width / 2) / (r.width / 2), 1);
+          omy = clamp((ev.clientY - r.top - r.height / 2) / (r.height / 2), 1);
         }
+        vmx = clamp((ev.clientX / window.innerWidth - 0.5) * 2, 1);
+        vmy = clamp((ev.clientY / window.innerHeight - 0.5) * 2, 1);
       };
       document.addEventListener("mousemove", onOrbMove);
     }
