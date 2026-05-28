@@ -42,9 +42,10 @@ export function ClientScripts() {
     const orb = document.querySelector<HTMLElement>(".hero-orb");
     const stage = orb?.querySelector<HTMLElement>(".stage") ?? null;
     const bubbles = Array.from(document.querySelectorAll<HTMLElement>(".hero-field .bubble"));
+    const accents = Array.from(document.querySelectorAll<HTMLElement>(".h-display .accent"));
     let orbRaf = 0;
     let onOrbMove: ((ev: MouseEvent) => void) | null = null;
-    if (!reduce && (stage || bubbles.length)) {
+    if (!reduce && (stage || bubbles.length || accents.length)) {
       const clamp = (v: number, m: number) => Math.max(-m, Math.min(m, v));
       // o* = cursor relative to the orb centre (sphere tilt).
       // v* = cursor relative to the viewport centre (field parallax).
@@ -77,6 +78,13 @@ export function ClientScripts() {
           const rot = 7 * Math.sin(t * 0.22 + p);
           bubbles[i].style.transform =
             `translate3d(${x + vcx * depth}px, ${y + vcy * depth}px, 0) rotate(${rot}deg) scale(${sc})`;
+        }
+        // Living type: flow the colour ribbon through the accent words. JS-driven
+        // backgroundPositionX repaints reliably (a CSS animation might not on some
+        // GPUs, same lesson as the orb). Gradient ends match -> seamless wrap.
+        if (accents.length) {
+          const pos = ((t * 16) % 200).toFixed(2) + "%";
+          for (let i = 0; i < accents.length; i++) accents[i].style.backgroundPositionX = pos;
         }
         orbRaf = requestAnimationFrame(loop);
       };

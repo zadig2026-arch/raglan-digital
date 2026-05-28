@@ -123,11 +123,24 @@ h1, h2, h3, h4 {
   line-height: 0.98;
   letter-spacing: -0.035em;
 }
+/* "Living type": the accent words are a window onto a colour ribbon (same palette
+   as the roaming bubbles) that flows through the letters. The flow is driven by
+   JS (backgroundPositionX per frame in client-scripts) so it repaints on every
+   GPU — see the orb note. Ends match (mint -> ... -> mint) so the loop is seamless.
+   Static fallback below for reduced motion / no-JS. */
 .h-display .accent {
-  background: linear-gradient(135deg, #5A7F86 0%, #82839E 50%, #A89FE3 100%);
+  background: linear-gradient(100deg,
+    var(--mint-2) 0%,
+    var(--sky-2) 22%,
+    var(--lavender-2) 46%,
+    var(--coral-2) 70%,
+    var(--mint-2) 100%);
+  background-size: 200% 100%;
+  background-position: 0% 50%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 .h-section {
   font-size: clamp(28px, 3.2vw, 46px);
