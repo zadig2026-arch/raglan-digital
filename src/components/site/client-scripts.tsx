@@ -41,16 +41,24 @@ export function ClientScripts() {
     if (orb && !reduce) {
       const shapes = Array.from(orb.querySelectorAll<HTMLElement>(".orb-shape"));
       const stage = orb.querySelector<HTMLElement>(".stage");
+      const clamp = (v: number, m: number) => Math.max(-m, Math.min(m, v));
       let mx = 0, my = 0, cx = 0, cy = 0, raf = 0;
       const loop = () => {
-        cx += (mx - cx) * 0.06;
-        cy += (my - cy) * 0.06;
-        if (stage) stage.style.transform = `translate(${cx * 14}px, ${cy * 14}px)`;
+        cx += (mx - cx) * 0.07;
+        cy += (my - cy) * 0.07;
+        // Parallax lives on `transform` and composes over the CSS idle float
+        // (which animates `translate`/`rotate`). The stage also tilts in 3D
+        // (the .hero-orb parent sets `perspective`).
+        if (stage) {
+          stage.style.transform =
+            `translate3d(${cx * 16}px, ${cy * 16}px, 0) ` +
+            `rotateX(${-cy * 7}deg) rotateY(${cx * 9}deg)`;
+        }
         shapes.forEach((s, i) => {
-          const depth = 18 + i * 8;
-          s.style.transform = `translate(${cx * depth}px, ${cy * depth}px)`;
+          const depth = 22 + i * 9;
+          s.style.transform = `translate3d(${cx * depth}px, ${cy * depth}px, 0)`;
         });
-        if (Math.abs(mx - cx) > 0.001 || Math.abs(my - cy) > 0.001) {
+        if (Math.abs(mx - cx) > 0.0005 || Math.abs(my - cy) > 0.0005) {
           raf = requestAnimationFrame(loop);
           orbRaf = raf;
         } else {
@@ -59,8 +67,10 @@ export function ClientScripts() {
       };
       onOrbMove = (ev: MouseEvent) => {
         const rect = orb.getBoundingClientRect();
-        mx = (ev.clientX - rect.left - rect.width / 2) / rect.width;
-        my = (ev.clientY - rect.top - rect.height / 2) / rect.height;
+        // Offset from the orb centre, normalised by half-size and clamped so the
+        // orb leans toward the cursor without chasing it across the whole screen.
+        mx = clamp((ev.clientX - rect.left - rect.width / 2) / (rect.width / 2), 1);
+        my = clamp((ev.clientY - rect.top - rect.height / 2) / (rect.height / 2), 1);
         if (!raf) {
           raf = requestAnimationFrame(loop);
           orbRaf = raf;
