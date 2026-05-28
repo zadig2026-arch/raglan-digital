@@ -2,28 +2,24 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="px-6 py-20 min-h-[60vh] flex items-center justify-center">
-      <div className="text-center max-w-md">
-        <p className="text-6xl font-bold text-accent-500">404</p>
-        <h1 className="mt-4 text-2xl font-bold tracking-tight">Page not found</h1>
-        <p className="mt-3 text-[var(--muted)]">
-          The page you&apos;re looking for doesn&apos;t exist or has been moved.
+    <section className="page-hero" style={{ minHeight: "70vh", display: "flex", alignItems: "center" }}>
+      <div className="wrap" style={{ textAlign: "center" }}>
+        <div className="eyebrow">404</div>
+        <h1 className="h-display" style={{ marginTop: 12, fontSize: "clamp(40px, 6vw, 80px)" }}>
+          <span className="accent">Page not found.</span>
+        </h1>
+        <p className="lede" style={{ margin: "20px auto 0" }}>
+          The page you&apos;re looking for doesn&apos;t exist or has moved.
         </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Link
-            href="/"
-            className="h-11 px-6 inline-flex items-center rounded-xl bg-accent-500 text-white text-sm font-semibold hover:bg-accent-600 transition-colors"
-          >
-            Back to home
+        <div style={{ marginTop: 32, display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
+          <Link className="btn btn-primary sheen" href="/">
+            Back home<span className="btn-arrow" />
           </Link>
-          <Link
-            href="/contact"
-            className="h-11 px-6 inline-flex items-center rounded-xl border border-[var(--border)] text-sm font-medium hover:border-accent-500/30 transition-colors"
-          >
-            Get in touch
+          <Link className="btn btn-glass" href="/contact">
+            Get in touch<span className="btn-arrow" />
           </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

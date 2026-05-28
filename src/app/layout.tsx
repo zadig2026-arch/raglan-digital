@@ -1,104 +1,110 @@
 import type { Metadata } from "next";
-import Script from "next/script";
-import { Inter, Caveat } from "next/font/google";
+import { Bricolage_Grotesque, Manrope } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
-import { FloatingWhatsApp } from "@/components/floating-whatsapp";
-import { ThemeProvider } from "@/components/theme-provider";
-import { CursorGlow } from "@/components/cursor-glow";
+import { BlobField } from "@/components/site/blob-field";
+import { Nav } from "@/components/site/nav";
+import { Footer } from "@/components/site/footer";
+import { WaFloating } from "@/components/site/wa-floating";
+import { ClientScripts } from "@/components/site/client-scripts";
+import { IntroOverlay } from "@/components/site/intro-overlay";
 
-const inter = Inter({
-  variable: "--font-inter",
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-bricolage",
   display: "swap",
 });
 
-const caveat = Caveat({
-  variable: "--font-caveat",
+const manrope = Manrope({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-manrope",
   display: "swap",
-  weight: ["500", "700"],
 });
+
+const TITLE = "Raglan Digital — An AI agency";
+const DESCRIPTION =
+  "A focused team building websites, custom tools, automations & AI agents. Designed and shipped fast. You own everything.";
 
 export const metadata: Metadata = {
-  title: {
-    default: "Raglan Digital · by Zadig — Independent web work, FR & NZ",
-    template: "%s · Raglan Digital",
-  },
-  description:
-    "Independent web work by Zadig for small businesses, artists and practitioners. Selected projects across France and Aotearoa NZ.",
+  title: { default: TITLE, template: "%s · Raglan Digital" },
+  description: DESCRIPTION,
   keywords: [
-    "Zadig",
     "Raglan Digital",
-    "freelance web design",
-    "Next.js freelancer",
-    "Sanity CMS",
-    "web design New Zealand",
-    "web design France",
-    "bilingual web designer",
-    "small business website",
+    "AI agency",
+    "AI agents",
+    "automation",
+    "n8n automation",
+    "custom tools",
+    "web application development",
+    "Next.js agency",
+    "AI integration",
+    "France",
+    "New Zealand",
   ],
-  alternates: {
-    canonical: "https://raglandigital.com",
-  },
-  authors: [{ name: "Zadig" }],
+  alternates: { canonical: "https://raglandigital.com" },
   openGraph: {
     type: "website",
-    locale: "en_NZ",
-    alternateLocale: ["fr_FR"],
+    locale: "en",
     url: "https://raglandigital.com",
     siteName: "Raglan Digital",
-    title: "Raglan Digital · by Zadig — Independent web work, FR & NZ",
-    description:
-      "Independent web work by Zadig for small businesses, artists and practitioners. Selected projects across France and Aotearoa NZ.",
+    title: TITLE,
+    description: DESCRIPTION,
     images: [
       {
         url: "https://raglandigital.com/images/raglan-sunset.jpg",
         width: 1200,
         height: 630,
-        alt: "Raglan Digital — independent web work by Zadig",
+        alt: "Raglan Digital — an AI agency",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Raglan Digital · by Zadig",
-    description:
-      "Independent web work for small businesses, artists and practitioners. France & NZ.",
+    title: "Raglan Digital — An AI agency",
+    description: DESCRIPTION,
     images: ["https://raglandigital.com/images/raglan-sunset.jpg"],
   },
   metadataBase: new URL("https://raglandigital.com"),
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${caveat.variable} h-full`} suppressHydrationWarning>
+    <html lang="en" className={`${bricolage.variable} ${manrope.variable}`}>
       <head>
         <script
           type="application/ld+json"
-          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: JSON.stringify([
               {
                 "@context": "https://schema.org",
                 "@type": "ProfessionalService",
                 name: "Raglan Digital",
-                alternateName: "Raglan Digital · by Zadig",
-                description:
-                  "Independent web work by Zadig for small businesses, artists and practitioners. France & Aotearoa NZ.",
+                description: DESCRIPTION,
                 url: "https://raglandigital.com",
                 areaServed: [
-                  { "@type": "Country", name: "New Zealand" },
                   { "@type": "Country", name: "France" },
+                  { "@type": "Country", name: "New Zealand" },
                 ],
-                founder: { "@type": "Person", name: "Zadig" },
+                knowsAbout: [
+                  "Artificial Intelligence",
+                  "AI agents",
+                  "Workflow automation",
+                  "Web development",
+                  "Custom software tools",
+                ],
                 sameAs: ["https://instagram.com/raglandigital"],
+                hasOfferCatalog: {
+                  "@type": "OfferCatalog",
+                  name: "Services",
+                  itemListElement: [
+                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Websites & web apps" } },
+                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Custom tools & dashboards" } },
+                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Automation" } },
+                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI agents & assistants" } },
+                  ],
+                },
               },
               {
                 "@context": "https://schema.org",
@@ -110,24 +116,17 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col antialiased">
-        <Script
-          id="theme-detect"
-          strategy="beforeInteractive"
-        >{`(function(){try{var m=localStorage.getItem('theme');if(m==='dark'){document.documentElement.classList.add('dark')}}catch(e){}})()`}</Script>
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-accent-500 focus:text-white focus:rounded-lg focus:text-sm focus:font-medium"
-        >
+      <body>
+        <a href="#main-content" className="skip-link">
           Skip to content
         </a>
-        <ThemeProvider>
-          <CursorGlow />
-          <Navbar />
-          <main id="main-content" className="flex-1">{children}</main>
-          <Footer />
-          <FloatingWhatsApp />
-        </ThemeProvider>
+        <IntroOverlay />
+        <BlobField />
+        <Nav />
+        <main id="main-content">{children}</main>
+        <Footer />
+        <WaFloating />
+        <ClientScripts />
         <Analytics />
       </body>
     </html>
